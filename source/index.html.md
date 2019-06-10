@@ -13,21 +13,23 @@ search: true
 ---
 
 # Introduction
-You can use OnVoard's API to access various endpoints, and perform tasks in programmatic fashion such as sending review request to a phone or email. Currently, the key use cases supported by OnVoard's API are:
+You can use OnVoard's API to access various endpoints, and perform tasks in programmatic fashion such as sending email surveys via triggers. Currently, the key use cases supported by OnVoard's API are:
 
 * Query reviews
-* Send review request
+* Send review requests
+* Send interview requests
+* Send surveys
 
 # Authentication
 
 ```shell
-# Api calls must be made with bearer header
+# Api calls must be made with token header
 curl 'https://api.onvoard.com/v1/reviews' \
--H 'Authorization: Bearer {API_KEY}'
+-H 'Authorization: Token {API_KEY}'
 ```
 
 OnVoard currently use api key for authentication. Go to [api details](https://console.onvoard.com/api-details) page to get your api key.
-Add `Authorization: Bearer {API_KEY}` header to your api request for authentication.
+Add `Authorization: Token {API_KEY}` header to your api request for authentication.
 
 <aside class="notice">
 Currently only owner has access to api keys.
