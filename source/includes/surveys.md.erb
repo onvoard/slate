@@ -1,0 +1,213 @@
+# Surveys
+Represents a survey object.
+
+## Survey Object
+
+```json
+{
+  "id": "sur_m59c7sa4p0ogtfo",
+  "on": true,
+  "active": true,
+  "name": "NPS Survey",
+  "distribution": "ONE_CLICK_EMAIL",
+  "url": ""
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+on | boolean | Survey status.
+active | boolean | Active state of survey. Archived survey will be `false`.
+name | string | Name for survey.
+distribution | enum ([Survey Distribution](#survey-distribution)) | Distribution type for survey.
+url | string | URL to view survey. This will only be set if distribution is `LINK`.
+
+
+## Enums
+List of available enum types under this resource.
+
+### Survey Distribution
+Value | Description
+--------- | -------
+WEB | Web Distribution
+ONE_CLICK_EMAIL | One-Click Email Distribution
+EMAIL | Email Distribution
+LINK | Link Distribution
+
+
+## Retrieve Survey
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "sur_m59c7sa4p0ogtfo",
+  "on": true,
+  "active": true,
+  "name": "NPS Survey",
+  "distribution": "ONE_CLICK_EMAIL",
+  "url": ""
+}
+```
+
+Retrieve survey with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/surveys/:survey_id`
+
+### Returns
+Survey object if valid ID was provided.
+
+
+## Patch Survey
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
+-H 'Authorization: Token {API_KEY}'
+-d active=false
+```
+
+> Example Response
+
+```json
+{
+  "id": "sur_m59c7sa4p0ogtfo",
+  "on": true,
+  "active": false,
+  "name": "NPS Survey",
+  "distribution": "ONE_CLICK_EMAIL",
+  "url": ""
+}
+```
+
+Patch survey with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/surveys/:survey_id`
+
+### Returns
+Modified survey object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+on | boolean | No | Status of survey
+active | boolean | No | Active state of survey.
+
+
+## Send Survey
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo/send' \
+-H 'Authorization: Token {API_KEY}'
+-d name="John Doe" \
+-d email="johndoe@gmail.com"
+```
+
+> Example Response
+
+```json
+{
+  "id": "sur_rcpt_3uml0c7nwjytalusxc6jsvqvm",
+  "tracking_id": "sUhnwbdRkwpv16V3bbG3",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560238191,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_SURVEY",
+    "created_timestamp": 1560237961
+  }],
+  "survey": {
+    "id": "sur_m59c7sa4p0ogtfo",
+    "name": "NPS Survey"
+  }
+}
+```
+
+Send survey with given ID.<br/>
+Only email based surveys are eligible for sending. Survey's distribution must be `EMAIL` or `ONE_CLICK_EMAIL`.
+
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/surveys/:survey_id/send`
+
+### Returns
+[Survey Recipient Object](#survey-recipient-object) if survey was sent.
+
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+email | string | Yes | Email address to send.
+name | string | No | Name of recipient. We will automatically extract first and last name.
+lag_window | integer | No | Send survey after indicated number of minutes. If specified, lag window must be between 10 and 10080 (7 days).
+
+
+## List all Surveys
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/surveys' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "sur_m59c7sa4p0ogtfo",
+    "on": true,
+    "active": true,
+    "name": "NPS Survey",
+    "distribution": "ONE_CLICK_EMAIL",
+    "url": ""
+  }]
+}
+```
+
+List all surveys user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/surveys`
+
+### Returns
+List of survey objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+active | boolean | Use `true` if you only want to return active surveys and `false` to return archived surveys.
+keyword | string | Filter by specific keyword.
+distribution | enum ([Survey Distribution](#survey-distribution)) | Survey distribution to filter.
+account | string | Account ID to filter. Used when organization manage more than one account.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+

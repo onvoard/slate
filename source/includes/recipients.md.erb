@@ -1,0 +1,234 @@
+
+# Recipients
+Recipients are users who have recieved email from OnVoard's service.
+
+## Recipient Object
+Abstract recipient object. This serve as the base object for other recipient extensions.
+
+```json
+{
+  "id": "rr_rcpt_3e6mz1ur0aoycy8v7jsj8aekw",
+  "tracking_id": "r6kMe3QwGjE0pilgCk7Q",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560229938,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_REVIEW_REQUEST",
+    "created_timestamp": 1560158564
+  }]
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+tracking_id | string | Tracking ID for recipient.
+test | boolean | Will be `true` for test recipient.
+name | string | Recipient's name.
+email | string | Recipient's email.
+lag_window | integer | Number of minutes delayed before email was sent to recipient.
+status | enum ([Recipient Status](#recipient-status)) | Status of recipient.
+sent_from | enum ([Sent From](#sent-from)) | Origin where recipient was sent from.
+error_msg | string | Details of error. Will be provided if `status` is `FAILED`.
+created_timestamp | integer | Timestamp when recipient is created.
+reminder.status | enum ([Recipient Status](#recipient-status)) | Status for reminder. By default, this will be `NA` if reminder is not yet eligible for sending.
+reminder.error_msg | string | Details of error. Will be provided if `reminder.status` is `FAILED`.
+activities[].id | string | Unique identifier for activity.
+activities[].type | enum ([Activity Type](#activity-type)) | Type of activity.
+activities[].created_timestamp | integer | Timestamp when activity occurred.
+
+## Review Requester Recipient Object
+Recipient for review request. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+
+```json
+{
+  "id": "rr_rcpt_3e6mz1ur0aoycy8v7jsj8aekw",
+  "tracking_id": "r6kMe3QwGjE0pilgCk7Q",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560229938,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_REVIEW_REQUEST",
+    "created_timestamp": 1560158564
+  }],
+  "requester": {
+    "id": "rw_req_awxloccld94xkfh",
+    "name": "OnVoard G2"
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+requester.id | string | Unique identifier for review requester.
+requester.name | string | Name for review requester.
+
+
+## Interview Requester Recipient Object
+Recipient for interview request. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+
+```json
+{
+  "id": "itw_rcpt_trrr1grp5fcroahqe2nb583pn",
+  "tracking_id": "TJSYiF3mzf8DeGCHEOhk",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560237961,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_INTERVIEW_REQUEST",
+    "created_timestamp": 1560237961
+  }],
+  "company": "Acme Corp",
+  "requester": {
+    "id": "itw_req_nhya6muq0q8pvxn",
+    "name": "OnVoard Interview Requester"
+  },
+  "interview_instructions": {
+    "status": "NA",
+    "error_msg": ""
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+requester.id | string | Unique identifier for interview requester.
+requester.name | string | Name for interview requester.
+interview_instructions.status | enum ([Recipient Status](#recipient-status)) | Status for interview instructions. By default, this will be `NA` if instructions is not yet eligible for sending.
+interview_instructions.error_msg | string | Details of error. Will be provided if `interview_instructions.status` is `FAILED`.
+
+
+## Survey Recipient Object
+Recipient for survey. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+
+```json
+{
+  "id": "sur_rcpt_3uml0c7nwjytalusxc6jsvqvm",
+  "tracking_id": "sUhnwbdRkwpv16V3bbG3",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560238191,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_SURVEY",
+    "created_timestamp": 1560237961
+  }],
+  "survey": {
+    "id": "sur_m59c7sa4p0ogtfo",
+    "name": "NPS Survey"
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+survey.id | string | Unique identifier for survey.
+survey.name | string | Name for survey.
+
+
+## Enums
+List of available enum types under this resource.
+
+### Recipient Status
+Value | Description
+--------- | -------
+NA | Not applicable for sending
+QUEUED | Recipient is queued and waiting to be sent. Used when `lag_window` is specified.
+FAILED | Encountered failure when we tried to send to recipient
+SENDING | Currently sending to recipient
+DELIVERED | Successfully sent to recipient
+
+### Sent From
+Value | Description
+--------- | -------
+API | Recipient is sent from API calls
+CONSOLE | Recipient is sent from console
+CONSOLE_BULK | Recipient is sent from console via bulk upload
+TRIGGERS | Recipient is sent from triggers executed
+SURVEY_ACTIONS | Recipient is sent from survey actions
+SURVEY_RESPONDENT_WORKFLOWS | Recipient is sent from survey respondent workflows
+RECURRING | Recipient is sent from recurring tasks such as resurveys
+
+### Activity Type
+Value | Description
+--------- | -------
+SENT_REVIEW_REQUEST | Sent Review Request
+DELIVERED_REVIEW_REQUEST | Delivered Review Request
+OPENED_REVIEW_REQUEST | Opened Review Request
+CLICKED_REVIEW_REQUEST | Clicked Review Request
+REQUESTED_REVIEW_REQUEST | Requested Review Request
+SENT_REVIEW_REMINDER | Sent Review Reminder
+DELIVERED_REVIEW_REMINDER | Delivered Review Reminder
+OPENED_REVIEW_REMINDER | Opened Review Reminder
+CLICKED_REVIEW_REMINDER | Clicked Review Reminder
+
+Value | Description
+--------- | -------
+SENT_INTERVIEW_REQUEST | Sent Interview Request
+DELIVERED_INTERVIEW_REQUEST | Delivered Interview Request
+OPENED_INTERVIEW_REQUEST | Opened Interview Request
+CLICKED_INTERVIEW_REQUEST | Clicked Interview Request
+SENT_INTERVIEW_REMINDER | Sent Interview Reminder
+DELIVERED_INTERVIEW_REMINDER | Delivered Interview Reminder
+OPENED_INTERVIEW_REMINDER | Opened Interview Reminder
+CLICKED_INTERVIEW_REMINDER | Clicked Interview Reminder
+SENT_INTERVIEW_INSTRUCTIONS | Sent Interview Instructions
+DELIVERED_INTERVIEW_INSTRUCTIONS | Delivered Interview Instructions
+OPENED_INTERVIEW_INSTRUCTIONS | Opened Interview Instructions
+CLICKED_INTERVIEW_INSTRUCTIONS | Clicked Interview Instructions
+RESPONDED_INTERVIEW | Responded Interview
+
+Value | Description
+--------- | -------
+SENT_SURVEY | Sent Survey
+DELIVERED_SURVEY | Delivered Survey
+OPENED_SURVEY | Opened Survey
+CLICKED_SURVEY | Clicked Survey
+SENT_SURVEY_REMINDER | Sent Survey Reminder
+DELIVERED_SURVEY_REMINDER | Delivered Survey Reminder
+OPENED_SURVEY_REMINDER | Opened Survey Reminder
+CLICKED_SURVEY_REMINDER | Clicked Survey Reminder
+RESPONDED_SURVEY | Responded Survey

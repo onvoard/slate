@@ -1,0 +1,456 @@
+# Stories
+Represents a story object.
+
+## Story Object
+
+```json
+{
+  "id": "stry_clg68ervlsw1ew9",
+  "site": {
+    "id": "ssite_bujb94f4wz3kago",
+    "name": "customers.onvoard.com",
+    "layout": "ORGANIZATION"
+  },
+  "slug": "acme-corp",
+  "headline": "How Acme Corp get 65% more customers with OnVoard",
+  "content": "<p>It presents many opportunities for car manufacturers to sell more than ever before.<br/></p>",
+  "published": true,
+  "num_views": 0,
+  "sort_order": 1,
+  "person_name": "",
+  "person_credential": "",
+  "person_quote": "",
+  "organization_name": "Acme Corp",
+  "rep_on": true,
+  "rep_name": "John Doe",
+  "rep_position": "Marketing Director",
+  "rep_quote": "We needed a place on our website where we could motivate visitors to give us their permission",
+  "logo_pic_media": null,
+  "hero_pic_media": null,
+  "person_pic_media": null,
+  "rep_pic_media": null,
+  "attributes": [{
+      "id": "satr_9l23muh9nomixuy",
+      "type": "URL",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "Website",
+      "url_value": "https://example.com",
+      "category_value": null
+    },
+    {
+      "id": "satr_h4lb9jyhbnrde8c",
+      "type": "CATEGORY",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "",
+      "url_value": "",
+      "category_value": {
+        "id": "scatv_cyznhccsaqri10g",
+        "category": {
+          "id": "scat_8ku4c8p6su0lpff",
+          "name": "Region",
+          "slug": "region"
+        },
+        "name": "Asia Pacific",
+        "slug": "asia_pacific"
+      }
+    }
+  ],
+  "default_article_url": "https://onvoard.io/stories/onvoard/acme-corp",
+  "custom_article_url": "",
+  "pdf_url": "https://storage.googleapis.com/onvoard/upload/story/pdf-media/stry_clg68ervlsw1ew9.pdf"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+site.id | string | Unique identifier for site.
+site.name | string | Name for site.
+site.layout | enum ([Story Layout](#story-layout)) | Layout to display story.
+slug | string | Slug for story.
+headline | string | Headline of story.
+content | string | Story content in HTML.
+published | boolean | If `false`, story will not be available for viewing publicly.
+num_views | integer | Number of unique views for story.
+sort_order | integer | Sort order for story in ascending order. `1` should be shown before `2`.
+person_name | string | Name of person story is written for. Used for `PERSON` layout.
+person_credential | string | Credential of person story is written for. Used for `PERSON` layout.
+person_quote | string | Quote from person story is written for. Used for `PERSON` layout.
+organization_name | string | Name of organization story is written for. Used for `ORGANIZATION` layout.
+rep_on | boolean | If `true`, we will use representative details for `ORGANIZATION` layout.
+rep_name | string | Name of organization's representative. Used for `ORGANIZATION` layout.
+rep_position | string | Position of organization's representative. Used for `ORGANIZATION` layout.
+rep_quote | string | Quote from organization's representative. Used for `ORGANIZATION` layout.
+logo_pic_media | object ([Image Media Object](#image-media-object)) | Organization's logo. Used for `ORGANIZATION` layout.
+hero_pic_media | object ([Image Media Object](#image-media-object)) | Hero image for story.
+person_pic_media | object ([Image Media Object](#image-media-object)) | Profile picture of person story is written for. Used for `PERSON` layout.
+rep_pic_media | object ([Image Media Object](#image-media-object)) | Profile picture of organization's representative. Used for `ORGANIZATION` layout.
+attributes[] | object ([Story Attribute Object](#story-attribute-object)) | Attributes tagged to story.
+default_article_url | string | Default url to access story in OnVoard's domain.
+custom_article_url | string | Custom url to access story in specified custom domain.
+pdf_url | string | Url to access PDF generated from story.
+
+
+## Story Attribute Object
+Represents a story attribute object.
+
+```json
+{
+  "id": "satr_h4lb9jyhbnrde8c",
+  "type": "CATEGORY",
+  "text_name": "",
+  "text_value": "",
+  "url_name": "",
+  "url_value": "",
+  "category_value": {
+    "id": "scatv_cyznhccsaqri10g",
+    "category": {
+      "id": "scat_8ku4c8p6su0lpff",
+      "name": "Region",
+      "slug": "region"
+    },
+    "name": "Asia Pacific",
+    "slug": "asia_pacific"
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for object.
+type | enum ([Story Attribute Type](#story-attribute-type)) | Type for attribute.
+text_name | string | Name for text attribute. Will be specified if type is `TEXT`.
+text_value | string | Value for text attribute. Will be specified if type is `TEXT`.
+url_name | string | Name for url attribute. Will be specified if type is `URL`.
+url_value | string | Value for url attribute. Will be specified if type is `URL`.
+category_value | object ([Story Category Value Object](#story-category-value-object)) | Linked category value category. Will be specified if type is `CATEGORY`.
+
+
+
+## Story Category Value Object
+Represents a story category value object.
+
+```json
+{
+  "id": "scatv_cyznhccsaqri10g",
+  "category": {
+    "id": "scat_8ku4c8p6su0lpff",
+    "name": "Region",
+    "slug": "region"
+  },
+  "name": "Asia Pacific",
+  "slug": "asia_pacific"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for object.
+category | object ([Story Category Object](#story-category-object)) | Linked category for this value object.
+name | string | Name for category value.
+slug | string | Slug for category value.
+
+
+## Story Category Object
+Represents a story category object.
+
+```json
+{
+  "id": "scat_8ku4c8p6su0lpff",
+  "name": "Region",
+  "slug": "region"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for object.
+name | string | Name for category.
+slug | string | Slug for category.
+
+
+## Enums
+List of available enum types under this resource.
+
+### Story Attribute Type
+Value | Description
+--------- | -------
+TEXT | Attribute value in text
+URL | Attribute value in url
+CATEGORY | Attribute value in predefined category
+
+### Story Layout
+Value | Description
+--------- | -------
+ORGANIZATION | Layout for organization stories
+PERSON | Layout for person stories
+
+## Retrieve Story
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/stories/stry_clg68ervlsw1ew9' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "stry_clg68ervlsw1ew9",
+  "site": {
+    "id": "ssite_bujb94f4wz3kago",
+    "name": "customers.onvoard.com",
+    "layout": "ORGANIZATION"
+  },
+  "slug": "acme-corp",
+  "headline": "How Acme Corp get 65% more customers with OnVoard",
+  "content": "<p>It presents many opportunities for car manufacturers to sell more than ever before.<br/></p>",
+  "published": true,
+  "num_views": 0,
+  "sort_order": 1,
+  "person_name": "",
+  "person_credential": "",
+  "person_quote": "",
+  "organization_name": "Acme Corp",
+  "rep_on": true,
+  "rep_name": "John Doe",
+  "rep_position": "Marketing Director",
+  "rep_quote": "We needed a place on our website where we could motivate visitors to give us their permission",
+  "logo_pic_media": null,
+  "hero_pic_media": null,
+  "person_pic_media": null,
+  "rep_pic_media": null,
+  "attributes": [{
+      "id": "satr_9l23muh9nomixuy",
+      "type": "URL",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "Website",
+      "url_value": "https://example.com",
+      "category_value": null
+    },
+    {
+      "id": "satr_h4lb9jyhbnrde8c",
+      "type": "CATEGORY",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "",
+      "url_value": "",
+      "category_value": {
+        "id": "scatv_cyznhccsaqri10g",
+        "category": {
+          "id": "scat_8ku4c8p6su0lpff",
+          "name": "Region",
+          "slug": "region"
+        },
+        "name": "Asia Pacific",
+        "slug": "asia_pacific"
+      }
+    }
+  ],
+  "default_article_url": "https://onvoard.io/stories/onvoard/acme-corp",
+  "custom_article_url": "",
+  "pdf_url": "https://storage.googleapis.com/onvoard/upload/story/pdf-media/stry_clg68ervlsw1ew9.pdf"
+}
+```
+
+Retrieve story with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/stories/:story_id`
+
+### Returns
+Story object if valid ID was provided.
+
+
+## Patch Story
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/stories/stry_clg68ervlsw1ew9' \
+-H 'Authorization: Token {API_KEY}'
+-d published=false
+```
+
+> Example Response
+
+```json
+{
+  "id": "stry_clg68ervlsw1ew9",
+  "site": {
+    "id": "ssite_bujb94f4wz3kago",
+    "name": "customers.onvoard.com",
+    "layout": "ORGANIZATION"
+  },
+  "slug": "acme-corp",
+  "headline": "How Acme Corp get 65% more customers with OnVoard",
+  "content": "<p>It presents many opportunities for car manufacturers to sell more than ever before.<br/></p>",
+  "published": false,
+  "num_views": 0,
+  "sort_order": 1,
+  "person_name": "",
+  "person_credential": "",
+  "person_quote": "",
+  "organization_name": "Acme Corp",
+  "rep_on": true,
+  "rep_name": "John Doe",
+  "rep_position": "Marketing Director",
+  "rep_quote": "We needed a place on our website where we could motivate visitors to give us their permission",
+  "logo_pic_media": null,
+  "hero_pic_media": null,
+  "person_pic_media": null,
+  "rep_pic_media": null,
+  "attributes": [{
+      "id": "satr_9l23muh9nomixuy",
+      "type": "URL",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "Website",
+      "url_value": "https://example.com",
+      "category_value": null
+    },
+    {
+      "id": "satr_h4lb9jyhbnrde8c",
+      "type": "CATEGORY",
+      "text_name": "",
+      "text_value": "",
+      "url_name": "",
+      "url_value": "",
+      "category_value": {
+        "id": "scatv_cyznhccsaqri10g",
+        "category": {
+          "id": "scat_8ku4c8p6su0lpff",
+          "name": "Region",
+          "slug": "region"
+        },
+        "name": "Asia Pacific",
+        "slug": "asia_pacific"
+      }
+    }
+  ],
+  "default_article_url": "https://onvoard.io/stories/onvoard/acme-corp",
+  "custom_article_url": "",
+  "pdf_url": "https://storage.googleapis.com/onvoard/upload/story/pdf-media/stry_clg68ervlsw1ew9.pdf"
+}
+```
+
+Patch story with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/stories/:story_id`
+
+### Returns
+Modified story object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+slug | string | No | Slug of story. Must have at least 3 characters
+published | boolean | No | Published state for story.
+
+
+## List all Stories
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/stories' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "stry_clg68ervlsw1ew9",
+    "site": {
+      "id": "ssite_bujb94f4wz3kago",
+      "name": "customers.onvoard.com",
+      "layout": "ORGANIZATION"
+    },
+    "slug": "acme-corp",
+    "headline": "How Acme Corp get 65% more customers with OnVoard",
+    "content": "<p>It presents many opportunities for car manufacturers to sell more than ever before.<br/></p>",
+    "published": true,
+    "num_views": 0,
+    "sort_order": 1,
+    "person_name": "",
+    "person_credential": "",
+    "person_quote": "",
+    "organization_name": "Acme Corp",
+    "rep_on": true,
+    "rep_name": "John Doe",
+    "rep_position": "Marketing Director",
+    "rep_quote": "We needed a place on our website where we could motivate visitors to give us their permission",
+    "logo_pic_media": null,
+    "hero_pic_media": null,
+    "person_pic_media": null,
+    "rep_pic_media": null,
+    "attributes": [{
+        "id": "satr_9l23muh9nomixuy",
+        "type": "URL",
+        "text_name": "",
+        "text_value": "",
+        "url_name": "Website",
+        "url_value": "https://example.com",
+        "category_value": null
+      },
+      {
+        "id": "satr_h4lb9jyhbnrde8c",
+        "type": "CATEGORY",
+        "text_name": "",
+        "text_value": "",
+        "url_name": "",
+        "url_value": "",
+        "category_value": {
+          "id": "scatv_cyznhccsaqri10g",
+          "category": {
+            "id": "scat_8ku4c8p6su0lpff",
+            "name": "Region",
+            "slug": "region"
+          },
+          "name": "Asia Pacific",
+          "slug": "asia_pacific"
+        }
+      }
+    ],
+    "default_article_url": "https://onvoard.io/stories/onvoard/acme-corp",
+    "custom_article_url": "",
+    "pdf_url": "https://storage.googleapis.com/onvoard/upload/story/pdf-media/stry_clg68ervlsw1ew9.pdf"
+  }]
+}
+```
+
+List all stories user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/stories`
+
+### Returns
+List of story objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+keyword | string | Filter by specific keyword.
+published | boolean | Use `true` if you only want to return published stories and `false` to return unpublished stories.
+site | string | Story site ID to filter.
+account | string | Account ID to filter. Used when organization manage more than one account.
+created_before | integer | Filter stories created before provided timestamp.
+created_after | integer | Filter stories created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+

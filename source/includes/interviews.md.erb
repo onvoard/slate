@@ -1,0 +1,197 @@
+
+# Interviews
+Represents a interview object. Interviews can be used to generate customer stories.
+
+## Interview Object
+
+```json
+{
+  "id": "itw_k8udjxohcn6ho3n",
+  "passcode": "xz313fnwyu",
+  "title": "Acme Corp",
+  "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
+  "stage": "PENDING",
+  "interviewee_name": "John Doe",
+  "interviewee_company": "Acme Corp",
+  "interviewee_email": "johndoe@gmail.com",
+  "reward": null,
+  "url": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n",
+  "url_with_passcode": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n?passcode=xz313fnwyu",
+  "created_from": "REQUESTER",
+  "created_timestamp": 1560158662
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+passcode | string | Passcode to access interview publicly.
+title | string | Title of interview.
+content | string | Interview content in HTML.
+stage | enum ([Interview Stage](#interview-stage)) | Interview stage. The default value is `PENDING`.
+interviewee_name | string | Name of interviewee.
+interviewee_company | string | Company of interviewee.
+interviewee_email | string | Email of interviewee.
+reward | enum ([Reward Object](#reward-object)) | Reward attached to this interview.
+url | string | URL to access interview. User will be prompted to enter passcode.
+url_with_passcode | string | URL to access interview. User will **not** be prompted to enter passcode.
+created_from | enum ([Interview Created From](#created-from)) | Origin where interview is created from.
+created_timestamp | integer | Timestamp when interview is created.
+
+## Enums
+List of available enum types under this resource.
+
+### Interview Created From
+Value | Description
+--------- | -------
+API | Interview created from API
+CONSOLE | Interview created from console
+REQUESTER | Interview created from requester
+
+### Interview Stage
+Value | Description
+--------- | -------
+VOID | Void
+PENDING | Pending. This is the default status.
+RESPONDED | Responded. `PENDING` interview automatically move to this stage after interviewee has responded.
+FOLLOWUP | Follow-up
+COMPLETED | Completed
+
+## Retrieve Interview
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/interviews/rvw_7vomjp0vjokbq09' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "itw_k8udjxohcn6ho3n",
+  "passcode": "xz313fnwyu",
+  "title": "Acme Corp",
+  "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
+  "stage": "PENDING",
+  "interviewee_name": "John Doe",
+  "interviewee_company": "Acme Corp",
+  "interviewee_email": "johndoe@gmail.com",
+  "reward": null,
+  "url": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n",
+  "url_with_passcode": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n?passcode=xz313fnwyu",
+  "created_from": "REQUESTER",
+  "created_timestamp": 1560158662
+}
+```
+
+Retrieve interview with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/interviews/:interview_id`
+
+### Returns
+Interview object if valid ID was provided.
+
+
+## Patch Interview
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/interviews/rvw_7vomjp0vjokbq09' \
+-H 'Authorization: Token {API_KEY}'
+-d stage="FOLLOWUP"
+```
+
+> Example Response
+
+```json
+{
+  "id": "itw_k8udjxohcn6ho3n",
+  "passcode": "xz313fnwyu",
+  "title": "Acme Corp",
+  "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
+  "stage": "FOLLOWUP",
+  "interviewee_name": "John Doe",
+  "interviewee_company": "Acme Corp",
+  "interviewee_email": "johndoe@gmail.com",
+  "reward": null,
+  "url": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n",
+  "url_with_passcode": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n?passcode=xz313fnwyu",
+  "created_from": "REQUESTER",
+  "created_timestamp": 1560158662
+}
+```
+
+Patch interview with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/interviews/:interview_id`
+
+### Returns
+Modified interview object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+stage | enum ([Interview Stage](#interview-stage)) | No | Stage of interview.
+
+
+## List all Interviews
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/interviews' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "itw_k8udjxohcn6ho3n",
+    "passcode": "xz313fnwyu",
+    "title": "Acme Corp",
+    "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
+    "stage": "PENDING",
+    "interviewee_name": "John Doe",
+    "interviewee_company": "Acme Corp",
+    "interviewee_email": "johndoe@gmail.com",
+    "reward": null,
+    "url": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n",
+    "url_with_passcode": "https://onvoard.io/interviews/itw_k8udjxohcn6ho3n?passcode=xz313fnwyu",
+    "created_from": "REQUESTER",
+    "created_timestamp": 1560158662
+  }]
+}
+```
+
+List all interviews user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/interviews`
+
+### Returns
+List of interview objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+keyword | string | Filter by specific keyword.
+created_from | enum ([Interview Created From](#interview-created-from)) | Filter by created from.
+stage | enum ([Interview Stage](#interview-stage)) | Filter by interview stage.
+requester | string | Interview requester ID to filter.
+account | string | Account ID to filter. Used when organization manage more than one account.
+created_before | integer | Filter interviews created before provided timestamp.
+created_after | integer | Filter interviews created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+

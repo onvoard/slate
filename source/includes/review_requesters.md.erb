@@ -1,0 +1,203 @@
+# Review Requesters
+Represents a review requester object. Can be used to send review request via email.
+
+## Review Requester Object
+
+```json
+{
+  "id": "rw_req_awxloccld94xkfh",
+  "name": "OnVoard G2",
+  "type": "SINGLE_SITE",
+  "active": true,
+  "dedup_window": 100
+}
+```
+
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+name | string | Name for review requester.
+type | enum ([Review Requester Type](#review-requester-type)) | Type for this review requester.
+active | boolean | Active state of review requester. Archived review requester will be `false`.
+dedup_window | integer | Number of days to lookback and deduplicate so you can avoid sending review requests to the same email.
+
+
+## Enums
+List of available enum types under this resource.
+
+### Review Requester Type
+Value | Description
+--------- | -------
+SINGLE_SITE | Request reviews for a specific site. This can be incentivized with rewards.
+MULTIPLE_SITES | Request reviews by showcasing a list of sites users can leave reviews on. This can't be incentivized with rewards.
+
+
+## Retrieve Review Requester
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rw_req_awxloccld94xkfh",
+  "name": "OnVoard G2",
+  "type": "SINGLE_SITE",
+  "active": true,
+  "dedup_window": 100
+}
+```
+
+Retrieve review requester with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/review-requesters/:review_requester_id`
+
+### Returns
+Review requester object if valid ID was provided.
+
+
+## Patch Review Requester
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
+-H 'Authorization: Token {API_KEY}'
+-d active=false
+```
+
+> Example Response
+
+```json
+{
+  "id": "rw_req_awxloccld94xkfh",
+  "name": "OnVoard G2",
+  "type": "SINGLE_SITE",
+  "active": false,
+  "dedup_window": 100
+}
+```
+
+Patch review requester with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/review-requesters/:review_requester_id`
+
+### Returns
+Modified review requester object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+active | boolean | No | Active state of review requester.
+
+
+## Send Review Request
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh/send' \
+-H 'Authorization: Token {API_KEY}'
+-d name="John Doe" \
+-d email="johndoe@gmail.com"
+```
+
+> Example Response
+
+```json
+{
+  "id": "rr_rcpt_3e6mz1ur0aoycy8v7jsj8aekw",
+  "tracking_id": "r6kMe3QwGjE0pilgCk7Q",
+  "test": false,
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "lag_window": null,
+  "status": "NA",
+  "sent_from": "CONSOLE",
+  "error_msg": "",
+  "created_timestamp": 1560229938,
+  "reminder": {
+    "status": "NA",
+    "error_msg": ""
+  },
+  "activities": [{
+    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "type": "SENT_REVIEW_REQUEST",
+    "created_timestamp": 1560158564
+  }],
+  "requester": {
+    "id": "rw_req_awxloccld94xkfh",
+    "name": "OnVoard G2"
+  }
+}
+```
+
+Send review request with given ID.
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/review-requesters/:review_requester_id/send`
+
+### Returns
+[Review Requester Recipient Object](#review-requester-recipient-object) if review request was sent.
+
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+email | string | Yes | Email address to send.
+name | string | No | Name of recipient. We will automatically extract first and last name.
+lag_window | integer | No | Send review request after indicated number of minutes. If specified, lag window must be between 10 and 10080 (7 days).
+
+
+## List all Review Requesters
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/review-requesters' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "rw_req_awxloccld94xkfh",
+    "name": "OnVoard G2",
+    "type": "SINGLE_SITE",
+    "active": true,
+    "dedup_window": 100
+  }]
+}
+```
+
+List all review requesters user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/review-requests`
+
+### Returns
+List of review request objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+active | boolean | Use `true` if you only want to return active review requests and `false` to return archived review requests.
+type | enum ([Reviewer Requester Type](#review-requester-type)) | Filter by review requester type.
+keyword | string | Filter by specific keyword.
+account | string | Account ID to filter. Used when organization manage more than one account.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.

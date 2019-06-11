@@ -1,0 +1,271 @@
+
+# Reviews
+Represents a review object. Reviews can be collected from various sources like google and facebook.
+
+## Review Object
+
+```json
+{
+  "id": "rvw_7vomjp0vjokbq09",
+  "active": true,
+  "review_listing": {
+    "id": "rwl_1igyg8wuxd5jiil",
+    "name": "Carousell Google Play"
+  },
+  "status": "PENDING",
+  "recommend": null,
+  "rating": 5.0,
+  "title": "Thank you, Carousell",
+  "content": "I absolutely love this app!",
+  "url": "",
+  "source_review_id": "3465825614",
+  "review_date": "2018-11-27",
+  "reviewer_name": "Rodristar",
+  "reviewer_pic_url": "",
+  "reply_text": "",
+  "reply_date": null,
+  "attributes": [{
+    "name": "App Version",
+    "value": "2.91.0"
+  }],
+  "score": "THREE",
+  "source": {
+    "id": "appstore",
+    "name": "iOS App Store"
+  },
+  "created_timestamp": 1543414453
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+active | boolean | Active state of review. Filtered reviews will return `false`.
+review_listing.id | string | Unique identifier of review listing.
+review_listing.name | string | Name of review listing.
+status | enum ([Review Status](#review-status)) | Status of this review.
+recommend | boolean | Recommend score for reviewed item. Field will be null if binary rating system is not used.
+rating | float | Rating score for reviewed item. Field will be null if 5-star rating system is not used.
+title | string | Title of review.
+content | string | Content of review.
+url | string | Url to review.
+source_review_id | string | Review's unique identifier in source's context.
+review_date | string | Date of review. ISO 8601 format, `YYYY-MM-DD`.
+reviewer_name | string | Reviewer's name.
+reviewer_pic_url | string | Reviewer's pic url.
+reply_text | string | Replied text.
+reply_date | string | Replied date. ISO 8601 format, `YYYY-MM-DD`.
+attributes[].name | string | Name for review's attribute.
+attributes[].value | string | Value for review's attribute.
+score | enum ([Review Score](#review-score)) | Score for this review.
+source.id | string | Unique identifier of linked source.
+source.name | string | Name of linked source.
+created_timestamp | integer | Timestamp when review was added to our system.
+
+## Enums
+List of available enum types under this resource.
+
+### Review Status
+Value | Description
+--------- | -------
+PENDING | Pending Response
+RESPONDED | Responded
+SKIP | Skip Response
+
+### Review Score
+Value | Description
+--------- | -------
+NA | No Scores
+ZERO | 0 Star Range
+ONE | 1 Star Range
+TWO | 2 Star Range
+THREE | 3 Star Range
+FOUR | 4 Star Range
+FIVE | 5 Star Range
+POSITIVE | Recommend
+NEGATIVE | Doesn't Recommend
+
+
+## Retrieve Review
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/reviews/rvw_7vomjp0vjokbq09' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rvw_7vomjp0vjokbq09",
+  "active": true,
+  "review_listing": {
+    "id": "rwl_1igyg8wuxd5jiil",
+    "name": "Carousell Google Play"
+  },
+  "status": "PENDING",
+  "recommend": null,
+  "rating": 5.0,
+  "title": "Thank you, Carousell",
+  "content": "I absolutely love this app!",
+  "url": "",
+  "source_review_id": "3465825614",
+  "review_date": "2018-11-27",
+  "reviewer_name": "Rodristar",
+  "reviewer_pic_url": "",
+  "reply_text": "",
+  "reply_date": null,
+  "attributes": [{
+    "name": "App Version",
+    "value": "2.91.0"
+  }],
+  "score": "THREE",
+  "source": {
+    "id": "appstore",
+    "name": "iOS App Store"
+  },
+  "created_timestamp": 1543414453
+}
+```
+
+Retrieve review with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/reviews/:review_id`
+
+### Returns
+Review object if valid ID was provided.
+
+
+## Patch Review
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/reviews/rvw_7vomjp0vjokbq09' \
+-H 'Authorization: Token {API_KEY}'
+-d status="RESPONDED"
+```
+
+> Example Response
+
+```json
+{
+  "id": "rvw_7vomjp0vjokbq09",
+  "active": true,
+  "review_listing": {
+    "id": "rwl_1igyg8wuxd5jiil",
+    "name": "Carousell Google Play"
+  },
+  "status": "RESPONDED",
+  "recommend": null,
+  "rating": 5.0,
+  "title": "Thank you, Carousell",
+  "content": "I absolutely love this app!",
+  "url": "",
+  "source_review_id": "3465825614",
+  "review_date": "2018-11-27",
+  "reviewer_name": "Rodristar",
+  "reviewer_pic_url": "",
+  "reply_text": "",
+  "reply_date": null,
+  "attributes": [{
+    "name": "App Version",
+    "value": "2.91.0"
+  }],
+  "score": "THREE",
+  "source": {
+    "id": "appstore",
+    "name": "iOS App Store"
+  },
+  "created_timestamp": 1543414453
+}
+```
+
+Patch review with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/reviews/:review_id`
+
+### Returns
+Modified review object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+active | boolean | No | Active state of review.
+status | enum ([Review Status](#review-status)) | No | Status of review.
+
+
+## List all Reviews
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/reviews' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "rvw_7vomjp0vjokbq09",
+    "active": true,
+    "review_listing": {
+      "id": "rwl_1igyg8wuxd5jiil",
+      "name": "Carousell Google Play"
+    },
+    "status": "RESPONDED",
+    "recommend": null,
+    "rating": 5.0,
+    "title": "Thank you, Carousell",
+    "content": "I absolutely love this app!",
+    "url": "",
+    "source_review_id": "3465825614",
+    "review_date": "2018-11-27",
+    "reviewer_name": "Rodristar",
+    "reviewer_pic_url": "",
+    "reply_text": "",
+    "reply_date": null,
+    "attributes": [{
+      "name": "App Version",
+      "value": "2.91.0"
+    }],
+    "score": "THREE",
+    "source": {
+      "id": "appstore",
+      "name": "iOS App Store"
+    },
+    "created_timestamp": 1543414453
+  }]
+}
+```
+
+List all reviews user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/reviews`
+
+### Returns
+List of review objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+active | boolean | Use `true` if you only want to return unfiltered reviews and `false` to return filtered reviews.
+status | enum ([Review Status](#review-status)) | Filter by review status.
+keyword | string | Filter by specific keyword.
+account | string | Account ID to filter. Used when organization manage more than one account.
+scores | string | Comma-seperated list of scores to filter with. See [Review Score](#review-score).
+created_before | integer | Filter reviews created before provided timestamp.
+created_after | integer | Filter reviews created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
