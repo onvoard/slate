@@ -1,0 +1,97 @@
+
+# Accounts
+Represents a account object.
+
+## Account Object
+
+```json
+{
+  "id": "acct_u4o2a8hmqk5rzp9",
+  "name": "Starbucks",
+  "organization": {
+    "id": "org_xf041wyn93dd8uc",
+    "name": "OnVoard"
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+name | string | Name of account.
+organization.id | string | Unique identifier for organization.
+organization.name | string | Name of organization.
+
+
+## Retrieve Account
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/accounts/acct_u4o2a8hmqk5rzp9' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "acct_u4o2a8hmqk5rzp9",
+  "name": "Starbucks",
+  "organization": {
+    "id": "org_xf041wyn93dd8uc",
+    "name": "OnVoard"
+  }
+}
+```
+
+Retrieve account with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/accounts/:account_id`
+
+### Returns
+Account object if valid ID was provided.
+
+
+## List all Accounts
+
+> Example Request
+
+```shell
+curl 'https://api.onvoard.com/v1/accounts' \
+-H 'Authorization: Token {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "acct_u4o2a8hmqk5rzp9",
+    "name": "Starbucks",
+    "organization": {
+      "id": "org_xf041wyn93dd8uc",
+      "name": "OnVoard"
+    }
+  }]
+}
+```
+
+List all accounts user has access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/accounts`
+
+### Returns
+List of account objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.

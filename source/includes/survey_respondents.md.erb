@@ -9,7 +9,7 @@ Represents a survey respondent object. Created when someone responds to a survey
   "id": "srepd_m94pn93kldx6ftf",
   "survey": {
     "id": "sur_m59c7sa4p0ogtfo",
-    "name": "NPS Survey",
+    "name": "NPS Survey"
   },
   "traits": [{
     "id": "fvquqiaux53rdcb",
@@ -22,20 +22,14 @@ Represents a survey respondent object. Created when someone responds to a survey
     "question": {
       "id": "srqn_5zn4ytxqf6wxqg1",
       "type": "RATING",
-      "title": "How likely would you recommend us to your friend?",
-      "display": true,
-      "require_answers": true,
-      "low_score_label": "",
-      "high_score_label": "",
-      "use_for_respondent_trait": false,
-      "respondent_trait_key": "",
-      "options": []
+      "title": "How likely would you recommend us to your friend?"
     },
     "text_value": "",
     "email_value": "",
     "url_value": "",
     "rating_value": 9,
     "selection_values": [],
+    "value_in_text": "9",
     "created_timestamp": 1560158706
   }],
   "created_timestamp": 1560158706
@@ -61,20 +55,14 @@ Represents a survey answer object.
   "question": {
     "id": "srqn_5zn4ytxqf6wxqg1",
     "type": "RATING",
-    "title": "How likely would you recommend us to your friend?",
-    "display": true,
-    "require_answers": true,
-    "low_score_label": "",
-    "high_score_label": "",
-    "use_for_respondent_trait": false,
-    "respondent_trait_key": "",
-    "options": []
+    "title": "How likely would you recommend us to your friend?"
   },
   "text_value": "",
   "email_value": "",
   "url_value": "",
   "rating_value": 9,
   "selection_values": [],
+  "value_in_text": "9",
   "created_timestamp": 1560158706
 }
 ```
@@ -83,7 +71,9 @@ Represents a survey answer object.
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for answer.
-question | object ([Survey Question Object](#survey-question-object)) | Question that answer responds to.
+question.id | string | Unique identifier for question.
+question.type | enum ([Survey Question Type](#survey-question-type)) | Type for question.
+question.title | string | Question title.
 text_value | string | Text value for answer. Will be specified if question type is `SINGLE_LINE_TEXT` or `MULTI_LINE_TEXT`.
 email_value | string | Email value for answer. Will be specified if question type is `EMAIL`.
 url_value | string | URL value for answer. Will be specified if question type is `URL`.
@@ -91,58 +81,8 @@ rating_value | integer | Rating value for answer. Value can range from `1` to `1
 selection_values[].id | string | Unique identifier for selection value.
 selection_values[].option | object ([Survey Question Option Object](#survey-question-option-object)) | Selected option for answer.
 selection_values[].comment | string | Added comment for selected option.
+value_in_text | string | Normalized value in text string. This is especially useful if you want to display `selection_values` in text.
 created_timestamp | integer | Timestamp when answer is added.
-
-
-## Survey Question Object
-Represents a survey question object.
-
-```json
-{
-  "id": "srqn_bkxaj9nt65nphka",
-  "type": "SINGLE_SELECTION",
-  "title": "How did you found us?",
-  "display": true,
-  "require_answers": true,
-  "low_score_label": "",
-  "high_score_label": "",
-  "use_for_respondent_trait": false,
-  "respondent_trait_key": "",
-  "options": [{
-    "id": "dirhg0yyqz2cevi",
-    "label": "Search Engine",
-    "enable_comment": false,
-    "disabled": false,
-    "comment_placeholder": ""
-  }, {
-    "id": "x5un3hezfr3mwby",
-    "label": "Media",
-    "enable_comment": false,
-    "disabled": false,
-    "comment_placeholder": ""
-  }, {
-    "id": "x4gyesvqhluzauz",
-    "label": "Others",
-    "enable_comment": true,
-    "disabled": false,
-    "comment_placeholder": ""
-  }],
-}
-```
-
-### Attributes
-Field | Type | Description
---------- | ------- | -----------
-id | string | Unique identifier for question.
-type | enum ([Survey Question Type](#survey-question-type)) | Type for question.
-title | string | Question title.
-display | boolean | If `false`, question will be hidden by default.
-require_answers | boolean | If `false`, answer is optional for question.
-low_score_label | string | Low score label used for `RATING` question type.
-high_score_label | string | High score label used for `RATING` question type.
-use_for_respondent_trait | boolean | If `true`, will use question's answer as trait.
-respondent_trait_key | string | Trait key if question's answer is used as trait.
-options[] | object ([Survey Question Option Object](#survey-question-option-object)) | Available selection options used for `SINGLE_SELECTION` and `MULTIPLE_SELECTIONS` question types.
 
 
 ## Survey Question Option Object
@@ -212,20 +152,14 @@ curl 'https://api.onvoard.com/v1/survey-respondents/srepd_m94pn93kldx6ftf' \
     "question": {
       "id": "srqn_5zn4ytxqf6wxqg1",
       "type": "RATING",
-      "title": "How likely would you recommend us to your friend?",
-      "display": true,
-      "require_answers": true,
-      "low_score_label": "",
-      "high_score_label": "",
-      "use_for_respondent_trait": false,
-      "respondent_trait_key": "",
-      "options": []
+      "title": "How likely would you recommend us to your friend?"
     },
     "text_value": "",
     "email_value": "",
     "url_value": "",
     "rating_value": 9,
     "selection_values": [],
+    "value_in_text": "9",
     "created_timestamp": 1560158706
   }],
   "created_timestamp": 1560158706
@@ -274,20 +208,14 @@ curl 'https://api.onvoard.com/v1/survey-respondents' \
       "question": {
         "id": "srqn_5zn4ytxqf6wxqg1",
         "type": "RATING",
-        "title": "How likely would you recommend us to your friend?",
-        "display": true,
-        "require_answers": true,
-        "low_score_label": "",
-        "high_score_label": "",
-        "use_for_respondent_trait": false,
-        "respondent_trait_key": "",
-        "options": []
+        "title": "How likely would you recommend us to your friend?"
       },
       "text_value": "",
       "email_value": "",
       "url_value": "",
       "rating_value": 9,
       "selection_values": [],
+      "value_in_text": "9",
       "created_timestamp": 1560158706
     }],
     "created_timestamp": 1560158706

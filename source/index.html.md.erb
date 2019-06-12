@@ -49,6 +49,7 @@ The default page size for paginated queries is **10**. You can increase the page
 Any request that did not succeed will return a `4xx` or `5xx` error. `4xx` range errors means that there's a problem with the request, such as missing parameter. `5xx` range means that something went wrong on our end, such as server failure.
 
 
+<%= partial "includes/accounts.md.erb" %>
 <%= partial "includes/reviews.md.erb" %>
 <%= partial "includes/review_requesters.md.erb" %>
 <%= partial "includes/incentivized_reviewers.md.erb" %>
