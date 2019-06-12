@@ -38,18 +38,18 @@ test | boolean | Will be `true` for test recipient.
 name | string | Recipient's name.
 email | string | Recipient's email.
 lag_window | integer | Number of minutes delayed before email was sent to recipient.
-status | enum ([Recipient Status](#recipient-status)) | Status of recipient.
-sent_from | enum ([Sent From](#sent-from)) | Origin where recipient was sent from.
+status | enum ([Recipient Status](#recipients-enums-recipient-status)) | Status of recipient.
+sent_from | enum ([Sent From](#recipients-enums-sent-from)) | Origin where recipient was sent from.
 error_msg | string | Details of error. Will be provided if `status` is `FAILED`.
 created_timestamp | integer | Timestamp when recipient is created.
-reminder.status | enum ([Recipient Status](#recipient-status)) | Status for reminder. By default, this will be `NA` if reminder is not yet eligible for sending.
+reminder.status | enum ([Recipient Status](#recipients-enums-recipient-status)) | Status for reminder. By default, this will be `NA` if reminder is not yet eligible for sending.
 reminder.error_msg | string | Details of error. Will be provided if `reminder.status` is `FAILED`.
 activities[].id | string | Unique identifier for activity.
-activities[].type | enum ([Activity Type](#activity-type)) | Type of activity.
+activities[].type | enum ([Activity Type](#recipients-enums-activity-type)) | Type of activity.
 activities[].created_timestamp | integer | Timestamp when activity occurred.
 
 ## Review Requester Recipient Object
-Recipient for review request. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+Recipient for review request. Inherits all fields from [Recipient Object](#recipients-recipient-object) with additional fields below.
 
 ```json
 {
@@ -87,7 +87,7 @@ requester.name | string | Name for review requester.
 
 
 ## Interview Requester Recipient Object
-Recipient for interview request. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+Recipient for interview request. Inherits all fields from [Recipient Object](#recipients-recipient-object) with additional fields below.
 
 ```json
 {
@@ -127,12 +127,12 @@ Field | Type | Description
 --------- | ------- | -----------
 requester.id | string | Unique identifier for interview requester.
 requester.name | string | Name for interview requester.
-interview_instructions.status | enum ([Recipient Status](#recipient-status)) | Status for interview instructions. By default, this will be `NA` if instructions is not yet eligible for sending.
+interview_instructions.status | enum ([Recipient Status](#recipients-enums-recipient-status)) | Status for interview instructions. By default, this will be `NA` if instructions is not yet eligible for sending.
 interview_instructions.error_msg | string | Details of error. Will be provided if `interview_instructions.status` is `FAILED`.
 
 
 ## Survey Recipient Object
-Recipient for survey. Inherits all fields from [Recipient Object](#recipient-object) with additional fields below.
+Recipient for survey. Inherits all fields from [Recipient Object](#recipients-recipient-object) with additional fields below.
 
 ```json
 {

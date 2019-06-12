@@ -29,14 +29,14 @@ id | string | Unique identifier for the object.
 passcode | string | Passcode to access interview publicly.
 title | string | Title of interview.
 content | string | Interview content in HTML.
-stage | enum ([Interview Stage](#interview-stage)) | Interview stage. The default value is `PENDING`.
+stage | enum ([Interview Stage](#interviews-enums-interview-stage)) | Interview stage. The default value is `PENDING`.
 interviewee_name | string | Name of interviewee.
 interviewee_company | string | Company of interviewee.
 interviewee_email | string | Email of interviewee.
-reward | enum ([Reward Object](#reward-object)) | Reward attached to this interview.
+reward | enum ([Reward Object](#data-types-reward-object)) | Reward attached to this interview.
 url | string | URL to access interview. User will be prompted to enter passcode.
 url_with_passcode | string | URL to access interview. User will **not** be prompted to enter passcode.
-created_from | enum ([Interview Created From](#created-from)) | Origin where interview is created from.
+created_from | enum ([Interview Created From](#interviews-enums-interview-created-from)) | Origin where interview is created from.
 created_timestamp | integer | Timestamp when interview is created.
 
 ## Enums
@@ -137,7 +137,7 @@ Modified interview object if patch succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-stage | enum ([Interview Stage](#interview-stage)) | No | Stage of interview.
+stage | enum ([Interview Stage](#interviews-enums-interview-stage)) | No | Stage of interview.
 
 
 ## List all Interviews
@@ -186,8 +186,8 @@ List of interview objects.
 Field | Type | Description
 --------- | ------- | -----------
 keyword | string | Filter by specific keyword.
-created_from | enum ([Interview Created From](#interview-created-from)) | Filter by created from.
-stage | enum ([Interview Stage](#interview-stage)) | Filter by interview stage.
+created_from | enum ([Interview Created From](#interviews-enums-interview-created-from)) | Filter by created from.
+stage | enum ([Interview Stage](#interviews-enums-interview-stage)) | Filter by interview stage.
 requester | string | Interview requester ID to filter.
 account | string | Account ID to filter. Used when organization manage more than one account.
 created_before | integer | Filter interviews created before provided timestamp.

@@ -42,8 +42,8 @@ Field | Type | Description
 id | string | Unique identifier for the object.
 survey.id | string | Unique identifier for survey.
 survey.name | string | Name for survey.
-traits[] | object ([Trait Object](#trait-object)) | Traits for respondent.
-answers[] | object ([Survey Answer Object](#survey-answer-object)) | Answers for survey response.
+traits[] | object ([Trait Object](#data-types-trait-object)) | Traits for respondent.
+answers[] | object ([Survey Answer Object](#survey-respondents-survey-answer-object)) | Answers for survey response.
 created_timestamp | integer | Timestamp when survey response is created.
 
 ## Survey Answer Object
@@ -72,14 +72,14 @@ Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for answer.
 question.id | string | Unique identifier for question.
-question.type | enum ([Survey Question Type](#survey-question-type)) | Type for question.
+question.type | enum ([Survey Question Type](#survey-respondents-enums-survey-question-type)) | Type for question.
 question.title | string | Question title.
 text_value | string | Text value for answer. Will be specified if question type is `SINGLE_LINE_TEXT` or `MULTI_LINE_TEXT`.
 email_value | string | Email value for answer. Will be specified if question type is `EMAIL`.
 url_value | string | URL value for answer. Will be specified if question type is `URL`.
 rating_value | integer | Rating value for answer. Value can range from `1` to `10`. Will be specified if question type is `RATING`.
 selection_values[].id | string | Unique identifier for selection value.
-selection_values[].option | object ([Survey Question Option Object](#survey-question-option-object)) | Selected option for answer.
+selection_values[].option | object ([Survey Question Option Object](#survey-respondents-survey-question-option-object)) | Selected option for answer.
 selection_values[].comment | string | Added comment for selected option.
 value_in_text | string | Normalized value in text string. This is especially useful if you want to display `selection_values` in text.
 created_timestamp | integer | Timestamp when answer is added.

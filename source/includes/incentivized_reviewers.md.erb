@@ -73,9 +73,9 @@ Represents an incentivized reviewer object. Incentivized reviewer is created whe
 ### Attributes
 Field | Type | Description
 --------- | ------- | -----------
-recipient | object ([Review Requester Recipient Object](#review-requester-recipient-object)) | Recipient linked to incentivized reviewer. This is also the parent object.
-reward | object ([Reward Object](#reward-object)) | Reward attached to incentivized reviewer.
-status | enum ([Incentivized Reviewer Status](#incentivized-reviewer-status)) | Status for incentivized reviewer.
+recipient | object ([Review Requester Recipient Object](#recipients-review-requester-recipient-object)) | Recipient linked to incentivized reviewer. This is also the parent object.
+reward | object ([Reward Object](#data-types-reward-object)) | Reward attached to incentivized reviewer.
+status | enum ([Incentivized Reviewer Status](#incentivized-reviewers-enums-incentivized-reviewer-status)) | Status for incentivized reviewer.
 created_timestamp | integer | Timestamp when incentivized reviewer is created.
 
 
@@ -266,7 +266,7 @@ Modified incentivized reviewer object if patch succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-status | enum ([Incentivized Reviewer Status](#incentivized-reviewer-status)) | No | Status for incentivized reviewer.
+status | enum ([Incentivized Reviewer Status](#incentivized-reviewers-enums-incentivized-reviewer-status)) | No | Status for incentivized reviewer.
 
 
 ## List all Incentivized Reviewers
@@ -363,7 +363,7 @@ List of incentivized reviewer objects.
 Field | Type | Description
 --------- | ------- | -----------
 keyword | string | Filter by specific keyword.
-status | enum ([Incentivized Reviewer Status](#incentivized-reviewer-status)) | Filter by incentivized reviewer status.
+status | enum ([Incentivized Reviewer Status](#incentivized-reviewers-enums-incentivized-reviewer-status)) | Filter by incentivized reviewer status.
 requester | string | Review Requester ID to filter.
 account | string | Account ID to filter. Used when organization manage more than one account.
 page | integer | Traverse to specific page. Page index starts from `1`.

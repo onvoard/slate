@@ -44,7 +44,7 @@ id | string | Unique identifier for the object.
 active | boolean | Active state of review. Filtered reviews will return `false`.
 review_listing.id | string | Unique identifier of review listing.
 review_listing.name | string | Name of review listing.
-status | enum ([Review Status](#review-status)) | Status of this review.
+status | enum ([Review Status](#reviews-enums-review-status)) | Status of this review.
 recommend | boolean | Recommend score for reviewed item. Field will be null if binary rating system is not used.
 rating | float | Rating score for reviewed item. Field will be null if 5-star rating system is not used.
 title | string | Title of review.
@@ -58,7 +58,7 @@ reply_text | string | Replied text.
 reply_date | string | Replied date. ISO 8601 format, `YYYY-MM-DD`.
 attributes[].name | string | Name for review's attribute.
 attributes[].value | string | Value for review's attribute.
-score | enum ([Review Score](#review-score)) | Score for this review.
+score | enum ([Review Score](#reviews-enums-review-score)) | Score for this review.
 source.id | string | Unique identifier of linked source.
 source.name | string | Name of linked source.
 created_timestamp | integer | Timestamp when review was added to our system.
@@ -197,7 +197,7 @@ Modified review object if patch succeeded.
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
 active | boolean | No | Active state of review.
-status | enum ([Review Status](#review-status)) | No | Status of review.
+status | enum ([Review Status](#reviews-enums-review-status)) | No | Status of review.
 
 
 ## List all Reviews
@@ -261,10 +261,10 @@ List of review objects.
 Field | Type | Description
 --------- | ------- | -----------
 active | boolean | Use `true` if you only want to return unfiltered reviews and `false` to return filtered reviews.
-status | enum ([Review Status](#review-status)) | Filter by review status.
+status | enum ([Review Status](#reviews-enums-review-status)) | Filter by review status.
 keyword | string | Filter by specific keyword.
 account | string | Account ID to filter. Used when organization manage more than one account.
-scores | string | Comma-seperated list of scores to filter with. See [Review Score](#review-score).
+scores | string | Comma-seperated list of scores to filter with. See [Review Score](#reviews-enums-review-score).
 created_before | integer | Filter reviews created before provided timestamp.
 created_after | integer | Filter reviews created after provided timestamp.
 page | integer | Traverse to specific page. Page index starts from `1`.

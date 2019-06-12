@@ -69,7 +69,7 @@ Field | Type | Description
 id | string | Unique identifier for the object.
 site.id | string | Unique identifier for site.
 site.name | string | Name for site.
-site.layout | enum ([Story Layout](#story-layout)) | Layout to display story.
+site.layout | enum ([Story Layout](#stories-enums-story-layout)) | Layout to display story.
 slug | string | Slug for story.
 headline | string | Headline of story.
 content | string | Story content in HTML.
@@ -84,11 +84,11 @@ rep_on | boolean | If `true`, we will use representative details for `ORGANIZATI
 rep_name | string | Name of organization's representative. Used for `ORGANIZATION` layout.
 rep_position | string | Position of organization's representative. Used for `ORGANIZATION` layout.
 rep_quote | string | Quote from organization's representative. Used for `ORGANIZATION` layout.
-logo_pic_media | object ([Image Media Object](#image-media-object)) | Organization's logo. Used for `ORGANIZATION` layout.
-hero_pic_media | object ([Image Media Object](#image-media-object)) | Hero image for story.
-person_pic_media | object ([Image Media Object](#image-media-object)) | Profile picture of person story is written for. Used for `PERSON` layout.
-rep_pic_media | object ([Image Media Object](#image-media-object)) | Profile picture of organization's representative. Used for `ORGANIZATION` layout.
-attributes[] | object ([Story Attribute Object](#story-attribute-object)) | Attributes tagged to story.
+logo_pic_media | object ([Image Media Object](#data-types-image-media-object)) | Organization's logo. Used for `ORGANIZATION` layout.
+hero_pic_media | object ([Image Media Object](#data-types-image-media-object)) | Hero image for story.
+person_pic_media | object ([Image Media Object](#data-types-image-media-object)) | Profile picture of person story is written for. Used for `PERSON` layout.
+rep_pic_media | object ([Image Media Object](#data-types-image-media-object)) | Profile picture of organization's representative. Used for `ORGANIZATION` layout.
+attributes[] | object ([Story Attribute Object](#stories-story-attribute-object)) | Attributes tagged to story.
 default_article_url | string | Default url to access story in OnVoard's domain.
 custom_article_url | string | Custom url to access story in specified custom domain.
 pdf_url | string | Url to access PDF generated from story.
@@ -122,12 +122,12 @@ Represents a story attribute object.
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for object.
-type | enum ([Story Attribute Type](#story-attribute-type)) | Type for attribute.
+type | enum ([Story Attribute Type](#stories-enums-story-attribute-type)) | Type for attribute.
 text_name | string | Name for text attribute. Will be specified if type is `TEXT`.
 text_value | string | Value for text attribute. Will be specified if type is `TEXT`.
 url_name | string | Name for url attribute. Will be specified if type is `URL`.
 url_value | string | Value for url attribute. Will be specified if type is `URL`.
-category_value | object ([Story Category Value Object](#story-category-value-object)) | Linked category value category. Will be specified if type is `CATEGORY`.
+category_value | object ([Story Category Value Object](#stories-story-category-value-object)) | Linked category value category. Will be specified if type is `CATEGORY`.
 
 
 
@@ -151,7 +151,7 @@ Represents a story category value object.
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for object.
-category | object ([Story Category Object](#story-category-object)) | Linked category for this value object.
+category | object ([Story Category Object](#stories-story-category-object)) | Linked category for this value object.
 name | string | Name for category value.
 slug | string | Slug for category value.
 

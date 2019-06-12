@@ -19,7 +19,7 @@ Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
 name | string | Name for review requester.
-type | enum ([Review Requester Type](#review-requester-type)) | Type for this review requester.
+type | enum ([Review Requester Type](#review-requesters-enums-review-requester-type)) | Type for this review requester.
 active | boolean | Active state of review requester. Archived review requester will be `false`.
 dedup_window | integer | Number of days to lookback and deduplicate so you can avoid sending review requests to the same email.
 
@@ -147,7 +147,7 @@ Send review request with given ID.
 `POST https://api.onvoard.com/v1/review-requesters/:review_requester_id/send`
 
 ### Returns
-[Review Requester Recipient Object](#review-requester-recipient-object) if review request was sent.
+[Review Requester Recipient Object](#recipients-review-requester-recipient-object) if review request was sent.
 
 
 ### Arguments
@@ -196,7 +196,7 @@ List of review request objects.
 Field | Type | Description
 --------- | ------- | -----------
 active | boolean | Use `true` if you only want to return active review requests and `false` to return archived review requests.
-type | enum ([Reviewer Requester Type](#review-requester-type)) | Filter by review requester type.
+type | enum ([Reviewer Requester Type](#review-requesters-enums-review-requester-type)) | Filter by review requester type.
 keyword | string | Filter by specific keyword.
 account | string | Account ID to filter. Used when organization manage more than one account.
 page | integer | Traverse to specific page. Page index starts from `1`.

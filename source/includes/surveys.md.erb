@@ -21,7 +21,7 @@ id | string | Unique identifier for the object.
 on | boolean | Survey status.
 active | boolean | Active state of survey. Archived survey will be `false`.
 name | string | Name for survey.
-distribution | enum ([Survey Distribution](#survey-distribution)) | Distribution type for survey.
+distribution | enum ([Survey Distribution](#surveys-enums-survey-distribution)) | Distribution type for survey.
 url | string | URL to view survey. This will only be set if distribution is `LINK`.
 
 
@@ -155,7 +155,7 @@ Only email based surveys are eligible for sending. Survey's distribution must be
 `POST https://api.onvoard.com/v1/surveys/:survey_id/send`
 
 ### Returns
-[Survey Recipient Object](#survey-recipient-object) if survey was sent.
+[Survey Recipient Object](#recipients-survey-recipient-object) if survey was sent.
 
 
 ### Arguments
@@ -206,7 +206,7 @@ Field | Type | Description
 --------- | ------- | -----------
 active | boolean | Use `true` if you only want to return active surveys and `false` to return archived surveys.
 keyword | string | Filter by specific keyword.
-distribution | enum ([Survey Distribution](#survey-distribution)) | Survey distribution to filter.
+distribution | enum ([Survey Distribution](#surveys-enums-survey-distribution)) | Survey distribution to filter.
 account | string | Account ID to filter. Used when organization manage more than one account.
 page | integer | Traverse to specific page. Page index starts from `1`.
 page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.

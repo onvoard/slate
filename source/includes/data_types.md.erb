@@ -55,7 +55,7 @@ Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
 desc | string | Reward description.
-fulfillment_mode | enum ([Fulfillment Mode](#fulfillment-mode)) | Mode which reward will be fulfilled.
+fulfillment_mode | enum ([Fulfillment Mode](#data-types-enums-fulfillment-mode)) | Mode which reward will be fulfilled.
 footnote | string | Additional information for reward that will be added at the end.
 line_items[].id | string | Unique identifier for the object.
 line_items[].label | string | Label that states reward user can expect.
@@ -63,7 +63,7 @@ line_items[].requested | boolean | Will be `true` if line item is requested by u
 custom_fields[].id | string | Unique identifier for the object.
 custom_fields[].name | string | Name for custom fields.
 custom_fields[].desc | string | Description for custom fields.
-custom_fields[].type | enum ([Reward Custom Field Type](#reward-custom-field-type)) | Type for custom field value.
+custom_fields[].type | enum ([Reward Custom Field Type](#data-types-enums-reward-custom-field-type)) | Type for custom field value.
 custom_fields[].value | string | Value for this custom field. Will be empty if not specified by user.
 
 

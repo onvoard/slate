@@ -12,8 +12,8 @@
 
 OnVoard Modifications
 ------------
-We made some modifications to the underlying code fix some issues with anchor links.
-See [https://github.com/lord/slate/issues/793#issuecomment-343321373](https://github.com/lord/slate/issues/793#issuecomment-343321373)
+We are using `NestingUniqueHeadCounter` to fix issues with referencing anchor links.
+
 
 Features
 ------------
