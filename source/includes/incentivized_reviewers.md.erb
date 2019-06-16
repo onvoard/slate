@@ -6,7 +6,7 @@ Represents an incentivized reviewer object. Incentivized reviewer is created whe
 ```json
 {
   "recipient": {
-    "id": "rr_rcpt_gnnixeln0g5j4qaexgru4vnlo",
+    "id": "rrrpt_gnnixeln0g5j4qaexgru4vnlo",
     "tracking_id": "6jYSgafXNU78AFaPzhSt",
     "test": false,
     "name": "",
@@ -21,33 +21,33 @@ Represents an incentivized reviewer object. Incentivized reviewer is created whe
       "error_msg": ""
     },
     "activities": [{
-        "id": "ld_act_tjmz6hsha8qrpfyeogi5neupshfkr4",
+        "id": "ldact_tjmz6hsha8qrpfyeogi5neupshfkr4",
         "type": "SENT_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_hk8d1et2o5upw2rgqexej2jerpip0s",
+        "id": "ldact_hk8d1et2o5upw2rgqexej2jerpip0s",
         "type": "DELIVERED_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_j9we8sristm96dgkkfi0y01yqdr5zm",
+        "id": "ldact_j9we8sristm96dgkkfi0y01yqdr5zm",
         "type": "CLICKED_REVIEW_REQUEST",
         "created_timestamp": 1560258957
       },
       {
-        "id": "ld_act_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
+        "id": "ldact_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
         "type": "REQUESTED_REVIEW_REWARDS",
         "created_timestamp": 1560259060
       }
     ],
     "requester": {
-      "id": "rw_req_awxloccld94xkfh",
+      "id": "rwreq_awxloccld94xkfh",
       "name": "OnVoard G2"
     }
   },
   "reward": {
-    "id": "4xg0gauv5x6n2ag",
+    "id": "rwd_4xg0gauv5x6n2ag",
     "desc": "All specified requirements must be fulfilled",
     "fulfillment_mode": "MANUAL",
     "footnote": "It takes around 7 days for rewards to be delivered",
@@ -96,7 +96,7 @@ APPROVED | Approved
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qaexgru4vnlo' \
+curl 'https://api.onvoard.com/v1/incentivized-reviewers/rrrpt_gnnixeln0g5j4qaexgru4vnlo' \
 -H 'Authorization: Token {API_KEY}'
 ```
 
@@ -105,7 +105,7 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qae
 ```json
 {
   "recipient": {
-    "id": "rr_rcpt_gnnixeln0g5j4qaexgru4vnlo",
+    "id": "rrrpt_gnnixeln0g5j4qaexgru4vnlo",
     "tracking_id": "6jYSgafXNU78AFaPzhSt",
     "test": false,
     "name": "",
@@ -120,33 +120,33 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qae
       "error_msg": ""
     },
     "activities": [{
-        "id": "ld_act_tjmz6hsha8qrpfyeogi5neupshfkr4",
+        "id": "ldact_tjmz6hsha8qrpfyeogi5neupshfkr4",
         "type": "SENT_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_hk8d1et2o5upw2rgqexej2jerpip0s",
+        "id": "ldact_hk8d1et2o5upw2rgqexej2jerpip0s",
         "type": "DELIVERED_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_j9we8sristm96dgkkfi0y01yqdr5zm",
+        "id": "ldact_j9we8sristm96dgkkfi0y01yqdr5zm",
         "type": "CLICKED_REVIEW_REQUEST",
         "created_timestamp": 1560258957
       },
       {
-        "id": "ld_act_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
+        "id": "ldact_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
         "type": "REQUESTED_REVIEW_REWARDS",
         "created_timestamp": 1560259060
       }
     ],
     "requester": {
-      "id": "rw_req_awxloccld94xkfh",
+      "id": "rwreq_awxloccld94xkfh",
       "name": "OnVoard G2"
     }
   },
   "reward": {
-    "id": "4xg0gauv5x6n2ag",
+    "id": "rwd_4xg0gauv5x6n2ag",
     "desc": "All specified requirements must be fulfilled",
     "fulfillment_mode": "MANUAL",
     "footnote": "It takes around 7 days for rewards to be delivered",
@@ -182,7 +182,7 @@ Incentivized reviewer object if valid recipient ID was provided.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qaexgru4vnlo' \
+curl 'https://api.onvoard.com/v1/incentivized-reviewers/rrrpt_gnnixeln0g5j4qaexgru4vnlo' \
 -H 'Authorization: Token {API_KEY}'
 -d status="FOLLOWUP"
 ```
@@ -192,7 +192,7 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qae
 ```json
 {
   "recipient": {
-    "id": "rr_rcpt_gnnixeln0g5j4qaexgru4vnlo",
+    "id": "rrrpt_gnnixeln0g5j4qaexgru4vnlo",
     "tracking_id": "6jYSgafXNU78AFaPzhSt",
     "test": false,
     "name": "",
@@ -207,33 +207,33 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers/rr_rcpt_gnnixeln0g5j4qae
       "error_msg": ""
     },
     "activities": [{
-        "id": "ld_act_tjmz6hsha8qrpfyeogi5neupshfkr4",
+        "id": "ldact_tjmz6hsha8qrpfyeogi5neupshfkr4",
         "type": "SENT_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_hk8d1et2o5upw2rgqexej2jerpip0s",
+        "id": "ldact_hk8d1et2o5upw2rgqexej2jerpip0s",
         "type": "DELIVERED_REVIEW_REQUEST",
         "created_timestamp": 1560258949
       },
       {
-        "id": "ld_act_j9we8sristm96dgkkfi0y01yqdr5zm",
+        "id": "ldact_j9we8sristm96dgkkfi0y01yqdr5zm",
         "type": "CLICKED_REVIEW_REQUEST",
         "created_timestamp": 1560258957
       },
       {
-        "id": "ld_act_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
+        "id": "ldact_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
         "type": "REQUESTED_REVIEW_REWARDS",
         "created_timestamp": 1560259060
       }
     ],
     "requester": {
-      "id": "rw_req_awxloccld94xkfh",
+      "id": "rwreq_awxloccld94xkfh",
       "name": "OnVoard G2"
     }
   },
   "reward": {
-    "id": "4xg0gauv5x6n2ag",
+    "id": "rwd_4xg0gauv5x6n2ag",
     "desc": "All specified requirements must be fulfilled",
     "fulfillment_mode": "MANUAL",
     "footnote": "It takes around 7 days for rewards to be delivered",
@@ -287,7 +287,7 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers' \
   "current_page": 1,
   "results": [{
     "recipient": {
-      "id": "rr_rcpt_gnnixeln0g5j4qaexgru4vnlo",
+      "id": "rrrpt_gnnixeln0g5j4qaexgru4vnlo",
       "tracking_id": "6jYSgafXNU78AFaPzhSt",
       "test": false,
       "name": "",
@@ -302,33 +302,33 @@ curl 'https://api.onvoard.com/v1/incentivized-reviewers' \
         "error_msg": ""
       },
       "activities": [{
-          "id": "ld_act_tjmz6hsha8qrpfyeogi5neupshfkr4",
+          "id": "ldact_tjmz6hsha8qrpfyeogi5neupshfkr4",
           "type": "SENT_REVIEW_REQUEST",
           "created_timestamp": 1560258949
         },
         {
-          "id": "ld_act_hk8d1et2o5upw2rgqexej2jerpip0s",
+          "id": "ldact_hk8d1et2o5upw2rgqexej2jerpip0s",
           "type": "DELIVERED_REVIEW_REQUEST",
           "created_timestamp": 1560258949
         },
         {
-          "id": "ld_act_j9we8sristm96dgkkfi0y01yqdr5zm",
+          "id": "ldact_j9we8sristm96dgkkfi0y01yqdr5zm",
           "type": "CLICKED_REVIEW_REQUEST",
           "created_timestamp": 1560258957
         },
         {
-          "id": "ld_act_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
+          "id": "ldact_k1sxut7xm7tx7k1jxomwhrjb4cg09z",
           "type": "REQUESTED_REVIEW_REWARDS",
           "created_timestamp": 1560259060
         }
       ],
       "requester": {
-        "id": "rw_req_awxloccld94xkfh",
+        "id": "rwreq_awxloccld94xkfh",
         "name": "OnVoard G2"
       }
     },
     "reward": {
-      "id": "4xg0gauv5x6n2ag",
+      "id": "rwd_4xg0gauv5x6n2ag",
       "desc": "All specified requirements must be fulfilled",
       "fulfillment_mode": "MANUAL",
       "footnote": "It takes around 7 days for rewards to be delivered",

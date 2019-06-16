@@ -5,7 +5,7 @@ Represents a review requester object. Can be used to send review request via ema
 
 ```json
 {
-  "id": "rw_req_awxloccld94xkfh",
+  "id": "rwreq_awxloccld94xkfh",
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": true,
@@ -39,7 +39,7 @@ MULTIPLE_SITES | Request reviews by showcasing a list of sites users can leave r
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
+curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
 -H 'Authorization: Token {API_KEY}'
 ```
 
@@ -47,7 +47,7 @@ curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
 
 ```json
 {
-  "id": "rw_req_awxloccld94xkfh",
+  "id": "rwreq_awxloccld94xkfh",
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": true,
@@ -69,7 +69,7 @@ Review requester object if valid ID was provided.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
+curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
 -H 'Authorization: Token {API_KEY}'
 -d active=false
 ```
@@ -78,7 +78,7 @@ curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh' \
 
 ```json
 {
-  "id": "rw_req_awxloccld94xkfh",
+  "id": "rwreq_awxloccld94xkfh",
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": false,
@@ -105,7 +105,7 @@ active | boolean | No | Active state of review requester.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh/send' \
+curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh/send' \
 -H 'Authorization: Token {API_KEY}'
 -d name="John Doe" \
 -d email="johndoe@gmail.com"
@@ -115,7 +115,7 @@ curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh/send' 
 
 ```json
 {
-  "id": "rr_rcpt_3e6mz1ur0aoycy8v7jsj8aekw",
+  "id": "rrrpt_3e6mz1ur0aoycy8v7jsj8aekw",
   "tracking_id": "r6kMe3QwGjE0pilgCk7Q",
   "test": false,
   "name": "John Doe",
@@ -130,12 +130,12 @@ curl 'https://api.onvoard.com/v1/review-requesters/rw_req_awxloccld94xkfh/send' 
     "error_msg": ""
   },
   "activities": [{
-    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "id": "ldact_1v48gdzek5tshgbxflaoly97tx46kz",
     "type": "SENT_REVIEW_REQUEST",
     "created_timestamp": 1560158564
   }],
   "requester": {
-    "id": "rw_req_awxloccld94xkfh",
+    "id": "rwreq_awxloccld94xkfh",
     "name": "OnVoard G2"
   }
 }
@@ -175,7 +175,7 @@ curl 'https://api.onvoard.com/v1/review-requesters' \
   "num_pages": 1,
   "current_page": 1,
   "results": [{
-    "id": "rw_req_awxloccld94xkfh",
+    "id": "rwreq_awxloccld94xkfh",
     "name": "OnVoard G2",
     "type": "SINGLE_SITE",
     "active": true,

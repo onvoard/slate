@@ -6,13 +6,13 @@ Represents a survey respondent object. Created when someone responds to a survey
 
 ```json
 {
-  "id": "srepd_m94pn93kldx6ftf",
+  "id": "sres_m94pn93kldx6ftf",
   "survey": {
     "id": "sur_m59c7sa4p0ogtfo",
     "name": "NPS Survey"
   },
   "traits": [{
-    "id": "fvquqiaux53rdcb",
+    "id": "trt_fvquqiaux53rdcb",
     "key": "email",
     "key_display": "Email",
     "value": "johndoe@gmail.com"
@@ -128,7 +128,7 @@ RATING | Question for 1-10 rating scale answer.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/survey-respondents/srepd_m94pn93kldx6ftf' \
+curl 'https://api.onvoard.com/v1/survey-respondents/sres_m94pn93kldx6ftf' \
 -H 'Authorization: Token {API_KEY}'
 ```
 
@@ -136,13 +136,13 @@ curl 'https://api.onvoard.com/v1/survey-respondents/srepd_m94pn93kldx6ftf' \
 
 ```json
 {
-  "id": "srepd_m94pn93kldx6ftf",
+  "id": "sres_m94pn93kldx6ftf",
   "survey": {
     "id": "sur_m59c7sa4p0ogtfo",
     "name": "NPS Survey",
   },
   "traits": [{
-    "id": "fvquqiaux53rdcb",
+    "id": "trt_fvquqiaux53rdcb",
     "key": "email",
     "key_display": "Email",
     "value": "johndoe@gmail.com"
@@ -192,13 +192,13 @@ curl 'https://api.onvoard.com/v1/survey-respondents' \
   "num_pages": 1,
   "current_page": 1,
   "results": [{
-    "id": "srepd_m94pn93kldx6ftf",
+    "id": "sres_m94pn93kldx6ftf",
     "survey": {
       "id": "sur_m59c7sa4p0ogtfo",
       "name": "NPS Survey",
     },
     "traits": [{
-      "id": "fvquqiaux53rdcb",
+      "id": "trt_fvquqiaux53rdcb",
       "key": "email",
       "key_display": "Email",
       "value": "johndoe@gmail.com"

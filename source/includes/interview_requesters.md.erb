@@ -7,7 +7,7 @@ Represents a interview requester object. Can be used to send interview request v
 
 ```json
 {
-  "id": "itw_req_nhya6muq0q8pvxn",
+  "id": "iwreq_nhya6muq0q8pvxn",
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": true,
@@ -31,7 +31,7 @@ dedup_window | integer | Number of days to lookback and deduplicate so you can a
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn' \
+curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
 -H 'Authorization: Token {API_KEY}'
 ```
 
@@ -39,7 +39,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn' \
 
 ```json
 {
-  "id": "itw_req_nhya6muq0q8pvxn",
+  "id": "iwreq_nhya6muq0q8pvxn",
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": true,
@@ -61,7 +61,7 @@ Interview requester object if valid ID was provided.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn' \
+curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
 -H 'Authorization: Token {API_KEY}'
 -d active=false
 ```
@@ -70,7 +70,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn' \
 
 ```json
 {
-  "id": "itw_req_nhya6muq0q8pvxn",
+  "id": "iwreq_nhya6muq0q8pvxn",
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": false,
@@ -98,7 +98,7 @@ active | boolean | No | Active state of interview requester.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn/send' \
+curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn/send' \
 -H 'Authorization: Token {API_KEY}'
 -d name="John Doe" \
 -d company="Acme Corp" \
@@ -109,7 +109,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn/se
 
 ```json
 {
-  "id": "itw_rcpt_trrr1grp5fcroahqe2nb583pn",
+  "id": "iwrpt_trrr1grp5fcroahqe2nb583pn",
   "tracking_id": "TJSYiF3mzf8DeGCHEOhk",
   "test": false,
   "name": "John Doe",
@@ -124,13 +124,13 @@ curl 'https://api.onvoard.com/v1/interview-requesters/itw_req_nhya6muq0q8pvxn/se
     "error_msg": ""
   },
   "activities": [{
-    "id": "ld_act_1v48gdzek5tshgbxflaoly97tx46kz",
+    "id": "ldact_1v48gdzek5tshgbxflaoly97tx46kz",
     "type": "SENT_INTERVIEW_REQUEST",
     "created_timestamp": 1560237961
   }],
   "company": "Acme Corp",
   "requester": {
-    "id": "itw_req_nhya6muq0q8pvxn",
+    "id": "iwreq_nhya6muq0q8pvxn",
     "name": "OnVoard Interview Requester"
   },
   "interview_instructions": {
@@ -175,7 +175,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters' \
   "num_pages": 1,
   "current_page": 1,
   "results": [{
-    "id": "itw_req_nhya6muq0q8pvxn",
+    "id": "iwreq_nhya6muq0q8pvxn",
     "name": "OnVoard Interview Requester",
     "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
     "active": true,
