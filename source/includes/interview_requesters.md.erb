@@ -11,6 +11,7 @@ Represents a interview requester object. Can be used to send interview request v
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": true,
+  "tracking_on": true,
   "dedup_window": null
 }
 ```
@@ -23,6 +24,7 @@ id | string | Unique identifier for the object.
 name | string | Name for interview requester.
 content | string | Interview content in HTML.
 active | boolean | Active state of interview requester. Archived interview requester will be `false`.
+tracking_on | boolean | Will be `true` if tracking is turned on.
 dedup_window | integer | Number of days to lookback and deduplicate so you can avoid sending interview requests to the same email.
 
 
@@ -43,6 +45,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": true,
+  "tracking_on": true,
   "dedup_window": null
 }
 ```
@@ -74,6 +77,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
   "name": "OnVoard Interview Requester",
   "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
   "active": false,
+  "tracking_on": true,
   "dedup_window": null
 }
 ```
@@ -179,6 +183,7 @@ curl 'https://api.onvoard.com/v1/interview-requesters' \
     "name": "OnVoard Interview Requester",
     "content": "<p><em>Answer the questions below to complete your interview.</em></p>",
     "active": true,
+    "tracking_on": true,
     "dedup_window": null
   }]
 }
@@ -195,7 +200,8 @@ List of interview request objects.
 ### Arguments
 Field | Type | Description
 --------- | ------- | -----------
-active | boolean | Use `true` if you only want to return active interview requests and `false` to return archived interview requests.
+active | boolean | Use `true` if you only want to return active interview requesters and `false` to return archived interview requests.
+tracking_on | boolean | Filter by tracking status.
 keyword | string | Filter by specific keyword.
 account | string | Account ID to filter. Used when organization manage more than one account.
 page | integer | Traverse to specific page. Page index starts from `1`.

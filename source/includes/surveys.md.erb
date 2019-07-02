@@ -8,6 +8,7 @@ Represents a survey object.
   "id": "sur_m59c7sa4p0ogtfo",
   "on": true,
   "active": true,
+  "tracking_on": true,
   "name": "NPS Survey",
   "distribution": "ONE_CLICK_EMAIL",
   "url": ""
@@ -18,8 +19,9 @@ Represents a survey object.
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
-on | boolean | Survey status.
+on | boolean | Survey status. If `false`, survey will not be eligible for distribution.
 active | boolean | Active state of survey. Archived survey will be `false`.
+tracking_on | boolean | Will be `true` if tracking is turned on.
 name | string | Name for survey.
 distribution | enum ([Survey Distribution](#surveys-enums-survey-distribution)) | Distribution type for survey.
 url | string | URL to view survey. This will only be set if distribution is `LINK`.
@@ -53,6 +55,7 @@ curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
   "id": "sur_m59c7sa4p0ogtfo",
   "on": true,
   "active": true,
+  "tracking_on": true,
   "name": "NPS Survey",
   "distribution": "ONE_CLICK_EMAIL",
   "url": ""
@@ -85,6 +88,7 @@ curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
   "id": "sur_m59c7sa4p0ogtfo",
   "on": true,
   "active": false,
+  "tracking_on": true,
   "name": "NPS Survey",
   "distribution": "ONE_CLICK_EMAIL",
   "url": ""
@@ -186,6 +190,7 @@ curl 'https://api.onvoard.com/v1/surveys' \
     "id": "sur_m59c7sa4p0ogtfo",
     "on": true,
     "active": true,
+    "tracking_on": true,
     "name": "NPS Survey",
     "distribution": "ONE_CLICK_EMAIL",
     "url": ""
@@ -205,6 +210,7 @@ List of survey objects.
 Field | Type | Description
 --------- | ------- | -----------
 active | boolean | Use `true` if you only want to return active surveys and `false` to return archived surveys.
+tracking_on | boolean | Filter by tracking status.
 keyword | string | Filter by specific keyword.
 distribution | enum ([Survey Distribution](#surveys-enums-survey-distribution)) | Survey distribution to filter.
 account | string | Account ID to filter. Used when organization manage more than one account.
