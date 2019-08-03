@@ -25,11 +25,11 @@ You can use OnVoard's API to access various endpoints, and perform tasks in prog
 ```shell
 # Api calls must be made with token header
 curl 'https://api.onvoard.com/v1/reviews' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 OnVoard currently use api key for authentication. Go to [api details](https://console.onvoard.com/api-details) page to get your api key.
-Add `Authorization: Token {API_KEY}` header to your api request for authentication.
+Add `X-API-Key: {API_KEY}` header to your api request for authentication.
 
 <aside class="notice">
 Currently only owner has access to api keys.

@@ -64,7 +64,7 @@ COMPLETED | Completed
 
 ```shell
 curl 'https://api.onvoard.com/v1/interviews/rvw_7vomjp0vjokbq09' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -102,7 +102,7 @@ Interview object if valid ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/interviews/rvw_7vomjp0vjokbq09' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d stage="FOLLOWUP"
 ```
 
@@ -146,7 +146,7 @@ stage | enum ([Interview Stage](#interviews-enums-interview-stage)) | No | Stage
 
 ```shell
 curl 'https://api.onvoard.com/v1/interviews' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response

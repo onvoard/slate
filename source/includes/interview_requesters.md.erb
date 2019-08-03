@@ -34,7 +34,7 @@ dedup_window | integer | Number of days to lookback and deduplicate so you can a
 
 ```shell
 curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -65,7 +65,7 @@ Interview requester object if valid ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d active=false
 ```
 
@@ -103,7 +103,7 @@ active | boolean | No | Active state of interview requester.
 
 ```shell
 curl 'https://api.onvoard.com/v1/interview-requesters/iwreq_nhya6muq0q8pvxn/send' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d name="John Doe" \
 -d company="Acme Corp" \
 -d email="johndoe@gmail.com"
@@ -168,7 +168,7 @@ lag_window | integer | No | Send interview request after indicated number of min
 
 ```shell
 curl 'https://api.onvoard.com/v1/interview-requesters' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response

@@ -97,7 +97,7 @@ APPROVED | Approved
 
 ```shell
 curl 'https://api.onvoard.com/v1/incentivized-reviewers/rrrpt_gnnixeln0g5j4qaexgru4vnlo' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -183,7 +183,7 @@ Incentivized reviewer object if valid recipient ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/incentivized-reviewers/rrrpt_gnnixeln0g5j4qaexgru4vnlo' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d status="FOLLOWUP"
 ```
 
@@ -275,7 +275,7 @@ status | enum ([Incentivized Reviewer Status](#incentivized-reviewers-enums-ince
 
 ```shell
 curl 'https://api.onvoard.com/v1/incentivized-reviewers' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response

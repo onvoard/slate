@@ -197,7 +197,7 @@ PERSON | Layout for person stories
 
 ```shell
 curl 'https://api.onvoard.com/v1/stories/stry_clg68ervlsw1ew9' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -277,7 +277,7 @@ Story object if valid ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/stories/stry_clg68ervlsw1ew9' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d published=false
 ```
 
@@ -364,7 +364,7 @@ published | boolean | No | Published state for story.
 
 ```shell
 curl 'https://api.onvoard.com/v1/stories' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response

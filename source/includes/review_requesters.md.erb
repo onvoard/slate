@@ -42,7 +42,7 @@ MULTIPLE_SITES | Request reviews by showcasing a list of sites users can leave r
 
 ```shell
 curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -73,7 +73,7 @@ Review requester object if valid ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d active=false
 ```
 
@@ -110,7 +110,7 @@ active | boolean | No | Active state of review requester.
 
 ```shell
 curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh/send' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d name="John Doe" \
 -d email="johndoe@gmail.com"
 ```
@@ -168,7 +168,7 @@ lag_window | integer | No | Send review request after indicated number of minute
 
 ```shell
 curl 'https://api.onvoard.com/v1/review-requesters' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response

@@ -45,7 +45,7 @@ LINK | Link Distribution
 
 ```shell
 curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
@@ -77,7 +77,7 @@ Survey object if valid ID was provided.
 
 ```shell
 curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d active=false
 ```
 
@@ -116,7 +116,7 @@ active | boolean | No | Active state of survey.
 
 ```shell
 curl 'https://api.onvoard.com/v1/surveys/sur_m59c7sa4p0ogtfo/send' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 -d name="John Doe" \
 -d email="johndoe@gmail.com"
 ```
@@ -176,7 +176,7 @@ lag_window | integer | No | Send survey after indicated number of minutes. If sp
 
 ```shell
 curl 'https://api.onvoard.com/v1/surveys' \
--H 'Authorization: Token {API_KEY}'
+-H 'X-API-Key: {API_KEY}'
 ```
 
 > Example Response
