@@ -15,7 +15,8 @@ Represents a survey respondent object. Created when someone responds to a survey
     "id": "trt_fvquqiaux53rdcb",
     "key": "email",
     "key_display": "Email",
-    "value": "johndoe@gmail.com"
+    "value": "johndoe@gmail.com",
+    "value_type": "email"
   }],
   "answers": [{
     "id": "srasw_4ws3uioc3tokrhs",
@@ -32,6 +33,7 @@ Represents a survey respondent object. Created when someone responds to a survey
     "value_in_text": "9",
     "created_timestamp": 1560158706
   }],
+  "answered_all_questions": true,
   "created_timestamp": 1560158706
 }
 ```
@@ -44,6 +46,7 @@ survey.id | string | Unique identifier for survey.
 survey.name | string | Name for survey.
 traits[] | object ([Trait Object](#data-types-trait-object)) | Traits for respondent.
 answers[] | object ([Survey Answer Object](#survey-respondents-survey-answer-object)) | Answers for survey response.
+answered_all_questions | boolean | Will be `true` if every questions has been answered.
 created_timestamp | integer | Timestamp when survey response is created.
 
 ## Survey Answer Object
@@ -145,7 +148,8 @@ curl 'https://api.onvoard.com/v1/survey-respondents/sres_m94pn93kldx6ftf' \
     "id": "trt_fvquqiaux53rdcb",
     "key": "email",
     "key_display": "Email",
-    "value": "johndoe@gmail.com"
+    "value": "johndoe@gmail.com",
+    "value_type": "email"
   }],
   "answers": [{
     "id": "srasw_4ws3uioc3tokrhs",
@@ -162,6 +166,7 @@ curl 'https://api.onvoard.com/v1/survey-respondents/sres_m94pn93kldx6ftf' \
     "value_in_text": "9",
     "created_timestamp": 1560158706
   }],
+  "answered_all_questions": true,
   "created_timestamp": 1560158706
 }
 ```
@@ -201,7 +206,8 @@ curl 'https://api.onvoard.com/v1/survey-respondents' \
       "id": "trt_fvquqiaux53rdcb",
       "key": "email",
       "key_display": "Email",
-      "value": "johndoe@gmail.com"
+      "value": "johndoe@gmail.com",
+      "value_type": "email"
     }],
     "answers": [{
       "id": "srasw_4ws3uioc3tokrhs",
@@ -218,6 +224,7 @@ curl 'https://api.onvoard.com/v1/survey-respondents' \
       "value_in_text": "9",
       "created_timestamp": 1560158706
     }],
+    "answered_all_questions": true,
     "created_timestamp": 1560158706
   }]
 }

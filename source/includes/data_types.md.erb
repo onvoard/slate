@@ -75,7 +75,8 @@ Trait refers to attributes that describes a person. Some commonly used traits in
   "id": "trt_fvquqiaux53rdcb",
   "key": "email",
   "key_display": "Email",
-  "value": "johndoe@gmail.com"
+  "value": "johndoe@gmail.com",
+  "value_type": "email"
 }
 ```
 
@@ -86,6 +87,7 @@ id | string | Unique identifier for object.
 key | string | Key to identify trait. Characters must be lowercase alphanumeric characters and underscores.
 key_display | string | Beautified display for key. For example `first_name` for key will be rendered as `First Name`.
 value | string | Value for trait.
+value_type | enum ([Trait Value Type](#data-types-enums-trait-value-type)) | Value type for trait.
 
 ## Enums
 List of available enum types under this resource.
@@ -102,3 +104,16 @@ SINGLE_LINE_TEXT | Single-line text which will display as input
 MULTI_LINE_TEXT | Multi-line text which will display as textarea
 EMAIL | Email value
 URL | URL value
+
+### Trait Value Type
+Value | Description
+--------- | -------
+string | Value is used to represent text string
+integer | Value is used to represent integer number
+float | Value is used to represent float number
+boolean | Value is used to represent boolean
+timestamp | Value is used to represent timestamp
+email | Value is used to represent email
+url | Value is used to represent url
+
+
