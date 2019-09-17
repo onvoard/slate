@@ -9,7 +9,7 @@ Represents a review requester object. Can be used to send review request via ema
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": true,
-  "tracking_on": true,
+  "email_tracking_on": true,
   "dedup_window": 100
 }
 ```
@@ -22,7 +22,7 @@ id | string | Unique identifier for the object.
 name | string | Name for review requester.
 type | enum ([Review Requester Type](#review-requesters-enums-review-requester-type)) | Type for this review requester.
 active | boolean | Active state of review requester. Archived review requester will be `false`.
-tracking_on | boolean | Will be `true` if tracking is turned on.
+email_tracking_on | boolean | Will be `true` if email tracking is turned on.
 dedup_window | integer | Number of days to lookback and deduplicate so you can avoid sending review requests to the same email.
 
 
@@ -53,7 +53,7 @@ curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": true,
-  "tracking_on": true,
+  "email_tracking_on": true,
   "dedup_window": 100
 }
 ```
@@ -85,7 +85,7 @@ curl 'https://api.onvoard.com/v1/review-requesters/rwreq_awxloccld94xkfh' \
   "name": "OnVoard G2",
   "type": "SINGLE_SITE",
   "active": false,
-  "tracking_on": true,
+  "email_tracking_on": true,
   "dedup_window": 100
 }
 ```
@@ -183,7 +183,7 @@ curl 'https://api.onvoard.com/v1/review-requesters' \
     "name": "OnVoard G2",
     "type": "SINGLE_SITE",
     "active": true,
-    "tracking_on": true,
+    "email_tracking_on": true,
     "dedup_window": 100
   }]
 }
@@ -201,7 +201,6 @@ List of review request objects.
 Field | Type | Description
 --------- | ------- | -----------
 active | boolean | Use `true` if you only want to return active review requesters and `false` to return archived review requests.
-tracking_on | boolean | Filter by tracking status.
 type | enum ([Reviewer Requester Type](#review-requesters-enums-review-requester-type)) | Filter by review requester type.
 keyword | string | Filter by specific keyword.
 account | string | Account ID to filter. Used when organization manage more than one account.

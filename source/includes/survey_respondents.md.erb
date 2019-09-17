@@ -6,35 +6,46 @@ Represents a survey respondent object. Created when someone responds to a survey
 
 ```json
 {
-  "id": "sres_m94pn93kldx6ftf",
+  "id": "sres_ryzgursl15sajrw",
   "survey": {
-    "id": "sur_m59c7sa4p0ogtfo",
+    "id": "sur_sbu0zd3mg7fwyql",
     "name": "NPS Survey"
   },
   "traits": [{
-    "id": "trt_fvquqiaux53rdcb",
+    "id": "trt_wcudotn5nqtddut",
     "key": "email",
     "key_display": "Email",
     "value": "johndoe@gmail.com",
     "value_type": "email"
   }],
   "answers": [{
-    "id": "srasw_4ws3uioc3tokrhs",
+    "id": "srasw_fm2e09o4sp1o2gu",
     "question": {
-      "id": "srqn_5zn4ytxqf6wxqg1",
-      "type": "RATING",
+      "id": "srqn_4sxada7ojrp57lz",
+      "type": "SCALE",
+      "variant": "NPS",
+      "mode": "",
       "title": "How likely would you recommend us to your friend?"
     },
     "text_value": "",
-    "email_value": "",
-    "url_value": "",
-    "rating_value": 9,
-    "selection_values": [],
-    "value_in_text": "9",
-    "created_timestamp": 1560158706
+    "choices": [{
+      "id": "nahgksxj4zk8ln0",
+      "option": {
+        "id": "bqm4hz6i51u5gvq",
+        "label": "",
+        "enable_comment": true,
+        "disabled": false,
+        "comment_placeholder": "",
+        "value": "9",
+        "scale": 9
+      },
+      "comment": ""
+    }],
+    "value": "9",
+    "value_with_comment": "9",
+    "created_timestamp": 1568715275
   }],
-  "answered_all_questions": true,
-  "created_timestamp": 1560158706
+  "created_timestamp": 1568715275
 }
 ```
 
@@ -46,7 +57,6 @@ survey.id | string | Unique identifier for survey.
 survey.name | string | Name for survey.
 traits[] | object ([Trait Object](#data-types-trait-object)) | Traits for respondent.
 answers[] | object ([Survey Answer Object](#survey-respondents-survey-answer-object)) | Answers for survey response.
-answered_all_questions | boolean | Will be `true` if every questions has been answered.
 created_timestamp | integer | Timestamp when survey response is created.
 
 ## Survey Answer Object
@@ -54,19 +64,31 @@ Represents a survey answer object.
 
 ```json
 {
-  "id": "srasw_4ws3uioc3tokrhs",
+  "id": "srasw_fm2e09o4sp1o2gu",
   "question": {
-    "id": "srqn_5zn4ytxqf6wxqg1",
-    "type": "RATING",
+    "id": "srqn_4sxada7ojrp57lz",
+    "type": "SCALE",
+    "variant": "NPS",
+    "mode": "",
     "title": "How likely would you recommend us to your friend?"
   },
   "text_value": "",
-  "email_value": "",
-  "url_value": "",
-  "rating_value": 9,
-  "selection_values": [],
-  "value_in_text": "9",
-  "created_timestamp": 1560158706
+  "choices": [{
+    "id": "nahgksxj4zk8ln0",
+    "option": {
+      "id": "bqm4hz6i51u5gvq",
+      "label": "",
+      "enable_comment": true,
+      "disabled": false,
+      "comment_placeholder": "",
+      "value": "9",
+      "scale": 9
+    },
+    "comment": ""
+  }],
+  "value": "9",
+  "value_with_comment": "9",
+  "created_timestamp": 1568715275
 }
 ```
 
@@ -76,28 +98,30 @@ Field | Type | Description
 id | string | Unique identifier for answer.
 question.id | string | Unique identifier for question.
 question.type | enum ([Survey Question Type](#survey-respondents-enums-survey-question-type)) | Type for question.
+question.variant | enum ([Survey Question Variant](#survey-respondents-enums-survey-question-variant)) | Variant for question.
+question.mode | enum ([Survey Question Mode](#survey-respondents-enums-survey-question-mode)) | Mode for question.
 question.title | string | Question title.
-text_value | string | Text value for answer. Will be specified if question type is `SINGLE_LINE_TEXT` or `MULTI_LINE_TEXT`.
-email_value | string | Email value for answer. Will be specified if question type is `EMAIL`.
-url_value | string | URL value for answer. Will be specified if question type is `URL`.
-rating_value | integer | Rating value for answer. Value can range from `1` to `10`. Will be specified if question type is `RATING`.
-selection_values[].id | string | Unique identifier for selection value.
-selection_values[].option | object ([Survey Question Option Object](#survey-respondents-survey-question-option-object)) | Selected option for answer.
-selection_values[].comment | string | Added comment for selected option.
-value_in_text | string | Normalized value in text string. This is especially useful if you want to display `selection_values` in text.
+text_value | string | Text value for answer. Will be specified if question type is `TEXT`.
+choices[].id | string | Unique identifier for choice.
+choices[].option | object ([Survey Question Option Object](#survey-respondents-survey-question-option-object)) | Selected option for answer.
+choices[].comment | string | Added comment for choice.
+value | string | Normalized value in text string. This is especially useful if you want to display `choices` in text. For multiple selections, <code>&#124;&#124;</code> will be used as delimiter.
+value_with_comment | string | Same as `value` but with comment appended (if there are any).
 created_timestamp | integer | Timestamp when answer is added.
 
 
 ## Survey Question Option Object
-Represents a survey question option object.
+Represents a survey question option object. This will be used for question type `SELECTION` and `SCALE`.
 
 ```json
 {
-  "id": "dirhg0yyqz2cevi",
-  "label": "Search Engine",
-  "enable_comment": false,
+  "id": "bqm4hz6i51u5gvq",
+  "label": "",
+  "enable_comment": true,
   "disabled": false,
-  "comment_placeholder": ""
+  "comment_placeholder": "",
+  "value": "9",
+  "scale": 9
 }
 ```
 
@@ -109,6 +133,8 @@ label | string | Label for question option.
 enable_comment | boolean | If `true`, respondent can add comment for option.
 disabled | boolean | If `true`, option will be disabled for selection.
 comment_placeholder | string | Placeholder text for comment.
+value | string | User-specified value to identify selected option.
+scale | integer | Scale value for option ranging from 0 to 10. Will be provided for `SCALE` question type.
 
 
 ## Enums
@@ -117,13 +143,31 @@ List of available enum types under this resource.
 ### Survey Question Type
 Value | Description
 --------- | -------
-SINGLE_SELECTION | Question with single selected answer. Similar to radio buttons.
-MULTIPLE_SELECTIONS | Question with multiple selected answers. Similar to checkbox.
-SINGLE_LINE_TEXT | Question with 1 line answer. Similar to input.
-MULTI_LINE_TEXT | Question with multi-line answer. Similar to textarea.
-EMAIL | Question that requires email as answer.
-URL | Question that requires url as answer.
-RATING | Question for 1-10 rating scale answer.
+TEXT | Questions that requires text input as answer.
+SELECTION | Question with selection options. Will use checkboxes or radio buttons.
+SCALE | Scale related questions like NPS, CSAT, CES, Smileys and 5-star Ratings.
+
+### Survey Question Variant
+Value | Description
+--------- | -------
+SINGLE_SELECTION | Question with single selected answer. Similar to radio buttons. Available for question type `SELECTION`.
+MULTIPLE_SELECTIONS | Question with multiple selected answers. Similar to checkbox. Available for question type `SELECTION`.
+SINGLE_LINE_TEXT | Question with 1 line answer. Similar to input. Available for question type `TEXT`.
+MULTI_LINE_TEXT | Question with multi-line answer. Similar to textarea. Available for question type `TEXT`.
+EMAIL | Question that requires email as answer. Available for question type `TEXT`.
+URL | Question that requires url as answer. Available for question type `TEXT`.
+BINARY_SCALE | 2 options available for selections. Examples: Happy/Sad Smileys, Like/Dislike, Recommend/Doesn't Recommend, Agree/Disagree. Available for question type `SCALE`.
+THREE_POINT_SCALE | 3 options available for selections. Examples: Great/Neutral/Bad, Like/Neutral/Dislike. Available for question type `SCALE`.
+FIVE_POINT_SCALE | 5 options available for selections. Examples: 5-Star Ratings, CSAT. Available for question type `SCALE`.
+NPS | NPS question with answer ranging from 0 to 10. Available for question type `SCALE`.
+
+### Survey Question Mode
+Value | Description
+--------- | -------
+TEXT_OPTIONS | Use text to display options for questions.
+NUMERIC_OPTIONS | Use numeric values to display options for questions.
+REACTIONS | Use smileys to display options for questions.
+STAR_RATINGS | Use 5-star ratings to display options for questions.
 
 
 ## Retrieve Survey Respondent
@@ -139,35 +183,44 @@ curl 'https://api.onvoard.com/v1/survey-respondents/sres_m94pn93kldx6ftf' \
 
 ```json
 {
-  "id": "sres_m94pn93kldx6ftf",
+  "id": "sres_ryzgursl15sajrw",
   "survey": {
-    "id": "sur_m59c7sa4p0ogtfo",
-    "name": "NPS Survey",
+    "id": "sur_sbu0zd3mg7fwyql",
+    "name": "NPS Survey"
   },
   "traits": [{
-    "id": "trt_fvquqiaux53rdcb",
+    "id": "trt_wcudotn5nqtddut",
     "key": "email",
     "key_display": "Email",
     "value": "johndoe@gmail.com",
     "value_type": "email"
   }],
   "answers": [{
-    "id": "srasw_4ws3uioc3tokrhs",
+    "id": "srasw_fm2e09o4sp1o2gu",
     "question": {
-      "id": "srqn_5zn4ytxqf6wxqg1",
-      "type": "RATING",
+      "id": "srqn_4sxada7ojrp57lz",
+      "type": "SCALE",
       "title": "How likely would you recommend us to your friend?"
     },
     "text_value": "",
-    "email_value": "",
-    "url_value": "",
-    "rating_value": 9,
-    "selection_values": [],
-    "value_in_text": "9",
-    "created_timestamp": 1560158706
+    "choices": [{
+      "id": "nahgksxj4zk8ln0",
+      "option": {
+        "id": "bqm4hz6i51u5gvq",
+        "label": "",
+        "enable_comment": true,
+        "disabled": false,
+        "comment_placeholder": "",
+        "value": "9",
+        "scale": 9
+      },
+      "comment": ""
+    }],
+    "value": "9",
+    "value_with_comment": "9",
+    "created_timestamp": 1568715275
   }],
-  "answered_all_questions": true,
-  "created_timestamp": 1560158706
+  "created_timestamp": 1568715275
 }
 ```
 
@@ -197,35 +250,44 @@ curl 'https://api.onvoard.com/v1/survey-respondents' \
   "num_pages": 1,
   "current_page": 1,
   "results": [{
-    "id": "sres_m94pn93kldx6ftf",
+    "id": "sres_ryzgursl15sajrw",
     "survey": {
-      "id": "sur_m59c7sa4p0ogtfo",
-      "name": "NPS Survey",
+      "id": "sur_sbu0zd3mg7fwyql",
+      "name": "NPS Survey"
     },
     "traits": [{
-      "id": "trt_fvquqiaux53rdcb",
+      "id": "trt_wcudotn5nqtddut",
       "key": "email",
       "key_display": "Email",
       "value": "johndoe@gmail.com",
       "value_type": "email"
     }],
     "answers": [{
-      "id": "srasw_4ws3uioc3tokrhs",
+      "id": "srasw_fm2e09o4sp1o2gu",
       "question": {
-        "id": "srqn_5zn4ytxqf6wxqg1",
-        "type": "RATING",
+        "id": "srqn_4sxada7ojrp57lz",
+        "type": "SCALE",
         "title": "How likely would you recommend us to your friend?"
       },
       "text_value": "",
-      "email_value": "",
-      "url_value": "",
-      "rating_value": 9,
-      "selection_values": [],
-      "value_in_text": "9",
-      "created_timestamp": 1560158706
+      "choices": [{
+        "id": "nahgksxj4zk8ln0",
+        "option": {
+          "id": "bqm4hz6i51u5gvq",
+          "label": "",
+          "enable_comment": true,
+          "disabled": false,
+          "comment_placeholder": "",
+          "value": "9",
+          "scale": 9
+        },
+        "comment": ""
+      }],
+      "value": "9",
+      "value_with_comment": "9",
+      "created_timestamp": 1568715275
     }],
-    "answered_all_questions": true,
-    "created_timestamp": 1560158706
+    "created_timestamp": 1568715275
   }]
 }
 ```
