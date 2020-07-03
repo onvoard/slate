@@ -1,0 +1,189 @@
+
+# Resource Associations
+Associations are how resources interlink between each other. Associations are used in segmentations and flows when we need to setup conditions based on associated data. For example, `contact.shopify_customer.total_spent` is greater than `1000` to segment high value contacts.
+
+## Resource Association Object
+Represents a resource association object.
+
+```json
+{
+  "id": "rasoc_tns47kvwpsy169j",
+  "key": "contact_to_shopify_customer",
+  "type": "PREDEFINED",
+  "primary_resource": {
+    "id": "resrc_dca52m7pty4lji9",
+    "namespace": "",
+    "key": "contact",
+    "accessor": "contact",
+    "name": "Contact",
+    "helper_text": "Contact resource will be mirrored after Contact Properties.",
+    "type": "ONVOARD",
+    "kind": "OBJECT"
+  },
+  "secondary_resource": {
+    "id": "resrc_iodvczkh5jf5do1",
+    "namespace": "shopify",
+    "key": "customer",
+    "accessor": "shopify.customer",
+    "name": "Shopify Customer",
+    "helper_text": "Resource to represent Shopify Customer.",
+    "type": "EXTERNAL",
+    "kind": "OBJECT"
+  },
+  "relation": "ONE_TO_ONE",
+  "primary_lookup": "onvoard_contact",
+  "secondary_lookup": "shopify_customer"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+key | string | Human readable key to uniquely identify association.
+type | enum ([Association Type](#resource-associations-enums-association-type)) | Type for this association.
+primary_resource | object ([Resource Object](#resources-resource-object)) | Primary resource for association.
+secondary_resource | object ([Resource Object](#resources-resource-object)) | Secondary resource for association.
+relation | enum ([Association Relation](#resource-associations-enums-association-relation)) | Relation for this association.
+primary_lookup | string | Lookup to access primary resource from secondary resource. For example, if lookup is `onvoard_contact`, you can access the resource with `shopify.customer.onvoard_contact`.
+secondary_lookup | string | Lookup to access secondary resource from primary resource. For example, if lookup is `shopify_customer`, you can access the resource with `contact.shopify_customer`.
+
+
+## Enums
+List of available enum types under this resource.
+
+### Association Type
+Value | Description
+--------- | -------
+PREDEFINED | Predefined
+CUSTOM | Custom
+
+### Association Relation
+Value | Description
+--------- | -------
+ONE_TO_MANY | One-to-Many
+MANY_TO_MANY | Many-to-Many
+ONE_TO_ONE | One-to-One
+
+
+## Retrieve Resource Association
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-associations/rasoc_tns47kvwpsy169j \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rasoc_tns47kvwpsy169j",
+  "key": "contact_to_shopify_customer",
+  "type": "PREDEFINED",
+  "primary_resource": {
+    "id": "resrc_dca52m7pty4lji9",
+    "namespace": "",
+    "key": "contact",
+    "accessor": "contact",
+    "name": "Contact",
+    "helper_text": "Contact resource will be mirrored after Contact Properties.",
+    "type": "ONVOARD",
+    "kind": "OBJECT"
+  },
+  "secondary_resource": {
+    "id": "resrc_iodvczkh5jf5do1",
+    "namespace": "shopify",
+    "key": "customer",
+    "accessor": "shopify.customer",
+    "name": "Shopify Customer",
+    "helper_text": "Resource to represent Shopify Customer.",
+    "type": "EXTERNAL",
+    "kind": "OBJECT"
+  },
+  "relation": "ONE_TO_ONE",
+  "primary_lookup": "onvoard_contact",
+  "secondary_lookup": "shopify_customer"
+}
+```
+
+Retrieve resource association with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-associations/:resource_association_id`
+
+### Returns
+Resource Association object if valid ID was provided.
+
+
+## List all Resource Associations
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-associations \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_associations": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "rasoc_tns47kvwpsy169j",
+    "key": "contact_to_shopify_customer",
+    "type": "PREDEFINED",
+    "primary_resource": {
+      "id": "resrc_dca52m7pty4lji9",
+      "namespace": "",
+      "key": "contact",
+      "accessor": "contact",
+      "name": "Contact",
+      "helper_text": "Contact resource will be mirrored after Contact Properties.",
+      "type": "ONVOARD",
+      "kind": "OBJECT"
+    },
+    "secondary_resource": {
+      "id": "resrc_iodvczkh5jf5do1",
+      "namespace": "shopify",
+      "key": "customer",
+      "accessor": "shopify.customer",
+      "name": "Shopify Customer",
+      "helper_text": "Resource to represent Shopify Customer.",
+      "type": "EXTERNAL",
+      "kind": "OBJECT"
+    },
+    "relation": "ONE_TO_ONE",
+    "primary_lookup": "onvoard_contact",
+    "secondary_lookup": "shopify_customer"
+  }]
+}
+```
+
+List all resource associations user have access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-associations`
+
+### Returns
+List of resource associations objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+keyword | string | Filter by specific keyword.
+type | enum ([Association Type](#resource-associations-enums-association-type)) | Filter by association type.
+relation | enum ([Association Relation](#resource-associations-enums-association-relation)) | Filter by association relation.
+resource_accessor | string | Filter by specific resource accessor. This filter will search from both primary and secondary resource.
+primary_resource_accessor | string | Filter by specific primary resource accessor.
+secondary_resource_accessor | string | Filter by specific secondary resource accessor.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of associations you want to return for each page. Can be from `1` to `100`. Default is `10`.
+
+
+

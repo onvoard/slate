@@ -1,15 +1,15 @@
 # Accounts
-Represents a account object.
 
 ## Account Object
+Represents a account object. A single organization can have multiple accounts. An agency can setup multiple accounts for each of their clients.
 
 ```json
 {
   "id": "acct_u4o2a8hmqk5rzp9",
-  "name": "Starbucks",
+  "name": "Acme Clothing",
   "organization": {
     "id": "org_xf041wyn93dd8uc",
-    "name": "OnVoard"
+    "name": "Acme LLC"
   }
 }
 ```
@@ -37,10 +37,10 @@ curl 'https://api.onvoard.com/v1/accounts/acct_u4o2a8hmqk5rzp9' \
 ```json
 {
   "id": "acct_u4o2a8hmqk5rzp9",
-  "name": "Starbucks",
+  "name": "Acme Clothing",
   "organization": {
     "id": "org_xf041wyn93dd8uc",
-    "name": "OnVoard"
+    "name": "Acme LLC"
   }
 }
 ```
@@ -72,10 +72,10 @@ curl 'https://api.onvoard.com/v1/accounts' \
   "current_page": 1,
   "results": [{
     "id": "acct_u4o2a8hmqk5rzp9",
-    "name": "Starbucks",
+    "name": "Acme Clothing",
     "organization": {
       "id": "org_xf041wyn93dd8uc",
-      "name": "OnVoard"
+      "name": "Acme LLC"
     }
   }]
 }

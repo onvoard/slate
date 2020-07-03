@@ -1,0 +1,256 @@
+
+# Resource Records
+
+## Resource Record Object
+Represents a resource record object.
+
+```json
+{
+  "id": "rsrcd_qx1w4ytagd8lf34",
+  "resource_id": "resrc_vdcg9cycfn1u6t8",
+  "resource_accessor": "custom.wishlist_item_added",
+  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "created_timestamp": 1592455503,
+  "data": {
+    "product_id": "56789",
+    "wishlist_id": "12345",
+    "product_name": "Spiderman Mini",
+    "wishlist_name": "Toy Collectibles"
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+resource_id | string | Unique identifier for resource.
+resource_accessor | string | Accessor for resource.
+context_id | string | ID of record based on context. For example, in the case of `shopify.customer`, this will be ID for Shopify Customer.
+created_timestamp | integer | Timestamp when record was added to our system.
+data | object | Data for record. Go to [resources page](https://console.onvoard.com/onvoard-resources) to view list of available properties for record.
+
+
+## Retrieve Resource Record
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rsrcd_qx1w4ytagd8lf34",
+  "resource_id": "resrc_vdcg9cycfn1u6t8",
+  "resource_accessor": "custom.wishlist_item_added",
+  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "created_timestamp": 1592455503,
+  "data": {
+    "product_id": "56789",
+    "wishlist_id": "12345",
+    "product_name": "Spiderman Mini",
+    "wishlist_name": "Toy Collectibles"
+  }
+}
+```
+
+Retrieve resource record with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-records/:resource_record_id`
+
+### Returns
+Resource Record object if valid ID was provided.
+
+
+## Create Resource Record
+You can only create record for resources with `CUSTOM` type.
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-records \
+-X POST \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "resource": "resrc_vdcg9cycfn1u6t8",
+  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "data": {
+    "product_id": "56789",
+    "wishlist_id": "12345",
+    "product_name": "Spiderman Mini",
+    "wishlist_name": "Toy Collectibles"
+  }
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rsrcd_qx1w4ytagd8lf34",
+  "resource_id": "resrc_vdcg9cycfn1u6t8",
+  "resource_accessor": "custom.wishlist_item_added",
+  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "created_timestamp": 1592455503,
+  "data": {
+    "product_id": "56789",
+    "wishlist_id": "12345",
+    "product_name": "Spiderman Mini",
+    "wishlist_name": "Toy Collectibles"
+  }
+}
+```
+
+Create a new resource record.
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/resource-records`
+
+### Returns
+Created resource record object if create succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+resource | string | Yes | ID of resource to associate with record.
+context_id | string | Yes | Unique identifier for record based on context.
+data | object | No | Data for record. Go to [resources page](https://console.onvoard.com/onvoard-resources) to view list of available properties for record type.
+
+
+## Patch Resource Record
+You can only patch record for resource with `CUSTOM` type.
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+-X PATCH \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "data": {
+    "wishlist_id": "12345",
+    "wishlist_name": "Toy Collectibles",
+    "product_id": "65778",
+    "product_name": "Plush Toy"
+  }
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rsrcd_qx1w4ytagd8lf34",
+  "resource_id": "resrc_vdcg9cycfn1u6t8",
+  "resource_accessor": "custom.wishlist_item_added",
+  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "created_timestamp": 1592455503,
+  "data": {
+    "wishlist_id": "12345",
+    "wishlist_name": "Toy Collectibles",
+    "product_id": "65778",
+    "product_name": "Plush Toy"
+  }
+}
+```
+
+Patch contact with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/resource-records/:resource_record_id`
+
+### Returns
+Modified contact object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+data | object | No | Data for record. Go to [resources page](https://console.onvoard.com/onvoard-resources) to view list of available properties for record type.
+
+
+## Delete Resource Record
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+-X DELETE \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Delete resource record with given ID. You can only delete records from resource with `CUSTOM` type.
+
+### HTTP Request
+`DELETE https://api.onvoard.com/v1/resource-records/:resource_record_id`
+
+
+
+## List all Resource Records
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-records \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "rsrcd_qx1w4ytagd8lf34",
+    "resource_id": "resrc_vdcg9cycfn1u6t8",
+    "resource_accessor": "custom.wishlist_item_added",
+    "context_id": "ctact_nyn268dkxmovubpangkf",
+    "created_timestamp": 1592455503,
+    "data": {
+      "product_id": "56789",
+      "wishlist_id": "12345",
+      "product_name": "Spiderman Mini",
+      "wishlist_name": "Toy Collectibles"
+    }
+  }]
+}
+```
+
+List all resource records user have access to. Records are sorted by `created_timestamp`, starting from most recent records.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-records`
+
+### Returns
+List of resource records objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+resource_accessor | string | Resource Accessor to filter. Use this to retrieve records from a specific resource.
+keyword | string | Filter by specific keyword.
+context_id | string | Filter by context ID.
+prop_key | string | Filter by property key. Must be used together with `prop_value`. For example, `?prop_key=product_id&prop_value=56789` to return records where `product_id` is `56789`.
+prop_value | string | Filter by property value. Must be used together with `prop_key`.
+created_before | integer | Filter records created before provided timestamp.
+created_after | integer | Filter records created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+

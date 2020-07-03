@@ -1,0 +1,245 @@
+
+# Products
+
+## Product Object
+Represents a product object.
+
+```json
+{
+  "id": "prd_wpgnildbgg50k5u",
+  "external_id": "4169648570416",
+  "universal_id": "shopify:4169648570416",
+  "platform": {
+    "id": "eplat_5lu3ll5pgpumqvl",
+    "name": "Shopify",
+    "key": "shopify",
+    "type": "PREDEFINED"
+  },
+  "name": "Dry Gin",
+  "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+  "price": 75.0,
+  "compare_at_price": 100.0,
+  "currency": "SGD",
+  "price_with_currency": "S$75",
+  "compare_at_price_with_currency": "S$100",
+  "created_timestamp": 1591045655,
+  "group": {
+    "id": "pdgrp_uwe83f1n4c58z0z",
+    "name": "Beers"
+  },
+  "tags": [{
+      "id": "prdtag_phdfnbtamnkypp8",
+      "name": "tag-1"
+    },
+    {
+      "id": "prdtag_4rp64333hegzv1s",
+      "name": "tag-2"
+    }
+  ],
+  "image_media": {
+    "id": "file_b027hj4e3483rhi",
+    "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+    "created_timestamp": 1591045652,
+    "height": 1280,
+    "width": 1920
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+external_id | string | Unique identifier for product in external platform.
+universal_id | string | Unique identifier for product in the format `[platform_key].[external_id]`. For example, `shopify:12345`.
+platform | object ([Ecommerce Platform Object](#ecommerce-platforms-ecommerce-platform-object)) | Platform associated with product.
+name | string | Name of product.
+url | string | URL for product.
+price | float | The price of the product.
+compare_at_price | float | The original price before discount.
+currency | string | The three-letter currency code (ISO 4217 format) for product's price.
+price_with_currency | string | Formatted price with currency in string like `CA$5,200.20`. Will be empty if either price or currency is not specified.
+compare_at_price_with_currency | string | Formatted compare at price with currency. Will be empty if either compare_at_price or currency is not specified.
+created_timestamp | integer | Timestamp when product was added to our system.
+group | object ([Product Group Object](#products-product-group-object)) | Group for product.
+tags[] | object array ([Product Tag Object](#products-product-tag-object)) | List of tags assigned to product.
+image_media | object ([Image Media Object](#data-types-image-media-object)) | Image for product.
+
+
+## Product Group Object
+Represents a product group object.
+
+```json
+{
+  "id": "pdgrp_uwe83f1n4c58z0z",
+  "name": "Beers"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+name | string | Name of product list.
+
+
+## Product Tag Object
+Represents a product tag object.
+
+```json
+{
+  "id": "prdtag_phdfnbtamnkypp8",
+  "name": "Newly Added"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+name | string | Name of product tag.
+
+
+## Retrieve Product
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "prd_wpgnildbgg50k5u",
+  "external_id": "4169648570416",
+  "universal_id": "shopify:4169648570416",
+  "platform": {
+    "id": "eplat_5lu3ll5pgpumqvl",
+    "name": "Shopify",
+    "key": "shopify",
+    "type": "PREDEFINED"
+  },
+  "name": "Dry Gin",
+  "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+  "price": 75.0,
+  "compare_at_price": 100.0,
+  "currency": "SGD",
+  "price_with_currency": "S$75",
+  "compare_at_price_with_currency": "S$100",
+  "created_timestamp": 1591045655,
+  "group": {
+    "id": "pdgrp_uwe83f1n4c58z0z",
+    "name": "Beers"
+  },
+  "tags": [{
+      "id": "prdtag_phdfnbtamnkypp8",
+      "name": "tag-1"
+    },
+    {
+      "id": "prdtag_4rp64333hegzv1s",
+      "name": "tag-2"
+    }
+  ],
+  "image_media": {
+    "id": "file_b027hj4e3483rhi",
+    "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+    "created_timestamp": 1591045652,
+    "height": 1280,
+    "width": 1920
+  }
+}
+```
+
+Retrieve product with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/products/:product_id`
+
+### Returns
+Product object if valid ID was provided.
+
+
+## List all Products
+
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/products \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "prd_wpgnildbgg50k5u",
+    "external_id": "4169648570416",
+    "universal_id": "shopify:4169648570416",
+    "platform": {
+      "id": "eplat_5lu3ll5pgpumqvl",
+      "name": "Shopify",
+      "key": "shopify",
+      "type": "PREDEFINED"
+    },
+    "name": "Dry Gin",
+    "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+    "price": 75.0,
+    "compare_at_price": 100.0,
+    "currency": "SGD",
+    "price_with_currency": "S$75",
+    "compare_at_price_with_currency": "S$100",
+    "created_timestamp": 1591045655,
+    "group": {
+      "id": "pdgrp_uwe83f1n4c58z0z",
+      "name": "Beers"
+    },
+    "tags": [{
+        "id": "prdtag_phdfnbtamnkypp8",
+        "name": "tag-1"
+      },
+      {
+        "id": "prdtag_4rp64333hegzv1s",
+        "name": "tag-2"
+      }
+    ],
+    "image_media": {
+      "id": "file_b027hj4e3483rhi",
+      "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+      "created_timestamp": 1591045652,
+      "height": 1280,
+      "width": 1920
+    }
+  }]
+}
+```
+
+List all products user have access to. Records are sorted by `created_timestamp`, starting from most recent products.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/products`
+
+### Returns
+List of product objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+keyword | string | Filter by specific keyword.
+group | string | Group ID to filter.
+tags | string | Comma-seperated list of Product Tag IDs to filter with. Use this to retrieve products from specific tags.
+universal_id | string | Universal ID to filter. For example, `shopify:12345`.
+platform_key | string | Platform Key to filter. For example, `shopify`.
+external_id | string | External ID to filter. For example, `12345`.
+created_before | integer | Filter products created before provided timestamp.
+created_after | integer | Filter products created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.

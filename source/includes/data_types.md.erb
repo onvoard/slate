@@ -8,11 +8,11 @@ Object for representing image media.
 
 ```json
 {
-  "id": "file_o60kak2khvvg0lw",
-  "file_url": "https://storage.googleapis.com/onvoard/upload/review-requester/logo-pic-media/12ad7a9c7b0e7743a879.png",
-  "height": 300,
-  "width": 250,
-  "created_timestamp": 1543414453
+  "id": "file_b027hj4e3483rhi",
+  "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+  "created_timestamp": 1591045652,
+  "height": 1280,
+  "width": 1920
 }
 ```
 
@@ -26,27 +26,18 @@ width | integer | Width dimension of image.
 created_timestamp | integer | Created timestamp of image.
 
 
-## Reward Object
-A single reward object may be attached with "multiple rewards" by having more than one line item. Custom fields are used to collect additional information from user for rewards fulfillments.
+
+## Video Media Object
+Object for representing video media.
 
 ```json
 {
-  "id": "rwd_0hhtxmc0lsq710r",
-  "desc": "All specified requirements must be fulfilled",
-  "fulfillment_mode": "MANUAL",
-  "footnote": "It takes around 7 days for rewards to be delivered",
-  "line_items": [{
-    "id": "pec8v7b9hja21u6",
-    "label": "$10 Amazon Gift Card",
-    "requested": false
-  }],
-  "custom_fields": [{
-    "id": "djqifrhipmp2h1a",
-    "name": "Email",
-    "desc": "Your email to receive gift card",
-    "type": "EMAIL",
-    "value": ""
-  }]
+  "id": "file_b027hj4e3483rhi",
+  "file_url": "https://storage.googleapis.com/onvoard/upload/review/video-media/4dc8b25e1275d2836b7b.mp4",
+  "thumbnail_url": "https://storage.googleapis.com/onvoard/upload/review/video-thumbnail-media/4dc8b25e1275d2836b7b.png",
+  "thumbnail_height": 1280,
+  "thumbnail_width": 1920,
+  "created_timestamp": 1591045652
 }
 ```
 
@@ -54,66 +45,11 @@ A single reward object may be attached with "multiple rewards" by having more th
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
-desc | string | Reward description.
-fulfillment_mode | enum ([Fulfillment Mode](#data-types-enums-fulfillment-mode)) | Mode which reward will be fulfilled.
-footnote | string | Additional information for reward that will be added at the end.
-line_items[].id | string | Unique identifier for the object.
-line_items[].label | string | Label that states reward user can expect.
-line_items[].requested | boolean | Will be `true` if line item is requested by user.
-custom_fields[].id | string | Unique identifier for the object.
-custom_fields[].name | string | Name for custom fields.
-custom_fields[].desc | string | Description for custom fields.
-custom_fields[].type | enum ([Reward Custom Field Type](#data-types-enums-reward-custom-field-type)) | Type for custom field value.
-custom_fields[].value | string | Value for this custom field. Will be empty if not specified by user.
+file_url | string | Url to view video.
+thumbnail_url | string | Url to view video thumbnail.
+thumbnail_height | integer | Height dimension of video thumbnail.
+thumbnail_width | integer | Width dimension of video thumbnail.
+created_timestamp | integer | Created timestamp of video.
 
-
-## Trait Object
-Trait refers to attributes that describes a person. Some commonly used traits includes `name`, `email`, `company`.
-
-```json
-{
-  "id": "trt_fvquqiaux53rdcb",
-  "key": "email",
-  "key_display": "Email",
-  "value": "johndoe@gmail.com",
-  "value_type": "email"
-}
-```
-
-### Attributes
-Field | Type | Description
---------- | ------- | -----------
-id | string | Unique identifier for object.
-key | string | Key to identify trait. Characters must be lowercase alphanumeric characters and underscores.
-key_display | string | Beautified display for key. For example `first_name` for key will be rendered as `First Name`.
-value | string | Value for trait.
-value_type | enum ([Trait Value Type](#data-types-enums-trait-value-type)) | Value type for trait.
-
-## Enums
-List of available enum types under this resource.
-
-### Fulfillment Mode
-Value | Description
---------- | -------
-MANUAL | Fulfill rewards manually. Currently this is the only option.
-
-### Reward Custom Field Type
-Value | Description
---------- | -------
-SINGLE_LINE_TEXT | Single-line text which will display as input
-MULTI_LINE_TEXT | Multi-line text which will display as textarea
-EMAIL | Email value
-URL | URL value
-
-### Trait Value Type
-Value | Description
---------- | -------
-string | Value is used to represent text string
-integer | Value is used to represent integer number
-float | Value is used to represent float number
-boolean | Value is used to represent boolean
-timestamp | Value is used to represent timestamp
-email | Value is used to represent email
-url | Value is used to represent url
 
 

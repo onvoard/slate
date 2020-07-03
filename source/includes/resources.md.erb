@@ -1,0 +1,131 @@
+
+# Resources
+
+## Resource Object
+Represents a resource object.
+
+```json
+{
+  "id": "resrc_iodvczkh5jf5do1",
+  "accessor": "shopify.customer",
+  "namespace": "shopify",
+  "key": "customer",
+  "name": "Shopify Customer",
+  "helper_text": "Resource to represent Shopify Customer.",
+  "type": "EXTERNAL",
+  "kind": "OBJECT"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+accessor | string | Accessor is used to uniquely identify each resources within an account. For resource with `ONVOARD` type, accessor will be same as key, such as `contact_list`, `email_delivered`. For resource with `EXTERNAL` and `CUSTOM` type, it will be in the format `[namespace].[key]`, such as `shopify.customer`, `custom.wishlist_item_added`.
+namespace | string | Namespace for resource. For resource with `ONVOARD` type, namespace will be empty. For resource with `CUSTOM` type, namespace will be `custom`.
+key | string | Key for resource.
+name | string | Name for resource.
+helper_text | string | Helper text to describe resource.
+type | enum ([Resource Type](#resources-enums-resource-type)) | Type for this resource.
+kind | enum ([Resource Kind](#resources-enums-resource-kind)) | Kind for this resource.
+
+## Enums
+List of available enum types under this resource.
+
+### Resource Type
+Value | Description
+--------- | -------
+ONVOARD | OnVoard
+EXTERNAL | External
+CUSTOM | Custom
+
+
+### Resource Kind
+Value | Description
+--------- | -------
+OBJECT | Object
+ACTIVITY | Activity
+
+
+## Retrieve Resource
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resources/resrc_iodvczkh5jf5do1 \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "resrc_iodvczkh5jf5do1",
+  "accessor": "shopify.customer",
+  "namespace": "shopify",
+  "key": "customer",
+  "name": "Shopify Customer",
+  "helper_text": "Resource to represent Shopify Customer.",
+  "type": "EXTERNAL",
+  "kind": "OBJECT"
+}
+```
+
+Retrieve resource with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resources/:resource_id`
+
+### Returns
+Resource object if valid ID was provided.
+
+
+## List all Resources
+
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resources \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "resrc_iodvczkh5jf5do1",
+    "accessor": "shopify.customer",
+    "namespace": "shopify",
+    "key": "customer",
+    "name": "Shopify Customer",
+    "helper_text": "Resource to represent Shopify Customer.",
+    "type": "EXTERNAL",
+    "kind": "OBJECT"
+  }]
+}
+```
+
+List all resources user have access to.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resources`
+
+### Returns
+List of resource objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+keyword | string | Filter by specific keyword.
+type | enum ([Resource Type](#resources-enums-resource-type)) | Filter by resource type.
+kind | enum ([Resource Kind](#resources-enums-resource-kind)) | Filter by resource kind.
+accessor | string | Filter by specific accessor. For example `email_opened`, `shopify.customer`.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+

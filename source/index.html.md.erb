@@ -13,14 +13,15 @@ search: true
 ---
 
 # Introduction
-You can use OnVoard's API to access various endpoints, and perform tasks in programmatic fashion such as sending email surveys via triggers. Currently, the key use cases supported by OnVoard's API are:
+You can use OnVoard's API to access various endpoints, such as retrieving contacts or add contact activities. Some key use cases supported by OnVoard's API includes:
 
-* Query reviews
-* Send review requests
-* Send interview requests
-* Send surveys
+* Retrieve contacts
+* Create or update contact
+* Retrieve activities for contact
+* Add contact activities
+* Retrieve reviews
+* Export and backup data such as contacts information.
 
-# Authentication
 
 ```shell
 # Api calls must be made with token header
@@ -50,13 +51,15 @@ Any request that did not succeed will return a `4xx` or `5xx` error. `4xx` range
 
 
 <%= partial "includes/accounts.md.erb" %>
+<%= partial "includes/contacts.md.erb" %>
+<%= partial "includes/contact_activities.md.erb" %>
+<%= partial "includes/resources.md.erb" %>
+<%= partial "includes/resource_records.md.erb" %>
+<%= partial "includes/resource_associations.md.erb" %>
+<%= partial "includes/resource_association_records.md.erb" %>
+<%= partial "includes/ecommerce_platforms.md.erb" %>
+<%= partial "includes/ecommerce_sites.md.erb" %>
+<%= partial "includes/products.md.erb" %>
 <%= partial "includes/reviews.md.erb" %>
-<%= partial "includes/review_requesters.md.erb" %>
-<%= partial "includes/incentivized_reviewers.md.erb" %>
-<%= partial "includes/interviews.md.erb" %>
-<%= partial "includes/interview_requesters.md.erb" %>
-<%= partial "includes/surveys.md.erb" %>
-<%= partial "includes/survey_respondents.md.erb" %>
-<%= partial "includes/stories.md.erb" %>
-<%= partial "includes/recipients.md.erb" %>
 <%= partial "includes/data_types.md.erb" %>
+

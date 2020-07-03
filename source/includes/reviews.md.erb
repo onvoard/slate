@@ -1,39 +1,92 @@
 
 # Reviews
-Represents a review object. Reviews can be collected from various sources like google and facebook.
 
 ## Review Object
+Represents a review object.
 
 ```json
 {
-  "id": "rvw_7vomjp0vjokbq09",
-  "active": true,
-  "review_listing": {
-    "id": "rwl_1igyg8wuxd5jiil",
-    "name": "Carousell Google Play"
-  },
-  "status": "PENDING",
-  "recommend": null,
+  "id": "rvw_rmkoqmzo8f511re",
+  "title": "Great Product!",
+  "content": "Delivery was quick. Would certainly buy again.",
   "rating": 5.0,
-  "title": "Thank you, Carousell",
-  "content": "I absolutely love this app!",
-  "url": "",
-  "source_review_id": "3465825614",
-  "review_date": "2018-11-27",
-  "reviewer_name": "Rodristar",
-  "reviewer_pic_url": "",
-  "reply_text": "",
-  "reply_date": null,
-  "attributes": [{
-    "name": "App Version",
-    "value": "2.91.0"
-  }],
-  "score": "THREE",
-  "source": {
-    "id": "appstore",
-    "name": "iOS App Store"
+  "entity": "PRODUCT",
+  "status": "PUBLISHED",
+  "verified_record": null,
+  "is_verified": false,
+  "product": {
+    "id": "prd_wpgnildbgg50k5u",
+    "external_id": "4169648570416",
+    "universal_id": "shopify:4169648570416",
+    "platform": {
+      "id": "eplat_5lu3ll5pgpumqvl",
+      "name": "Shopify",
+      "key": "shopify",
+      "type": "PREDEFINED"
+    },
+    "name": "Dry Gin",
+    "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+    "price": 75.0,
+    "compare_at_price": 100.0,
+    "currency": "SGD",
+    "price_with_currency": "S$75",
+    "compare_at_price_with_currency": "S$100",
+    "created_timestamp": 1591045655,
+    "group": {
+      "id": "pdgrp_uwe83f1n4c58z0z",
+      "name": "Beers"
+    },
+    "tags": [{
+        "id": "prdtag_phdfnbtamnkypp8",
+        "name": "tag-1"
+      },
+      {
+        "id": "prdtag_4rp64333hegzv1s",
+        "name": "tag-2"
+      }
+    ],
+    "image_media": {
+      "id": "file_b027hj4e3483rhi",
+      "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+      "created_timestamp": 1591045652,
+      "height": 1280,
+      "width": 1920
+    }
   },
-  "created_timestamp": 1543414453
+  "site": null,
+  "reviewer": {
+    "id": "rvwer_ohpxx87s8jp462v",
+    "contact": {
+      "id": "ct_a9i8ia5novjrcz7",
+      "name": "",
+      "email": "jane@example.com",
+      "phone": "",
+      "email_status": "ACTIVE",
+      "email_suppressed_reason": "",
+      "created_timestamp": 1593739576,
+      "suppressed_timestamp": null,
+      "lists": [],
+      "tags": [],
+      "properties": []
+    },
+    "display_name": "Jane Doe"
+  },
+  "num_upvotes": 0,
+  "created_timestamp": 1593739577,
+  "reply_html": "",
+  "reply_timestamp": null,
+  "assets": [{
+    "id": "m3g6wv7zdk5enff",
+    "sort_order": 0,
+    "image_media": {
+      "id": "file_2qhvcjnbopus5ks",
+      "file_url": "https://storage.googleapis.com/onvoard/upload/review/image-media/fbddba4a75163726d945.jpeg",
+      "created_timestamp": 1593739557,
+      "height": 1280,
+      "width": 1920
+    },
+    "video_media": null
+  }]
 }
 ```
 
@@ -41,50 +94,97 @@ Represents a review object. Reviews can be collected from various sources like g
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
-active | boolean | Active state of review. Filtered reviews will return `false`.
-review_listing.id | string | Unique identifier of review listing.
-review_listing.name | string | Name of review listing.
-status | enum ([Review Status](#reviews-enums-review-status)) | Status of this review.
-recommend | boolean | Recommend score for reviewed item. Field will be null if binary rating system is not used.
-rating | float | Rating score for reviewed item. Field will be null if 5-star rating system is not used.
-title | string | Title of review.
-content | string | Content of review.
-url | string | Url to review.
-source_review_id | string | Review's unique identifier in source's context.
-review_date | string | Date of review. ISO 8601 format, `YYYY-MM-DD`.
-reviewer_name | string | Reviewer's name.
-reviewer_pic_url | string | Reviewer's pic url.
-reply_text | string | Replied text.
-reply_date | string | Replied date. ISO 8601 format, `YYYY-MM-DD`.
-attributes[].name | string | Name for review's attribute.
-attributes[].value | string | Value for review's attribute.
-score | enum ([Review Score](#reviews-enums-review-score)) | Score for this review.
-source.id | string | Unique identifier of linked source.
-source.name | string | Name of linked source.
+title | string | Title for review.
+content | string | Content for review.
+rating | float | Rating for review.
+entity | enum ([Review Entity](#reviews-enums-review-entity)) | Entity for review.
+status | enum ([Review Status](#reviews-enums-review-status)) | Status for review.
+verified_record | object ([Resource Record Object](#resource-records-resource-record-object)) | Associated verified record if review is verified.
+is_verified | boolean | If review is verified.
+product | object ([Product Object](#products-product-object)) | Product associated with review if entity is `PRODUCT`.
+site | object ([Ecommerce Site Object](#ecommerce-sites-ecommerce-site-object)) | Ecommer site associated with review if entity is `SITE`.
+reviewer | object ([Reviewer Object](#reviews-reviewer-object)) | Reviewer information.
+num_upvotes | integer | Number of upvotes for review.
 created_timestamp | integer | Timestamp when review was added to our system.
+reply_html | string | HTML formatted string for review's reply.
+reply_timestamp | integer | Timestamp when review was replied.
+assets[] | object array ([Asset Object](#reviews-asset-object)) | List of review assets.
+
+
+## Reviewer Object
+Represents a reviewer object.
+
+```json
+{
+  "id": "rvwer_ohpxx87s8jp462v",
+  "contact": {
+    "id": "ct_a9i8ia5novjrcz7",
+    "name": "",
+    "email": "jane@example.com",
+    "phone": "",
+    "email_status": "ACTIVE",
+    "email_suppressed_reason": "",
+    "created_timestamp": 1593739576,
+    "suppressed_timestamp": null,
+    "lists": [],
+    "tags": [],
+    "properties": []
+  },
+  "display_name": "Jane Doe"
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+contact | object ([Contact Object](#contacts-contact-object)) | Contact associated with reviewer.
+display_name | string | Display name for reviewer.
+
+
+## Asset Object
+Represents a review asset object.
+
+```json
+{
+  "id": "m3g6wv7zdk5enff",
+  "sort_order": 0,
+  "image_media": {
+    "id": "file_2qhvcjnbopus5ks",
+    "file_url": "https://storage.googleapis.com/onvoard/upload/review/image-media/fbddba4a75163726d945.jpeg",
+    "created_timestamp": 1593739557,
+    "height": 1280,
+    "width": 1920
+  },
+  "video_media": null
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+sort_order | integer | Sort order for asset. Starts from `0`.
+image_media | object ([Image Media Object](#data-types-image-media-object)) | Image for review. Either `image_media` or `video_media` will be set for each asset.
+video_media | object ([Image Media Object](#data-types-video-media-object)) | Video for review. Either `image_media` or `video_media` will be set for each asset.
+
 
 ## Enums
 List of available enum types under this resource.
 
+### Review Entity
+Value | Description
+--------- | -------
+PRODUCT | Product
+SITE | Site
+
 ### Review Status
 Value | Description
 --------- | -------
-PENDING | Pending Response
-RESPONDED | Responded
-SKIP | Skip Response
+PENDING | Pending
+PUBLISHED | Published
+UNPUBLISHED | Unpublished
 
-### Review Score
-Value | Description
---------- | -------
-NA | No Scores
-ZERO | 0 Star Range
-ONE | 1 Star Range
-TWO | 2 Star Range
-THREE | 3 Star Range
-FOUR | 4 Star Range
-FIVE | 5 Star Range
-POSITIVE | Recommend
-NEGATIVE | Doesn't Recommend
 
 
 ## Retrieve Review
@@ -92,7 +192,7 @@ NEGATIVE | Doesn't Recommend
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/reviews/rvw_7vomjp0vjokbq09' \
+curl https://api.onvoard.com/v1/reviews/ct_hws9idjxuiiui6r \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -100,34 +200,52 @@ curl 'https://api.onvoard.com/v1/reviews/rvw_7vomjp0vjokbq09' \
 
 ```json
 {
-  "id": "rvw_7vomjp0vjokbq09",
-  "active": true,
-  "review_listing": {
-    "id": "rwl_1igyg8wuxd5jiil",
-    "name": "Carousell Google Play"
-  },
-  "status": "PENDING",
-  "recommend": null,
+  "id": "rvw_rmkoqmzo8f511re",
+  "title": "Great Product!",
+  "content": "Delivery was quick. Would certainly buy again.",
   "rating": 5.0,
-  "title": "Thank you, Carousell",
-  "content": "I absolutely love this app!",
-  "url": "",
-  "source_review_id": "3465825614",
-  "review_date": "2018-11-27",
-  "reviewer_name": "Rodristar",
-  "reviewer_pic_url": "",
-  "reply_text": "",
-  "reply_date": null,
-  "attributes": [{
-    "name": "App Version",
-    "value": "2.91.0"
-  }],
-  "score": "THREE",
-  "source": {
-    "id": "appstore",
-    "name": "iOS App Store"
+  "entity": "PRODUCT",
+  "status": "PUBLISHED",
+  "verified_record": null,
+  "is_verified": false,
+  "product": null,
+  "site": {
+    "id": "esite_8ekmxve4f3ep4in",
+    "name": "example.com"
   },
-  "created_timestamp": 1543414453
+  "reviewer": {
+    "id": "rvwer_ohpxx87s8jp462v",
+    "contact": {
+      "id": "ct_a9i8ia5novjrcz7",
+      "name": "",
+      "email": "jane@example.com",
+      "phone": "",
+      "email_status": "ACTIVE",
+      "email_suppressed_reason": "",
+      "created_timestamp": 1593739576,
+      "suppressed_timestamp": null,
+      "lists": [],
+      "tags": [],
+      "properties": []
+    },
+    "display_name": "Jane Doe"
+  },
+  "num_upvotes": 0,
+  "created_timestamp": 1593739577,
+  "reply_html": "",
+  "reply_timestamp": null,
+  "assets": [{
+    "id": "m3g6wv7zdk5enff",
+    "sort_order": 0,
+    "image_media": {
+      "id": "file_2qhvcjnbopus5ks",
+      "file_url": "https://storage.googleapis.com/onvoard/upload/review/image-media/fbddba4a75163726d945.jpeg",
+      "created_timestamp": 1593739557,
+      "height": 1280,
+      "width": 1920
+    },
+    "video_media": null
+  }]
 }
 ```
 
@@ -145,43 +263,66 @@ Review object if valid ID was provided.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/reviews/rvw_7vomjp0vjokbq09' \
--H 'X-API-Key: {API_KEY}'
--d status="RESPONDED"
+curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
+-X PATCH \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "status": "PENDING"
+}'
 ```
 
 > Example Response
 
 ```json
 {
-  "id": "rvw_7vomjp0vjokbq09",
-  "active": true,
-  "review_listing": {
-    "id": "rwl_1igyg8wuxd5jiil",
-    "name": "Carousell Google Play"
-  },
-  "status": "RESPONDED",
-  "recommend": null,
+  "id": "rvw_rmkoqmzo8f511re",
+  "title": "Great Product!",
+  "content": "Delivery was quick. Would certainly buy again.",
   "rating": 5.0,
-  "title": "Thank you, Carousell",
-  "content": "I absolutely love this app!",
-  "url": "",
-  "source_review_id": "3465825614",
-  "review_date": "2018-11-27",
-  "reviewer_name": "Rodristar",
-  "reviewer_pic_url": "",
-  "reply_text": "",
-  "reply_date": null,
-  "attributes": [{
-    "name": "App Version",
-    "value": "2.91.0"
-  }],
-  "score": "THREE",
-  "source": {
-    "id": "appstore",
-    "name": "iOS App Store"
+  "entity": "PRODUCT",
+  "status": "PENDING",
+  "verified_record": null,
+  "is_verified": false,
+  "product": null,
+  "site": {
+    "id": "esite_8ekmxve4f3ep4in",
+    "name": "example.com"
   },
-  "created_timestamp": 1543414453
+  "reviewer": {
+    "id": "rvwer_ohpxx87s8jp462v",
+    "contact": {
+      "id": "ct_a9i8ia5novjrcz7",
+      "name": "",
+      "email": "jane@example.com",
+      "phone": "",
+      "email_status": "ACTIVE",
+      "email_suppressed_reason": "",
+      "created_timestamp": 1593739576,
+      "suppressed_timestamp": null,
+      "lists": [],
+      "tags": [],
+      "properties": []
+    },
+    "display_name": "Jane Doe"
+  },
+  "num_upvotes": 0,
+  "created_timestamp": 1593739577,
+  "reply_html": "",
+  "reply_timestamp": null,
+  "assets": [{
+    "id": "m3g6wv7zdk5enff",
+    "sort_order": 0,
+    "image_media": {
+      "id": "file_2qhvcjnbopus5ks",
+      "file_url": "https://storage.googleapis.com/onvoard/upload/review/image-media/fbddba4a75163726d945.jpeg",
+      "created_timestamp": 1593739557,
+      "height": 1280,
+      "width": 1920
+    },
+    "video_media": null
+  }]
 }
 ```
 
@@ -196,16 +337,37 @@ Modified review object if patch succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-active | boolean | No | Active state of review.
-status | enum ([Review Status](#reviews-enums-review-status)) | No | Status of review.
+status | enum ([Review Status](#reviews-enums-review-status)) | No | Status for this review.
 
-
-## List all Reviews
+## Delete Review
 
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/reviews' \
+curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
+-X DELETE \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Delete review with given ID.
+
+### HTTP Request
+`DELETE https://api.onvoard.com/v1/reviews/:review_id`
+
+
+## List all Reviews
+
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/reviews \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -217,39 +379,57 @@ curl 'https://api.onvoard.com/v1/reviews' \
   "num_pages": 1,
   "current_page": 1,
   "results": [{
-    "id": "rvw_7vomjp0vjokbq09",
-    "active": true,
-    "review_listing": {
-      "id": "rwl_1igyg8wuxd5jiil",
-      "name": "Carousell Google Play"
-    },
-    "status": "RESPONDED",
-    "recommend": null,
+    "id": "rvw_rmkoqmzo8f511re",
+    "title": "Great Product!",
+    "content": "Delivery was quick. Would certainly buy again.",
     "rating": 5.0,
-    "title": "Thank you, Carousell",
-    "content": "I absolutely love this app!",
-    "url": "",
-    "source_review_id": "3465825614",
-    "review_date": "2018-11-27",
-    "reviewer_name": "Rodristar",
-    "reviewer_pic_url": "",
-    "reply_text": "",
-    "reply_date": null,
-    "attributes": [{
-      "name": "App Version",
-      "value": "2.91.0"
-    }],
-    "score": "THREE",
-    "source": {
-      "id": "appstore",
-      "name": "iOS App Store"
+    "entity": "PRODUCT",
+    "status": "PUBLISHED",
+    "verified_record": null,
+    "is_verified": false,
+    "product": null,
+    "site": {
+      "id": "esite_8ekmxve4f3ep4in",
+      "name": "example.com"
     },
-    "created_timestamp": 1543414453
+    "reviewer": {
+      "id": "rvwer_ohpxx87s8jp462v",
+      "contact": {
+        "id": "ct_a9i8ia5novjrcz7",
+        "name": "",
+        "email": "jane@example.com",
+        "phone": "",
+        "email_status": "ACTIVE",
+        "email_suppressed_reason": "",
+        "created_timestamp": 1593739576,
+        "suppressed_timestamp": null,
+        "lists": [],
+        "tags": [],
+        "properties": []
+      },
+      "display_name": "Jane Doe"
+    },
+    "num_upvotes": 0,
+    "created_timestamp": 1593739577,
+    "reply_html": "",
+    "reply_timestamp": null,
+    "assets": [{
+      "id": "m3g6wv7zdk5enff",
+      "sort_order": 0,
+      "image_media": {
+        "id": "file_2qhvcjnbopus5ks",
+        "file_url": "https://storage.googleapis.com/onvoard/upload/review/image-media/fbddba4a75163726d945.jpeg",
+        "created_timestamp": 1593739557,
+        "height": 1280,
+        "width": 1920
+      },
+      "video_media": null
+    }]
   }]
 }
 ```
 
-List all reviews user has access to.
+List all reviews user have access to. Records are sorted by `created_timestamp`, starting from most recent reviews.
 
 ### HTTP Request
 `GET https://api.onvoard.com/v1/reviews`
@@ -260,11 +440,13 @@ List of review objects.
 ### Arguments
 Field | Type | Description
 --------- | ------- | -----------
-active | boolean | Use `true` if you only want to return unfiltered reviews and `false` to return filtered reviews.
-status | enum ([Review Status](#reviews-enums-review-status)) | Filter by review status.
-keyword | string | Filter by specific keyword.
 account | string | Account ID to filter. Used when organization manage more than one account.
-scores | string | Comma-seperated list of scores to filter with. See [Review Score](#reviews-enums-review-score).
+keyword | string | Filter by specific keyword.
+entity | enum ([Review Entity](#reviews-enums-review-entity)) | Filter by review entity.
+status | enum ([Review Status](#reviews-enums-review-status)) | Filter by review status.
+product | string | Product ID to filter.
+product_group | string | Product Group ID to filter.
+site | string | Ecommerce Site ID to filter.
 created_before | integer | Filter reviews created before provided timestamp.
 created_after | integer | Filter reviews created after provided timestamp.
 page | integer | Traverse to specific page. Page index starts from `1`.

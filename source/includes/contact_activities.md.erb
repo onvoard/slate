@@ -1,0 +1,225 @@
+
+# Contact Activities
+There are 2 main use cases for contact activities.
+
+**Segmentation** - You can use activities to segment contacts. For example, if a contact has `order_placed` activity within the last 7 days, we can add contact to `Recent Customer` segment.
+
+**Trigger Flows** - Sometimes, it may be handy to perform some tasks after an activity has occured. For example, if `order_placed` activity is created for a contact, we can use flow to automatically sent a review request email 3 days later.
+
+
+## Contact Activity Object
+Represents a contact activity object.
+
+```json
+{
+  "id": "ctact_zber4co2k1lme1m1yztk",
+  "contact": {
+    "id": "ct_99pjwz4m1sx9ej8",
+    "email": "jane@example.com"
+  },
+  "type": "email_opened",
+  "timestamp": 1592650039,
+  "record_data": {
+    "email_id": "em_vd5rmbu15cktuiz",
+    "contact_id": "ct_99pjwz4m1sx9ej8",
+    "email_name": "still-mouse-1358",
+    "activity_id": "ctact_zber4co2k1lme1m1yztk",
+    "broadcast_id": "brd_n80lwnvxpolpm26",
+    "recipient_id": "erpt_uumm1bputajjjdd",
+    "contact_email": "jane@example.com",
+    "broadcast_token": "shrill-queen-1328",
+    "activity_datetime": 1592650039
+  }
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+contact.id | string | Unique identifier of contact.
+contact.email | string | Email of contact.
+type | string | Accessor for activity type.
+timestamp | integer | Timestamp when activity occured.
+record_data | object | Resource record data for activity. Go to [resources page](https://console.onvoard.com/onvoard-resources) to view list of available properties for activity type.
+
+
+## Retrieve Contact Activity
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/contact-activities/ctact_zber4co2k1lme1m1yztk \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "ctact_zber4co2k1lme1m1yztk",
+  "contact": {
+    "id": "ct_99pjwz4m1sx9ej8",
+    "email": "jane@example.com"
+  },
+  "type": "email_opened",
+  "timestamp": 1592650039,
+  "record_data": {
+    "email_id": "em_vd5rmbu15cktuiz",
+    "contact_id": "ct_99pjwz4m1sx9ej8",
+    "email_name": "still-mouse-1358",
+    "activity_id": "ctact_zber4co2k1lme1m1yztk",
+    "broadcast_id": "brd_n80lwnvxpolpm26",
+    "recipient_id": "erpt_uumm1bputajjjdd",
+    "contact_email": "jane@example.com",
+    "broadcast_token": "shrill-queen-1328",
+    "activity_datetime": 1592650039
+  }
+}
+```
+
+Retrieve contact activity with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/contact-activities/:contact_activity_id`
+
+### Returns
+Contact Activity object if valid ID was provided.
+
+
+## Create Contact Activity
+You can only create activity for custom activity type. Go to [custom activities page](https://console.onvoard.com/custom-contact-activities) if you need to add a new custom activity type.
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/contact-activities \
+-X POST \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "contact": "ct_hws9idjxuiiui6r",
+  "type": "custom.wishlist_item_added",
+  "record_data": {
+    "wishlist_id": "12345",
+    "wishlist_name": "Toy Collectibles",
+    "product_id": "56789",
+    "product_name": "Spiderman Mini"
+  }
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "ctact_umqp4rp7x9e3kzg8etpi",
+  "contact": {
+    "id": "ct_hws9idjxuiiui6r",
+    "email": "jane@example.com"
+  },
+  "type": "custom.wishlist_item_added",
+  "timestamp": 1593591541,
+  "record_data": {
+    "product_id": "56789",
+    "wishlist_id": "12345",
+    "product_name": "Spiderman Mini",
+    "wishlist_name": "Toy Collectibles"
+  }
+}
+```
+
+Create a new contact activity.
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/contact-activities`
+
+### Returns
+Created contact activity object if create succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+contact | string | Yes | ID of contact to associate with activity.
+type | string | Yes | Accessor for contact activity type.
+timestamp | integer | No | Timestamp when activity occured. If not provided, we will use current timestamp.
+record_data | object | No | Resource record data for activity. Go to [resources page](https://console.onvoard.com/onvoard-resources) to view list of available properties for activity type.
+
+
+## Delete Contact Activity
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/contact-activity/ctact_umqp4rp7x9e3kzg8etpi \
+-X DELETE \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Delete contact activity with given ID. Only custom activities can be deleted.
+
+### HTTP Request
+`DELETE https://api.onvoard.com/v1/contact-activity/:contact_activity_id`
+
+
+
+## List all Contact Activities
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/contact-activities \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "ctact_umqp4rp7x9e3kzg8etpi",
+    "contact": {
+      "id": "ct_hws9idjxuiiui6r",
+      "email": "jane@example.com"
+    },
+    "type": "custom.wishlist_item_added",
+    "timestamp": 1593591541,
+    "record_data": {
+      "product_id": "56789",
+      "wishlist_id": "12345",
+      "product_name": "Spiderman Mini",
+      "wishlist_name": "Toy Collectibles"
+    }
+  }]
+}
+```
+
+List all contact activities user have access to. Records are sorted by `timestamp`, starting from most recent activities.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/contact-activities`
+
+### Returns
+List of contact actvities objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+contact | string | Contact ID to filter. Use this to retrieve activities from a specific contact.
+keyword | string | Filter by specific keyword.
+activity_types | string | Comma-seperated list of Activity Type Accessors to filter with. For example, `email_opened,custom.wishlist_item_added`
+before | integer | Filter activities before provided timestamp.
+after | integer | Filter activities after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.

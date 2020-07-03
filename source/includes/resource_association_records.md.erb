@@ -1,0 +1,397 @@
+
+# Resource Association Records
+
+## Resource Association Record Object
+Represents a resource association record object.
+
+```json
+{
+  "id": "rasrd_vo8646m5nb9al6l",
+  "association_id": "rasoc_3crtts5r91uv94k",
+  "association_key": "product_to_shopify_product",
+  "created_timestamp": 1591048804,
+  "primary_record": {
+    "id": "rsrcd_18izrs4aiy31eok",
+    "resource_id": "resrc_y9w52enqjteqd5a",
+    "resource_accessor": "product",
+    "context_id": "prd_wpgnildbgg50k5u",
+    "created_timestamp": 1591045664,
+    "data": {
+      "id": "prd_wpgnildbgg50k5u",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "name": "Dry Gin",
+      "tags": [
+        "tag-1",
+        "tag-2"
+      ],
+      "price": 75.0,
+      "currency": "SGD",
+      "group_id": "pdgrp_uwe83f1n4c58z0z",
+      "image_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+      "external_id": "4169648570416",
+      "platform_key": "shopify",
+      "universal_id": "shopify:4169648570416",
+      "compare_at_price": 100.0,
+      "price_with_currency": "S$75",
+      "avg_published_rating": null,
+      "num_published_reviews": 0.0,
+      "compare_at_price_with_currency": "S$100"
+    }
+  },
+  "secondary_record": {
+    "id": "rsrcd_d4tjcrgpabvoylx",
+    "resource_id": "resrc_10tw9n1r3doq5o4",
+    "resource_accessor": "shopify.product",
+    "context_id": "4169648570416",
+    "created_timestamp": 1590283293,
+    "data": {
+      "id": "4169648570416",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "tags": [],
+      "title": "Dry Gin",
+      "handle": "long-sleeve-t-shirt",
+      "vendor": "OnVoard Sample",
+      "currency": "SGD",
+      "variants": [{
+        "id": "30332256616496",
+        "sku": null,
+        "price": 75.0,
+        "title": "Default Title",
+        "image_urls": [],
+        "compare_at_price": 100.0
+      }],
+      "created_at": 1569890385,
+      "image_urls": [
+        "https://cdn.shopify.com/s/files/1/0266/3704/1712/products/john-fornander-m2WpKnlLcEc-unsplash.jpg?v=1590285203"
+      ],
+      "product_type": null,
+      "universal_id": "shopify:4169648570416"
+    }
+  },
+  "created_timestamp": 1591048804
+}
+```
+
+### Attributes
+Field | Type | Description
+--------- | ------- | -----------
+id | string | Unique identifier for the object.
+association_id | string | Unique identifier for association.
+association_key | string | Key for association.
+created_timestamp | integer | Timestamp when record was added to our system.
+primary_record | object ([Resource Object](#resource-records-resource-record-object)) | Primary resource record for association.
+secondary_record | object ([Resource Object](#resource-records-resource-record-object)) | Secondary resource record for association.
+
+## Retrieve Resource Association Record
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al6l \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rasrd_vo8646m5nb9al6l",
+  "association_id": "rasoc_3crtts5r91uv94k",
+  "association_key": "product_to_shopify_product",
+  "created_timestamp": 1591048804,
+  "primary_record": {
+    "id": "rsrcd_18izrs4aiy31eok",
+    "resource_id": "resrc_y9w52enqjteqd5a",
+    "resource_accessor": "product",
+    "context_id": "prd_wpgnildbgg50k5u",
+    "created_timestamp": 1591045664,
+    "data": {
+      "id": "prd_wpgnildbgg50k5u",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "name": "Dry Gin",
+      "tags": [
+        "tag-1",
+        "tag-2"
+      ],
+      "price": 75.0,
+      "currency": "SGD",
+      "group_id": "pdgrp_uwe83f1n4c58z0z",
+      "image_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+      "external_id": "4169648570416",
+      "platform_key": "shopify",
+      "universal_id": "shopify:4169648570416",
+      "compare_at_price": 100.0,
+      "price_with_currency": "S$75",
+      "avg_published_rating": null,
+      "num_published_reviews": 0.0,
+      "compare_at_price_with_currency": "S$100"
+    }
+  },
+  "secondary_record": {
+    "id": "rsrcd_d4tjcrgpabvoylx",
+    "resource_id": "resrc_10tw9n1r3doq5o4",
+    "resource_accessor": "shopify.product",
+    "context_id": "4169648570416",
+    "created_timestamp": 1590283293,
+    "data": {
+      "id": "4169648570416",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "tags": [],
+      "title": "Dry Gin",
+      "handle": "long-sleeve-t-shirt",
+      "vendor": "OnVoard Sample",
+      "currency": "SGD",
+      "variants": [{
+        "id": "30332256616496",
+        "sku": null,
+        "price": 75.0,
+        "title": "Default Title",
+        "image_urls": [],
+        "compare_at_price": 100.0
+      }],
+      "created_at": 1569890385,
+      "image_urls": [
+        "https://cdn.shopify.com/s/files/1/0266/3704/1712/products/john-fornander-m2WpKnlLcEc-unsplash.jpg?v=1590285203"
+      ],
+      "product_type": null,
+      "universal_id": "shopify:4169648570416"
+    }
+  }
+}
+```
+
+Retrieve association record with given ID.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-association-records/:resource_association_record_id`
+
+### Returns
+Resource Association Record object if valid ID was provided.
+
+
+## Create Resource Association Record
+You can only create record for associations with `CUSTOM` type.
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-association-records \
+-X POST \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "association": "rasoc_3crtts5r91uv94k",
+  "primary_record": "rsrcd_18izrs4aiy31eok",
+  "secondary_record": "rsrcd_d4tjcrgpabvoylx"
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "rasrd_vo8646m5nb9al6l",
+  "association_id": "rasoc_3crtts5r91uv94k",
+  "association_key": "product_to_shopify_product",
+  "created_timestamp": 1591048804,
+  "primary_record": {
+    "id": "rsrcd_18izrs4aiy31eok",
+    "resource_id": "resrc_y9w52enqjteqd5a",
+    "resource_accessor": "product",
+    "context_id": "prd_wpgnildbgg50k5u",
+    "created_timestamp": 1591045664,
+    "data": {
+      "id": "prd_wpgnildbgg50k5u",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "name": "Dry Gin",
+      "tags": [
+        "tag-1",
+        "tag-2"
+      ],
+      "price": 75.0,
+      "currency": "SGD",
+      "group_id": "pdgrp_uwe83f1n4c58z0z",
+      "image_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+      "external_id": "4169648570416",
+      "platform_key": "shopify",
+      "universal_id": "shopify:4169648570416",
+      "compare_at_price": 100.0,
+      "price_with_currency": "S$75",
+      "avg_published_rating": null,
+      "num_published_reviews": 0.0,
+      "compare_at_price_with_currency": "S$100"
+    }
+  },
+  "secondary_record": {
+    "id": "rsrcd_d4tjcrgpabvoylx",
+    "resource_id": "resrc_10tw9n1r3doq5o4",
+    "resource_accessor": "shopify.product",
+    "context_id": "4169648570416",
+    "created_timestamp": 1590283293,
+    "data": {
+      "id": "4169648570416",
+      "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+      "tags": [],
+      "title": "Dry Gin",
+      "handle": "long-sleeve-t-shirt",
+      "vendor": "OnVoard Sample",
+      "currency": "SGD",
+      "variants": [{
+        "id": "30332256616496",
+        "sku": null,
+        "price": 75.0,
+        "title": "Default Title",
+        "image_urls": [],
+        "compare_at_price": 100.0
+      }],
+      "created_at": 1569890385,
+      "image_urls": [
+        "https://cdn.shopify.com/s/files/1/0266/3704/1712/products/john-fornander-m2WpKnlLcEc-unsplash.jpg?v=1590285203"
+      ],
+      "product_type": null,
+      "universal_id": "shopify:4169648570416"
+    }
+  }
+}
+```
+
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/resource-association-records`
+
+### Returns
+Created association record object if create succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+association | string | Yes | ID of association you are adding records for.
+primary_record | string | Yes | ID of primary resource record.
+secondary_record | string | Yes | ID of secondary resource record.
+
+
+## Delete Resource Association Record
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al6l \
+-X DELETE \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Delete association record with given ID. You can only delete records from association with `CUSTOM` type.
+
+### HTTP Request
+`DELETE https://api.onvoard.com/v1/resource-association-records/:resource_association_record_id`
+
+
+
+## List all Resource Association Records
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/resource-association-records \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{
+  "num_records": 1,
+  "num_pages": 1,
+  "current_page": 1,
+  "results": [{
+    "id": "rasrd_vo8646m5nb9al6l",
+    "association_id": "rasoc_3crtts5r91uv94k",
+    "association_key": "product_to_shopify_product",
+    "created_timestamp": 1591048804,
+    "primary_record": {
+      "id": "rsrcd_18izrs4aiy31eok",
+      "resource_id": "resrc_y9w52enqjteqd5a",
+      "resource_accessor": "product",
+      "context_id": "prd_wpgnildbgg50k5u",
+      "created_timestamp": 1591045664,
+      "data": {
+        "id": "prd_wpgnildbgg50k5u",
+        "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+        "name": "Dry Gin",
+        "tags": [
+          "tag-1",
+          "tag-2"
+        ],
+        "price": 75.0,
+        "currency": "SGD",
+        "group_id": "pdgrp_uwe83f1n4c58z0z",
+        "image_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/4dc8b25e1275d2836b7b.jpeg",
+        "external_id": "4169648570416",
+        "platform_key": "shopify",
+        "universal_id": "shopify:4169648570416",
+        "compare_at_price": 100.0,
+        "price_with_currency": "S$75",
+        "avg_published_rating": null,
+        "num_published_reviews": 0.0,
+        "compare_at_price_with_currency": "S$100"
+      }
+    },
+    "secondary_record": {
+      "id": "rsrcd_d4tjcrgpabvoylx",
+      "resource_id": "resrc_10tw9n1r3doq5o4",
+      "resource_accessor": "shopify.product",
+      "context_id": "4169648570416",
+      "created_timestamp": 1590283293,
+      "data": {
+        "id": "4169648570416",
+        "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
+        "tags": [],
+        "title": "Dry Gin",
+        "handle": "long-sleeve-t-shirt",
+        "vendor": "OnVoard Sample",
+        "currency": "SGD",
+        "variants": [{
+          "id": "30332256616496",
+          "sku": null,
+          "price": 75.0,
+          "title": "Default Title",
+          "image_urls": [],
+          "compare_at_price": 100.0
+        }],
+        "created_at": 1569890385,
+        "image_urls": [
+          "https://cdn.shopify.com/s/files/1/0266/3704/1712/products/john-fornander-m2WpKnlLcEc-unsplash.jpg?v=1590285203"
+        ],
+        "product_type": null,
+        "universal_id": "shopify:4169648570416"
+      }
+    }
+  }]
+}
+```
+
+List all association records user have access to. Records are sorted by `created_timestamp`, starting from most recent records.
+
+### HTTP Request
+`GET https://api.onvoard.com/v1/resource-association-records`
+
+### Returns
+List of resource records objects.
+
+### Arguments
+Field | Type | Description
+--------- | ------- | -----------
+account | string | Account ID to filter. Used when organization manage more than one account.
+association_key | string | Association Key to filter. Use this to retrieve records from specific association.
+created_before | integer | Filter records created before provided timestamp.
+created_after | integer | Filter records created after provided timestamp.
+page | integer | Traverse to specific page. Page index starts from `1`.
+page_size | integer | Number of records you want to return for each page. Can be from `1` to `100`. Default is `10`.
+
