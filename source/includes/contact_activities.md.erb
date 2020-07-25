@@ -20,15 +20,15 @@ Represents a contact activity object.
   "type": "email_opened",
   "timestamp": 1592650039,
   "record_data": {
-    "email_id": "em_vd5rmbu15cktuiz",
-    "contact_id": "ct_99pjwz4m1sx9ej8",
-    "email_name": "still-mouse-1358",
     "activity_id": "ctact_zber4co2k1lme1m1yztk",
+    "activity_datetime": 1592650039,
+    "contact_id": "ct_99pjwz4m1sx9ej8",
+    "contact_email": "jane@example.com",
+    "email_id": "em_vd5rmbu15cktuiz",
+    "email_name": "still-mouse-1358",
     "broadcast_id": "brd_n80lwnvxpolpm26",
     "recipient_id": "erpt_uumm1bputajjjdd",
-    "contact_email": "jane@example.com",
-    "broadcast_token": "shrill-queen-1328",
-    "activity_datetime": 1592650039
+    "broadcast_token": "shrill-queen-1328"
   }
 }
 ```
@@ -65,15 +65,15 @@ curl https://api.onvoard.com/v1/contact-activities/ctact_zber4co2k1lme1m1yztk \
   "type": "email_opened",
   "timestamp": 1592650039,
   "record_data": {
-    "email_id": "em_vd5rmbu15cktuiz",
-    "contact_id": "ct_99pjwz4m1sx9ej8",
-    "email_name": "still-mouse-1358",
     "activity_id": "ctact_zber4co2k1lme1m1yztk",
+    "activity_datetime": 1592650039,
+    "contact_id": "ct_99pjwz4m1sx9ej8",
+    "contact_email": "jane@example.com",
+    "email_id": "em_vd5rmbu15cktuiz",
+    "email_name": "still-mouse-1358",
     "broadcast_id": "brd_n80lwnvxpolpm26",
     "recipient_id": "erpt_uumm1bputajjjdd",
-    "contact_email": "jane@example.com",
-    "broadcast_token": "shrill-queen-1328",
-    "activity_datetime": 1592650039
+    "broadcast_token": "shrill-queen-1328"
   }
 }
 ```
@@ -88,7 +88,12 @@ Contact Activity object if valid ID was provided.
 
 
 ## Create Contact Activity
-You can only create activity for custom activity type. Go to [custom activities page](https://console.onvoard.com/custom-contact-activities) if you need to add a new custom activity type.
+You can only create activity for custom activity type. Go to [custom activities page](https://console.onvoard.com/custom-contact-activities) if you need to add a new custom activity type. Skip the following fields for record data as they will be automatically augmented.
+
+- `activity_id`
+- `activity_datetime`
+- `contact_id`
+- `contact_email`
 
 > Example Request
 
@@ -122,10 +127,14 @@ curl https://api.onvoard.com/v1/contact-activities \
   "type": "custom.wishlist_item_added",
   "timestamp": 1593591541,
   "record_data": {
-    "product_id": "56789",
+    "activity_id": "ctact_umqp4rp7x9e3kzg8etpi",
+    "activity_datetime": 1593591541,
+    "contact_id": "ct_hws9idjxuiiui6r",
+    "contact_email": "jane@example.com",
     "wishlist_id": "12345",
+    "wishlist_name": "Toy Collectibles",
     "product_name": "Spiderman Mini",
-    "wishlist_name": "Toy Collectibles"
+    "product_id": "56789"
   }
 }
 ```
@@ -195,10 +204,14 @@ curl https://api.onvoard.com/v1/contact-activities \
     "type": "custom.wishlist_item_added",
     "timestamp": 1593591541,
     "record_data": {
-      "product_id": "56789",
+      "activity_id": "ctact_umqp4rp7x9e3kzg8etpi",
+      "activity_datetime": 1593591541,
+      "contact_id": "ct_hws9idjxuiiui6r",
+      "contact_email": "jane@example.com",
       "wishlist_id": "12345",
+      "wishlist_name": "Toy Collectibles",
       "product_name": "Spiderman Mini",
-      "wishlist_name": "Toy Collectibles"
+      "product_id": "56789"
     }
   }]
 }

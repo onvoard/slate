@@ -8,13 +8,11 @@ Represents a resource record object.
 {
   "id": "rsrcd_qx1w4ytagd8lf34",
   "resource_id": "resrc_vdcg9cycfn1u6t8",
-  "resource_accessor": "custom.wishlist_item_added",
-  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "resource_accessor": "custom.wishlist",
+  "context_id": "wl_12345",
   "created_timestamp": 1592455503,
   "data": {
-    "product_id": "56789",
-    "wishlist_id": "12345",
-    "product_name": "Spiderman Mini",
+    "wishlist_id": "wl_12345",
     "wishlist_name": "Toy Collectibles"
   }
 }
@@ -46,13 +44,11 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 {
   "id": "rsrcd_qx1w4ytagd8lf34",
   "resource_id": "resrc_vdcg9cycfn1u6t8",
-  "resource_accessor": "custom.wishlist_item_added",
-  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "resource_accessor": "custom.wishlist",
+  "context_id": "wl_12345",
   "created_timestamp": 1592455503,
   "data": {
-    "product_id": "56789",
-    "wishlist_id": "12345",
-    "product_name": "Spiderman Mini",
+    "wishlist_id": "wl_12345",
     "wishlist_name": "Toy Collectibles"
   }
 }
@@ -68,7 +64,7 @@ Resource Record object if valid ID was provided.
 
 
 ## Create Resource Record
-You can only create record for resources with `CUSTOM` type.
+You can only create record for resources with `CUSTOM` type and `OBJECT` kind.
 
 > Example Request
 
@@ -80,11 +76,9 @@ curl https://api.onvoard.com/v1/resource-records \
 -H 'Content-Type: application/json' \
 -d '{
   "resource": "resrc_vdcg9cycfn1u6t8",
-  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "context_id": "wl_12345",
   "data": {
-    "product_id": "56789",
-    "wishlist_id": "12345",
-    "product_name": "Spiderman Mini",
+    "wishlist_id": "wl_12345",
     "wishlist_name": "Toy Collectibles"
   }
 }'
@@ -96,13 +90,11 @@ curl https://api.onvoard.com/v1/resource-records \
 {
   "id": "rsrcd_qx1w4ytagd8lf34",
   "resource_id": "resrc_vdcg9cycfn1u6t8",
-  "resource_accessor": "custom.wishlist_item_added",
-  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "resource_accessor": "custom.wishlist",
+  "context_id": "wl_12345",
   "created_timestamp": 1592455503,
   "data": {
-    "product_id": "56789",
-    "wishlist_id": "12345",
-    "product_name": "Spiderman Mini",
+    "wishlist_id": "wl_12345",
     "wishlist_name": "Toy Collectibles"
   }
 }
@@ -125,7 +117,7 @@ data | object | No | Data for record. Go to [resources page](https://console.onv
 
 
 ## Patch Resource Record
-You can only patch record for resource with `CUSTOM` type.
+You can only patch record for resource with `CUSTOM` type and `OBJECT` kind.
 
 > Example Request
 
@@ -137,10 +129,8 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 -H 'Content-Type: application/json' \
 -d '{
   "data": {
-    "wishlist_id": "12345",
-    "wishlist_name": "Toy Collectibles",
-    "product_id": "65778",
-    "product_name": "Plush Toy"
+    "wishlist_id": "wl_12345",
+    "wishlist_name": "Toys & Games"
   }
 }'
 ```
@@ -151,14 +141,12 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 {
   "id": "rsrcd_qx1w4ytagd8lf34",
   "resource_id": "resrc_vdcg9cycfn1u6t8",
-  "resource_accessor": "custom.wishlist_item_added",
-  "context_id": "ctact_nyn268dkxmovubpangkf",
+  "resource_accessor": "custom.wishlist",
+  "context_id": "wl_12345",
   "created_timestamp": 1592455503,
   "data": {
-    "wishlist_id": "12345",
-    "wishlist_name": "Toy Collectibles",
-    "product_id": "65778",
-    "product_name": "Plush Toy"
+    "wishlist_id": "wl_12345",
+    "wishlist_name": "Toys & Games"
   }
 }
 ```
@@ -219,14 +207,12 @@ curl https://api.onvoard.com/v1/resource-records \
   "results": [{
     "id": "rsrcd_qx1w4ytagd8lf34",
     "resource_id": "resrc_vdcg9cycfn1u6t8",
-    "resource_accessor": "custom.wishlist_item_added",
-    "context_id": "ctact_nyn268dkxmovubpangkf",
+    "resource_accessor": "custom.wishlist",
+    "context_id": "wl_12345",
     "created_timestamp": 1592455503,
     "data": {
-      "product_id": "56789",
-      "wishlist_id": "12345",
-      "product_name": "Spiderman Mini",
-      "wishlist_name": "Toy Collectibles"
+      "wishlist_id": "wl_12345",
+      "wishlist_name": "Toys & Games"
     }
   }]
 }
