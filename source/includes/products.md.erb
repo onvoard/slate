@@ -162,8 +162,206 @@ Retrieve product with given ID.
 Product object if valid ID was provided.
 
 
-## List all Products
+## Create Product
 
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/products \
+-X POST \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "account": "acct_u4o2a8hmqk5rzp9",
+  "platform_key": "shopify",
+  "external_id": "122257",
+  "name": "Mani Moisture",
+  "url": "https://example.com/products/mani-moisture",
+  "price": 57.5,
+  "compare_at_price": 72.5,
+  "currency": "USD",
+  "image_url": "https://example.com/products/mani-moisture.jpg",
+  "group": "pdgrp_uwe83f1n4c58z0z",
+  "tags": ["best-sellers", "essentials"]
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "prd_wpgnildbgg50k5u",
+  "external_id": "122257",
+  "universal_id": "shopify:122257",
+  "platform": {
+    "id": "eplat_5lu3ll5pgpumqvl",
+    "name": "Shopify",
+    "key": "shopify",
+    "type": "PREDEFINED"
+  },
+  "name": "Mani Moisture",
+  "url": "https://example.com/products/mani-moisture",
+  "price": 57.5,
+  "compare_at_price": 72.5,
+  "currency": "USD",
+  "price_with_currency": "US$57.50",
+  "compare_at_price_with_currency": "US$72.50",
+  "created_timestamp": 1591045655,
+  "group": {
+    "id": "pdgrp_uwe83f1n4c58z0z",
+    "name": "Moisturizer"
+  },
+  "tags": [{
+      "id": "prdtag_phdfnbtamnkypp8",
+      "name": "best-sellers"
+    },
+    {
+      "id": "prdtag_4rp64333hegzv1s",
+      "name": "essentials"
+    }
+  ],
+  "image_media": {
+    "id": "file_b027hj4e3483rhi",
+    "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/e4c8b25345sdf4s2836tg5.jpg",
+    "created_timestamp": 1591045652,
+    "height": 1280,
+    "width": 1920
+  }
+}
+```
+
+Create a new product.
+
+### HTTP Request
+`POST https://api.onvoard.com/v1/products`
+
+### Returns
+Created product object if create succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+account | string | Yes | ID of account that product will be added to.
+platform_key | string | Yes | Key of ecommerce platform linked to product.
+external_id | string | Yes | Unique identifier for Product in external platform.
+name | string | Yes | Name of product.
+url | string | Yes | URL to view product.
+price | float | No | The price of the product.
+compare_at_price | float | No | The original price before discount.
+currency | string | No | The three-letter currency code (ISO 4217 format) for product's price.
+image_url | string | No | Image URL for product.
+group | string | No | Group ID for product.
+tags[] | string array | No | List of tag names to assign product. For example: `["tag-1", "tag-2"]`. Our system will automatically create new tag if name doesn't exist.
+
+
+## Patch Product
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+-X PATCH \
+-H 'X-API-Key: {API_KEY}' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+  "price": 52
+}'
+```
+
+> Example Response
+
+```json
+{
+  "id": "prd_wpgnildbgg50k5u",
+  "external_id": "122257",
+  "universal_id": "shopify:122257",
+  "platform": {
+    "id": "eplat_5lu3ll5pgpumqvl",
+    "name": "Shopify",
+    "key": "shopify",
+    "type": "PREDEFINED"
+  },
+  "name": "Mani Moisture",
+  "url": "https://example.com/products/mani-moisture",
+  "price": 52,
+  "compare_at_price": 72.5,
+  "currency": "USD",
+  "price_with_currency": "US$52",
+  "compare_at_price_with_currency": "US$72.50",
+  "created_timestamp": 1591045655,
+  "group": {
+    "id": "pdgrp_uwe83f1n4c58z0z",
+    "name": "Moisturizer"
+  },
+  "tags": [{
+      "id": "prdtag_phdfnbtamnkypp8",
+      "name": "best-sellers"
+    },
+    {
+      "id": "prdtag_4rp64333hegzv1s",
+      "name": "essentials"
+    }
+  ],
+  "image_media": {
+    "id": "file_b027hj4e3483rhi",
+    "file_url": "https://storage.googleapis.com/onvoard/upload/product/image-media/e4c8b25345sdf4s2836tg5.jpg",
+    "created_timestamp": 1591045652,
+    "height": 1280,
+    "width": 1920
+  }
+}
+```
+
+Patch product with given ID.
+
+### HTTP Request
+`PATCH https://api.onvoard.com/v1/products/:product_id`
+
+### Returns
+Modified product object if patch succeeded.
+
+### Arguments
+Field | Type | Required | Description
+--------- | ------- | ----------- | -----------
+platform_key | string | No | Key of ecommerce platform linked to product.
+external_id | string | No | Unique identifier for Product in external platform.
+name | string | No | Name of product.
+url | string | No | URL to view product.
+price | float | No | The price of the product.
+compare_at_price | float | No | The original price before discount.
+currency | string | No | The three-letter currency code (ISO 4217 format) for product's price.
+image_url | string | No | Image URL for product. You can pass empty string to unset image.
+group | string | No | Group ID for product.
+tags[] | string array | No | List of tag names to assign product. For example: `["tag-1", "tag-2"]`. Our system will automatically create new tag if name doesn't exist.
+
+
+## Delete Product
+
+> Example Request
+
+```shell
+curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+-X DELETE \
+-H 'X-API-Key: {API_KEY}'
+```
+
+> Example Response
+
+```json
+{}
+```
+
+Delete product with given ID.
+
+### HTTP Request
+`DELETE https://api.onvoard.com/v1/products/:product_id`
+
+
+
+
+## List all Products
 
 > Example Request
 
