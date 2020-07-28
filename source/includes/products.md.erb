@@ -105,7 +105,7 @@ name | string | Name of product tag.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+curl https://api.onvoard.com/v2/products/prd_wpgnildbgg50k5u \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -156,7 +156,7 @@ curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
 Retrieve product with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/products/:product_id`
+`GET https://api.onvoard.com/v2/products/:product_id`
 
 ### Returns
 Product object if valid ID was provided.
@@ -167,7 +167,7 @@ Product object if valid ID was provided.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/products \
+curl https://api.onvoard.com/v2/products \
 -X POST \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -234,7 +234,7 @@ curl https://api.onvoard.com/v1/products \
 Create a new product.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/products`
+`POST https://api.onvoard.com/v2/products`
 
 ### Returns
 Created product object if create succeeded.
@@ -260,7 +260,7 @@ tags[] | string array | No | List of tag names to assign product. For example: `
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+curl https://api.onvoard.com/v2/products/prd_wpgnildbgg50k5u \
 -X PATCH \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -317,7 +317,7 @@ curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
 Patch product with given ID.
 
 ### HTTP Request
-`PATCH https://api.onvoard.com/v1/products/:product_id`
+`PATCH https://api.onvoard.com/v2/products/:product_id`
 
 ### Returns
 Modified product object if patch succeeded.
@@ -342,7 +342,7 @@ tags[] | string array | No | List of tag names to assign product. For example: `
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
+curl https://api.onvoard.com/v2/products/prd_wpgnildbgg50k5u \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -356,7 +356,7 @@ curl https://api.onvoard.com/v1/products/prd_wpgnildbgg50k5u \
 Delete product with given ID.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/products/:product_id`
+`DELETE https://api.onvoard.com/v2/products/:product_id`
 
 
 
@@ -366,7 +366,7 @@ Delete product with given ID.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/products \
+curl https://api.onvoard.com/v2/products \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -422,7 +422,7 @@ curl https://api.onvoard.com/v1/products \
 List all products user have access to. Records are sorted by `created_timestamp`, starting from most recent products.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/products`
+`GET https://api.onvoard.com/v2/products`
 
 ### Returns
 List of product objects.

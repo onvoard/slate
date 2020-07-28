@@ -49,7 +49,7 @@ record_data | object | Resource record data for activity. Go to [resources page]
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contact-activities/ctact_zber4co2k1lme1m1yztk \
+curl https://api.onvoard.com/v2/contact-activities/ctact_zber4co2k1lme1m1yztk \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -81,7 +81,7 @@ curl https://api.onvoard.com/v1/contact-activities/ctact_zber4co2k1lme1m1yztk \
 Retrieve contact activity with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/contact-activities/:contact_activity_id`
+`GET https://api.onvoard.com/v2/contact-activities/:contact_activity_id`
 
 ### Returns
 Contact Activity object if valid ID was provided.
@@ -98,7 +98,7 @@ You can only create activity for custom activity type. Go to [custom activities 
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contact-activities \
+curl https://api.onvoard.com/v2/contact-activities \
 -X POST \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -142,7 +142,7 @@ curl https://api.onvoard.com/v1/contact-activities \
 Create a new contact activity.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/contact-activities`
+`POST https://api.onvoard.com/v2/contact-activities`
 
 ### Returns
 Created contact activity object if create succeeded.
@@ -161,7 +161,7 @@ record_data | object | No | Resource record data for activity. Go to [resources 
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contact-activity/ctact_umqp4rp7x9e3kzg8etpi \
+curl https://api.onvoard.com/v2/contact-activity/ctact_umqp4rp7x9e3kzg8etpi \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -175,7 +175,7 @@ curl https://api.onvoard.com/v1/contact-activity/ctact_umqp4rp7x9e3kzg8etpi \
 Delete contact activity with given ID. Only custom activities can be deleted.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/contact-activity/:contact_activity_id`
+`DELETE https://api.onvoard.com/v2/contact-activity/:contact_activity_id`
 
 
 
@@ -184,7 +184,7 @@ Delete contact activity with given ID. Only custom activities can be deleted.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contact-activities \
+curl https://api.onvoard.com/v2/contact-activities \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -220,7 +220,7 @@ curl https://api.onvoard.com/v1/contact-activities \
 List all contact activities user have access to. Records are sorted by `timestamp`, starting from most recent activities.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/contact-activities`
+`GET https://api.onvoard.com/v2/contact-activities`
 
 ### Returns
 List of contact actvities objects.

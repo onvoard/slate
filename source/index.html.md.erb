@@ -25,7 +25,7 @@ You can use OnVoard's API to access various endpoints, such as retrieving contac
 
 ```shell
 # Api calls must be made with token header
-curl 'https://api.onvoard.com/v1/reviews' \
+curl 'https://api.onvoard.com/v2/reviews' \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -40,7 +40,7 @@ Currently only owner has access to api keys.
 
 ```shell
 # Return up to 50 records for page 3.
-https://api.onvoard.com/v1/reviews?page=3&page_size=50
+https://api.onvoard.com/v2/reviews?page=3&page_size=50
 ```
 
 The default page size for paginated queries is **10**. You can increase the page size to return up to **100** records by specifying the `page_size` parameter in your GET request. You can traverse to specific page with the `page` parameter. Index for page starts from **1**.

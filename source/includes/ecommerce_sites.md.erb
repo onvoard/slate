@@ -24,7 +24,7 @@ name | string | Name for ecommerce site. In most cases, this would be the domain
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/ecommerce-sites/esite_8ekmxve4f3ep4in \
+curl https://api.onvoard.com/v2/ecommerce-sites/esite_8ekmxve4f3ep4in \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -40,7 +40,7 @@ curl https://api.onvoard.com/v1/ecommerce-sites/esite_8ekmxve4f3ep4in \
 Retrieve ecommerce site with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/ecommerce-sites/:ecommerce_site_id`
+`GET https://api.onvoard.com/v2/ecommerce-sites/:ecommerce_site_id`
 
 ### Returns
 Ecommerce Site object if valid ID was provided.
@@ -51,7 +51,7 @@ Ecommerce Site object if valid ID was provided.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/ecommerce-sites \
+curl https://api.onvoard.com/v2/ecommerce-sites \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -72,7 +72,7 @@ curl https://api.onvoard.com/v1/ecommerce-sites \
 List all ecommerce sites user have access to.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/ecommerce-sites`
+`GET https://api.onvoard.com/v2/ecommerce-sites`
 
 ### Returns
 List of ecommerce sites objects.

@@ -34,7 +34,7 @@ data | object | Data for record. Go to [resources page](https://console.onvoard.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+curl https://api.onvoard.com/v2/resource-records/rsrcd_qx1w4ytagd8lf34 \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -57,7 +57,7 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 Retrieve resource record with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/resource-records/:resource_record_id`
+`GET https://api.onvoard.com/v2/resource-records/:resource_record_id`
 
 ### Returns
 Resource Record object if valid ID was provided.
@@ -69,7 +69,7 @@ You can only create record for resources with `CUSTOM` type and `OBJECT` kind.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-records \
+curl https://api.onvoard.com/v2/resource-records \
 -X POST \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -103,7 +103,7 @@ curl https://api.onvoard.com/v1/resource-records \
 Create a new resource record.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/resource-records`
+`POST https://api.onvoard.com/v2/resource-records`
 
 ### Returns
 Created resource record object if create succeeded.
@@ -122,7 +122,7 @@ You can only patch record for resource with `CUSTOM` type and `OBJECT` kind.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+curl https://api.onvoard.com/v2/resource-records/rsrcd_qx1w4ytagd8lf34 \
 -X PATCH \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -154,7 +154,7 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 Patch contact with given ID.
 
 ### HTTP Request
-`PATCH https://api.onvoard.com/v1/resource-records/:resource_record_id`
+`PATCH https://api.onvoard.com/v2/resource-records/:resource_record_id`
 
 ### Returns
 Modified contact object if patch succeeded.
@@ -170,7 +170,7 @@ data | object | No | Data for record. Go to [resources page](https://console.onv
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
+curl https://api.onvoard.com/v2/resource-records/rsrcd_qx1w4ytagd8lf34 \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -184,7 +184,7 @@ curl https://api.onvoard.com/v1/resource-records/rsrcd_qx1w4ytagd8lf34 \
 Delete resource record with given ID. You can only delete records from resource with `CUSTOM` type.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/resource-records/:resource_record_id`
+`DELETE https://api.onvoard.com/v2/resource-records/:resource_record_id`
 
 
 
@@ -193,7 +193,7 @@ Delete resource record with given ID. You can only delete records from resource 
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-records \
+curl https://api.onvoard.com/v2/resource-records \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -221,7 +221,7 @@ curl https://api.onvoard.com/v1/resource-records \
 List all resource records user have access to. Records are sorted by `created_timestamp`, starting from most recent records.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/resource-records`
+`GET https://api.onvoard.com/v2/resource-records`
 
 ### Returns
 List of resource records objects.

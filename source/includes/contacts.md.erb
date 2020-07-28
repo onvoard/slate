@@ -115,7 +115,7 @@ List of available enum types under this resource.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
+curl https://api.onvoard.com/v2/contacts/ct_hws9idjxuiiui6r \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -156,7 +156,7 @@ curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
 Retrieve contact with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/contacts/:contact_id`
+`GET https://api.onvoard.com/v2/contacts/:contact_id`
 
 ### Returns
 Contact object if valid ID was provided.
@@ -167,7 +167,7 @@ Contact object if valid ID was provided.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts \
+curl https://api.onvoard.com/v2/contacts \
 -X POST \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -218,7 +218,7 @@ curl https://api.onvoard.com/v1/contacts \
 Create a new contact.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/contacts`
+`POST https://api.onvoard.com/v2/contacts`
 
 ### Returns
 Created contact object if create succeeded.
@@ -242,7 +242,7 @@ Suppressed contact can't be patched. You need to unsuppress a suppressed contact
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
+curl https://api.onvoard.com/v2/contacts/ct_hws9idjxuiiui6r \
 -X PATCH \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -277,7 +277,7 @@ curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
 Patch contact with given ID.
 
 ### HTTP Request
-`PATCH https://api.onvoard.com/v1/contacts/:contact_id`
+`PATCH https://api.onvoard.com/v2/contacts/:contact_id`
 
 ### Returns
 Modified contact object if patch succeeded.
@@ -300,7 +300,7 @@ Deleted contacts may still be tracked since they can be added back to the databa
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
+curl https://api.onvoard.com/v2/contacts/ct_hws9idjxuiiui6r \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -314,7 +314,7 @@ curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r \
 Delete contact with given ID.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/contacts/:contact_id`
+`DELETE https://api.onvoard.com/v2/contacts/:contact_id`
 
 
 ## Suppress Contact
@@ -324,7 +324,7 @@ Suppressed contacts are users who want to be forgotten by your business. When co
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r/suppress \
+curl https://api.onvoard.com/v2/contacts/ct_hws9idjxuiiui6r/suppress \
 -X POST \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -354,7 +354,7 @@ curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r/suppress \
 Suppress contact with given ID.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/contacts/:contact_id/suppress`
+`POST https://api.onvoard.com/v2/contacts/:contact_id/suppress`
 
 ### Returns
 Modified contact object if suppress succeeded.
@@ -365,7 +365,7 @@ Modified contact object if suppress succeeded.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r/unsuppress \
+curl https://api.onvoard.com/v2/contacts/ct_hws9idjxuiiui6r/unsuppress \
 -X POST \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -395,7 +395,7 @@ curl https://api.onvoard.com/v1/contacts/ct_hws9idjxuiiui6r/unsuppress \
 Unsuppress contact with given ID.
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/contacts/:contact_id/unsuppress`
+`POST https://api.onvoard.com/v2/contacts/:contact_id/unsuppress`
 
 ### Returns
 Modified contact object if unsuppress succeeded.
@@ -407,7 +407,7 @@ Modified contact object if unsuppress succeeded.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/contacts \
+curl https://api.onvoard.com/v2/contacts \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -441,7 +441,7 @@ curl https://api.onvoard.com/v1/contacts \
 List all contacts user have access to. Records are sorted by `created_timestamp`, starting from most recent contacts. To retrieve ***active*** contacts that can receive emails, specify `true` for `email_sendable`.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/contacts`
+`GET https://api.onvoard.com/v2/contacts`
 
 ### Returns
 List of contact objects.

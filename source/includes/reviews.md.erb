@@ -192,7 +192,7 @@ UNPUBLISHED | Unpublished
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/reviews/ct_hws9idjxuiiui6r \
+curl https://api.onvoard.com/v2/reviews/ct_hws9idjxuiiui6r \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -252,7 +252,7 @@ curl https://api.onvoard.com/v1/reviews/ct_hws9idjxuiiui6r \
 Retrieve review with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/reviews/:review_id`
+`GET https://api.onvoard.com/v2/reviews/:review_id`
 
 ### Returns
 Review object if valid ID was provided.
@@ -263,7 +263,7 @@ Review object if valid ID was provided.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
+curl https://api.onvoard.com/v2/reviews/rvw_rmkoqmzo8f511re \
 -X PATCH \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -329,7 +329,7 @@ curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
 Patch review with given ID.
 
 ### HTTP Request
-`PATCH https://api.onvoard.com/v1/reviews/:review_id`
+`PATCH https://api.onvoard.com/v2/reviews/:review_id`
 
 ### Returns
 Modified review object if patch succeeded.
@@ -344,7 +344,7 @@ status | enum ([Review Status](#reviews-enums-review-status)) | No | Status for 
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
+curl https://api.onvoard.com/v2/reviews/rvw_rmkoqmzo8f511re \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -358,7 +358,7 @@ curl https://api.onvoard.com/v1/reviews/rvw_rmkoqmzo8f511re \
 Delete review with given ID.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/reviews/:review_id`
+`DELETE https://api.onvoard.com/v2/reviews/:review_id`
 
 
 ## List all Reviews
@@ -367,7 +367,7 @@ Delete review with given ID.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/reviews \
+curl https://api.onvoard.com/v2/reviews \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -432,7 +432,7 @@ curl https://api.onvoard.com/v1/reviews \
 List all reviews user have access to. Records are sorted by `created_timestamp`, starting from most recent reviews.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/reviews`
+`GET https://api.onvoard.com/v2/reviews`
 
 ### Returns
 List of review objects.

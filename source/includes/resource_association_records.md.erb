@@ -87,7 +87,7 @@ secondary_record | object ([Resource Object](#resource-records-resource-record-o
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al6l \
+curl https://api.onvoard.com/v2/resource-association-records/rasrd_vo8646m5nb9al6l \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -163,7 +163,7 @@ curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al
 Retrieve association record with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/resource-association-records/:resource_association_record_id`
+`GET https://api.onvoard.com/v2/resource-association-records/:resource_association_record_id`
 
 ### Returns
 Resource Association Record object if valid ID was provided.
@@ -175,7 +175,7 @@ You can only create record for associations with `CUSTOM` type.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-association-records \
+curl https://api.onvoard.com/v2/resource-association-records \
 -X POST \
 -H 'X-API-Key: {API_KEY}' \
 -H 'Accept: application/json' \
@@ -258,7 +258,7 @@ curl https://api.onvoard.com/v1/resource-association-records \
 
 
 ### HTTP Request
-`POST https://api.onvoard.com/v1/resource-association-records`
+`POST https://api.onvoard.com/v2/resource-association-records`
 
 ### Returns
 Created association record object if create succeeded.
@@ -276,7 +276,7 @@ secondary_record | string | Yes | ID of secondary resource record.
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al6l \
+curl https://api.onvoard.com/v2/resource-association-records/rasrd_vo8646m5nb9al6l \
 -X DELETE \
 -H 'X-API-Key: {API_KEY}'
 ```
@@ -290,7 +290,7 @@ curl https://api.onvoard.com/v1/resource-association-records/rasrd_vo8646m5nb9al
 Delete association record with given ID. You can only delete records from association with `CUSTOM` type.
 
 ### HTTP Request
-`DELETE https://api.onvoard.com/v1/resource-association-records/:resource_association_record_id`
+`DELETE https://api.onvoard.com/v2/resource-association-records/:resource_association_record_id`
 
 
 
@@ -299,7 +299,7 @@ Delete association record with given ID. You can only delete records from associ
 > Example Request
 
 ```shell
-curl https://api.onvoard.com/v1/resource-association-records \
+curl https://api.onvoard.com/v2/resource-association-records \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -380,7 +380,7 @@ curl https://api.onvoard.com/v1/resource-association-records \
 List all association records user have access to. Records are sorted by `created_timestamp`, starting from most recent records.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/resource-association-records`
+`GET https://api.onvoard.com/v2/resource-association-records`
 
 ### Returns
 List of resource records objects.

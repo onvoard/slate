@@ -28,7 +28,7 @@ organization.name | string | Name of organization.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/accounts/acct_u4o2a8hmqk5rzp9' \
+curl 'https://api.onvoard.com/v2/accounts/acct_u4o2a8hmqk5rzp9' \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -48,7 +48,7 @@ curl 'https://api.onvoard.com/v1/accounts/acct_u4o2a8hmqk5rzp9' \
 Retrieve account with given ID.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/accounts/:account_id`
+`GET https://api.onvoard.com/v2/accounts/:account_id`
 
 ### Returns
 Account object if valid ID was provided.
@@ -59,7 +59,7 @@ Account object if valid ID was provided.
 > Example Request
 
 ```shell
-curl 'https://api.onvoard.com/v1/accounts' \
+curl 'https://api.onvoard.com/v2/accounts' \
 -H 'X-API-Key: {API_KEY}'
 ```
 
@@ -84,7 +84,7 @@ curl 'https://api.onvoard.com/v1/accounts' \
 List all accounts user has access to.
 
 ### HTTP Request
-`GET https://api.onvoard.com/v1/accounts`
+`GET https://api.onvoard.com/v2/accounts`
 
 ### Returns
 List of account objects.
