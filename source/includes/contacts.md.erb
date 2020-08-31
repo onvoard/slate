@@ -173,7 +173,6 @@ curl https://api.onvoard.com/v2/contacts \
 -H 'Accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
-  "account": "acct_u4o2a8hmqk5rzp9",
   "email": "jane@example.com",
   "lists": ["ctlist_2akm39pe38ye896"],
   "tags": ["Customer"],
@@ -226,7 +225,6 @@ Created contact object if create succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-account | string | Yes | ID of account that contact will be added to.
 email | string | Yes | Email of contact. Must be unique within account.
 name | string | No | Name of contact.
 phone | string | No | Phone for contact.
@@ -449,7 +447,6 @@ List of contact objects.
 ### Arguments
 Field | Type | Description
 --------- | ------- | -----------
-account | string | Account ID to filter. Used when organization manage more than one account.
 email | string | Filter by email.
 keyword | string | Filter by specific keyword.
 suppressed | boolean | Use `true` or `false` to filter.

@@ -173,7 +173,6 @@ curl https://api.onvoard.com/v2/products \
 -H 'Accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
-  "account": "acct_u4o2a8hmqk5rzp9",
   "platform_key": "shopify",
   "external_id": "122257",
   "name": "Mani Moisture",
@@ -242,7 +241,6 @@ Created product object if create succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-account | string | Yes | ID of account that product will be added to.
 platform_key | string | Yes | Key of ecommerce platform linked to product.
 external_id | string | Yes | Unique identifier for Product in external platform.
 name | string | Yes | Name of product.
@@ -430,7 +428,6 @@ List of product objects.
 ### Arguments
 Field | Type | Description
 --------- | ------- | -----------
-account | string | Account ID to filter. Used when organization manage more than one account.
 keyword | string | Filter by specific keyword.
 group | string | Group ID to filter.
 tags | string | Comma-seperated list of Product Tag IDs to filter with. Use this to retrieve products from specific tags.
