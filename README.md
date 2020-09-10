@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
@@ -12,6 +13,8 @@
 
 OnVoard Modifications
 ------------
+To publish, use `bundle exec middleman build --clean`
+
 We are using `NestingUniqueHeadCounter` to fix issues with referencing anchor links.
 
 

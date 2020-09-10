@@ -8,13 +8,6 @@ Represents a product object.
 {
   "id": "prd_wpgnildbgg50k5u",
   "external_id": "4169648570416",
-  "universal_id": "shopify:4169648570416",
-  "platform": {
-    "id": "eplat_5lu3ll5pgpumqvl",
-    "name": "Shopify",
-    "key": "shopify",
-    "type": "PREDEFINED"
-  },
   "name": "Dry Gin",
   "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
   "price": 75.0,
@@ -50,9 +43,7 @@ Represents a product object.
 Field | Type | Description
 --------- | ------- | -----------
 id | string | Unique identifier for the object.
-external_id | string | Unique identifier for product in external platform.
-universal_id | string | Unique identifier for product in the format `[platform_key].[external_id]`. For example, `shopify:12345`.
-platform | object ([Ecommerce Platform Object](#ecommerce-platforms-ecommerce-platform-object)) | Platform associated with product.
+external_id | string | Unique identifier for product in ecommerce platform.
 name | string | Name of product.
 url | string | URL for product.
 price | float | The price of the product.
@@ -115,13 +106,6 @@ curl https://api.onvoard.com/v2/products/prd_wpgnildbgg50k5u \
 {
   "id": "prd_wpgnildbgg50k5u",
   "external_id": "4169648570416",
-  "universal_id": "shopify:4169648570416",
-  "platform": {
-    "id": "eplat_5lu3ll5pgpumqvl",
-    "name": "Shopify",
-    "key": "shopify",
-    "type": "PREDEFINED"
-  },
   "name": "Dry Gin",
   "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
   "price": 75.0,
@@ -173,7 +157,6 @@ curl https://api.onvoard.com/v2/products \
 -H 'Accept: application/json' \
 -H 'Content-Type: application/json' \
 -d '{
-  "platform_key": "shopify",
   "external_id": "122257",
   "name": "Mani Moisture",
   "url": "https://example.com/products/mani-moisture",
@@ -192,13 +175,6 @@ curl https://api.onvoard.com/v2/products \
 {
   "id": "prd_wpgnildbgg50k5u",
   "external_id": "122257",
-  "universal_id": "shopify:122257",
-  "platform": {
-    "id": "eplat_5lu3ll5pgpumqvl",
-    "name": "Shopify",
-    "key": "shopify",
-    "type": "PREDEFINED"
-  },
   "name": "Mani Moisture",
   "url": "https://example.com/products/mani-moisture",
   "price": 57.5,
@@ -241,8 +217,7 @@ Created product object if create succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-platform_key | string | Yes | Key of ecommerce platform linked to product.
-external_id | string | Yes | Unique identifier for Product in external platform.
+external_id | string | Yes | Unique identifier for Product in ecommerce platform.
 name | string | Yes | Name of product.
 url | string | Yes | URL to view product.
 price | float | No | The price of the product.
@@ -274,13 +249,6 @@ curl https://api.onvoard.com/v2/products/prd_wpgnildbgg50k5u \
 {
   "id": "prd_wpgnildbgg50k5u",
   "external_id": "122257",
-  "universal_id": "shopify:122257",
-  "platform": {
-    "id": "eplat_5lu3ll5pgpumqvl",
-    "name": "Shopify",
-    "key": "shopify",
-    "type": "PREDEFINED"
-  },
   "name": "Mani Moisture",
   "url": "https://example.com/products/mani-moisture",
   "price": 52,
@@ -323,8 +291,7 @@ Modified product object if patch succeeded.
 ### Arguments
 Field | Type | Required | Description
 --------- | ------- | ----------- | -----------
-platform_key | string | No | Key of ecommerce platform linked to product.
-external_id | string | No | Unique identifier for Product in external platform.
+external_id | string | No | Unique identifier for Product in ecommerce platform.
 name | string | No | Name of product.
 url | string | No | URL to view product.
 price | float | No | The price of the product.
@@ -378,13 +345,6 @@ curl https://api.onvoard.com/v2/products \
   "results": [{
     "id": "prd_wpgnildbgg50k5u",
     "external_id": "4169648570416",
-    "universal_id": "shopify:4169648570416",
-    "platform": {
-      "id": "eplat_5lu3ll5pgpumqvl",
-      "name": "Shopify",
-      "key": "shopify",
-      "type": "PREDEFINED"
-    },
     "name": "Dry Gin",
     "url": "https://onvoard-sample.myshopify.com/products/long-sleeve-t-shirt",
     "price": 75.0,
@@ -431,8 +391,6 @@ Field | Type | Description
 keyword | string | Filter by specific keyword.
 group | string | Group ID to filter.
 tags | string | Comma-seperated list of Product Tag IDs to filter with. Use this to retrieve products from specific tags.
-universal_id | string | Universal ID to filter. For example, `shopify:12345`.
-platform_key | string | Platform Key to filter. For example, `shopify`.
 external_id | string | External ID to filter. For example, `12345`.
 created_before | integer | Filter products created before provided timestamp.
 created_after | integer | Filter products created after provided timestamp.
